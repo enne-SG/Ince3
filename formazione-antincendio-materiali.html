@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comportamento dei Materiali in Incendio - EnneSG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+        
+        .header .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        .key-message {
+            background: #fbbf24;
+            color: #1e3a8a;
+            padding: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border-left: 6px solid #1e3a8a;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .intro {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .intro h2 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 6px solid #3b82f6;
+        }
+        
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .section h3 {
+            color: #3b82f6;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .risk-box {
+            background: #fee2e2;
+            border-left: 4px solid #dc2626;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .risk-box strong {
+            color: #dc2626;
+        }
+        
+        .example-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .example-box h4 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .warning-box strong {
+            color: #f59e0b;
+        }
+        
+        ul {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .key-message {
+                font-size: 1.3rem;
+                padding: 1.5rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="brand">EnneSG</div>
+        <h1>Formazione Antincendio: Comportamento dei Materiali</h1>
+        <div class="subtitle">Consulenza specializzata e Formazione professionale per la Sicurezza sul Lavoro</div>
+    </div>
+
+    <div class="key-message">
+        "Non preoccuparsi solo di ciò che brucia,<br>ma anche di ciò che si riscalda"
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Oltre la combustione: i rischi nascosti del calore</h2>
+            <p>Nella gestione delle emergenze antincendio, l'attenzione si concentra spesso sui materiali che bruciano. Tuttavia, il calore prodotto da un incendio può innescare fenomeni pericolosi anche in materiali che non partecipano direttamente alla combustione.</p>
+            <p><strong>Questo modulo formativo illustra come diversi materiali reagiscono all'esposizione al calore</strong>, dalle sostanze che alimentano il fuoco a quelle che possono esplodere senza bruciare.</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Materiali Comburenti (Ossidanti)</h2>
+            <p>I materiali comburenti sono sostanze che, pur non bruciando da sole, <strong>forniscono ossigeno o altri elementi che potenziano e accelerano la combustione</strong>.</p>
+            
+            <h3>Caratteristiche:</h3>
+            <ul>
+                <li>Contengono ossigeno facilmente rilasciabile</li>
+                <li>Intensificano rapidamente le fiamme</li>
+                <li>Rendono più difficile lo spegnimento</li>
+                <li>Possono far bruciare materiali normalmente non infiammabili</li>
+            </ul>
+            
+            <h3>Esempi comuni:</h3>
+            <ul>
+                <li>Nitrato di ammonio (fertilizzanti)</li>
+                <li>Clorati e perclorati</li>
+                <li>Perossidi</li>
+                <li>Acido nitrico concentrato</li>
+            </ul>
+            
+            <div class="risk-box">
+                <strong>⚠️ Rischio principale:</strong> Un piccolo incendio può diventare incontrollabile in pochi secondi se coinvolge materiali comburenti. L'intensità delle fiamme aumenta drammaticamente.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Materiali Infiammabili e Combustibili</h2>
+            <p>Sono i materiali che <strong>partecipano attivamente alla combustione</strong>, bruciando e alimentando l'incendio.</p>
+            
+            <h3>Categorie:</h3>
+            <ul>
+                <li><strong>Liquidi infiammabili:</strong> benzina, solventi, alcoli (punto di infiammabilità < 21°C)</li>
+                <li><strong>Liquidi combustibili:</strong> gasolio, oli (punto di infiammabilità > 21°C)</li>
+                <li><strong>Gas infiammabili:</strong> metano, GPL, idrogeno</li>
+                <li><strong>Solidi combustibili:</strong> legno, carta, tessuti, plastiche</li>
+            </ul>
+            
+            <div class="risk-box">
+                <strong>⚠️ Rischio principale:</strong> Propagazione rapida dell'incendio ad aree adiacenti. Necessità di identificazione immediata per scegliere l'agente estinguente corretto.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. Esplosioni Chimiche da Decomposizione</h2>
+            <p>Alcuni materiali, quando esposti a calore intenso, <strong>si decompongono rapidamente rilasciando enormi quantità di gas in frazioni di secondo</strong>, causando un'esplosione senza necessariamente bruciare.</p>
+            
+            <h3>Meccanismo:</h3>
+            <p>La sostanza subisce una reazione di decomposizione termica accelerata che produce gas. L'espansione istantanea dei gas genera un'onda d'urto devastante.</p>
+            
+            <div class="example-box">
+                <h4>📌 CASO REALE: Esplosione di Beirut (4 agosto 2020)</h4>
+                <p><strong>Materiale coinvolto:</strong> 2.750 tonnellate di nitrato di ammonio</p>
+                <p><strong>Dinamica:</strong> Il nitrato, stoccato impropriamente per anni in un magazzino portuale, è stato esposto a un incendio. Il calore ha innescato la decomposizione esplosiva del materiale.</p>
+                <p><strong>Reazione:</strong> NH₄NO₃ → N₂ + 2H₂O + ½O₂ + enorme energia</p>
+                <p><strong>Conseguenze:</strong> Oltre 200 morti, 6.000 feriti, devastazione nel raggio di chilometri. L'esplosione è stata registrata dai sismografi come un terremoto di magnitudo 3.3.</p>
+                <p><strong>Punto chiave:</strong> Il nitrato di ammonio <strong>non ha alimentato un incendio</strong> come comburente, ma <strong>è esploso per decomposizione termica</strong>. È un'esplosione chimica, ma non una combustione.</p>
+            </div>
+            
+            <h3>Altri materiali a rischio decomposizione esplosiva:</h3>
+            <ul>
+                <li>Perossidi organici</li>
+                <li>Nitrocellulosa</li>
+                <li>Alcuni fertilizzanti</li>
+                <li>Composti azotati instabili</li>
+            </ul>
+            
+            <div class="risk-box">
+                <strong>⚠️ Rischio principale:</strong> Esplosione catastrofica senza preavviso. Il materiale può sembrare stabile fino al momento della decomposizione. Lo stoccaggio improprio e la contaminazione aumentano drasticamente il rischio.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4. Esplosioni Fisiche - BLEVE</h2>
+            <p><strong>BLEVE</strong> (Boiling Liquid Expanding Vapor Explosion - Esplosione da Espansione Esplosiva di Vapori di Liquido in Ebollizione) si verifica quando un <strong>contenitore in pressione</strong> contenente un liquido (anche non infiammabile) <strong>si rompe improvvisamente</strong> a causa del riscaldamento esterno.</p>
+            
+            <h3>Meccanismo:</h3>
+            <ol>
+                <li>Un incendio o fonte di calore riscalda il contenitore</li>
+                <li>Il liquido all'interno si riscalda, aumentando la pressione</li>
+                <li>Il metallo del contenitore si indebolisce per il calore</li>
+                <li>Il contenitore cede improvvisamente</li>
+                <li>Il liquido surriscaldato vaporizza istantaneamente (flash boiling)</li>
+                <li>L'espansione esplosiva genera un'onda d'urto e proietta frammenti</li>
+            </ol>
+            
+            <div class="example-box">
+                <h4>📌 CASO REALE: Esplosione autostrada A14 Bologna (6 agosto 2018)</h4>
+                <p><strong>Luogo:</strong> Borgo Panigale, nei pressi dello svincolo autostradale</p>
+                <p><strong>Materiale coinvolto:</strong> Autocisterna contenente GPL (Gas Petrolio Liquefatto)</p>
+                <p><strong>Dinamica:</strong> Incidente stradale seguito da incendio. Il calore ha provocato il BLEVE della cisterna.</p>
+                <p><strong>Conseguenze:</strong> 2 morti, oltre 100 feriti, esplosione udita a chilometri di distanza, distruzione del cavalcavia, danni estesi alle strutture circostanti.</p>
+                <p><strong>Punto chiave:</strong> L'esplosione non è stata causata dalla combustione del GPL, ma dalla <strong>rottura improvvisa del contenitore in pressione</strong> con vaporizzazione istantanea del liquido surriscaldato.</p>
+            </div>
+            
+            <h3>Contenitori a rischio BLEVE:</h3>
+            <ul>
+                <li>Cisterne di GPL o GNL</li>
+                <li>Bombole di gas compressi (anche inerti: azoto, CO₂, aria)</li>
+                <li>Serbatoi di liquidi sotto pressione</li>
+                <li>Autoclavi industriali</li>
+                <li>Estintori (in condizioni estreme)</li>
+            </ul>
+            
+            <div class="warning-box">
+                <strong>⚠️ ATTENZIONE:</strong> Un BLEVE può verificarsi anche con acqua o altri liquidi "innocui" se contenuti in recipienti in pressione esposti a calore intenso!
+            </div>
+            
+            <div class="risk-box">
+                <strong>⚠️ Rischio principale:</strong> Esplosione improvvisa e violentissima. Proiezione di frammenti metallici a centinaia di metri. Fireball (palla di fuoco) se il contenuto è infiammabile. Impossibile prevedere il momento esatto del cedimento.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5. Altri Materiali Pericolosi Esposti al Calore</h2>
+            
+            <h3>Bombole di gas inerti:</h3>
+            <p>Anche gas non infiammabili (azoto, argon, elio) possono causare esplosioni se le bombole sono esposte a calore intenso. L'aumento della pressione interna può portare alla rottura del contenitore.</p>
+            
+            <h3>Strutture metalliche:</h3>
+            <p>L'acciaio perde fino al 50% della sua resistenza a 550°C. Travi, pilastri e strutture portanti possono collassare improvvisamente durante un incendio, anche se non bruciano.</p>
+            
+            <h3>Contenitori sigillati:</h3>
+            <p>Lattine, barattoli, contenitori sigillati possono esplodere per l'aumento di pressione dovuto al riscaldamento del contenuto o alla produzione di gas.</p>
+            
+            <div class="risk-box">
+                <strong>⚠️ Rischio principale:</strong> Collassi strutturali, proiezione di oggetti, creazione di vie di propagazione impreviste dell'incendio.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Linee Guida Operative per gli Addetti Antincendio</h2>
+            
+            <h3>Durante l'intervento, valutare sempre:</h3>
+            <ul>
+                <li><strong>Cosa brucia</strong> → tipo di combustibile, scelta agente estinguente</li>
+                <li><strong>Cosa si riscalda</strong> → materiali esposti al calore radiante o alla propagazione</li>
+                <li><strong>Contenitori in pressione nelle vicinanze</strong> → rischio BLEVE</li>
+                <li><strong>Presenza di comburenti o sostanze chimiche</strong> → rischio decomposizione esplosiva</li>
+                <li><strong>Integrità strutturale</strong> → rischio collasso</li>
+            </ul>
+            
+            <h3>Distanze di sicurezza:</h3>
+            <div class="warning-box">
+                In presenza di contenitori in pressione esposti al calore:<br>
+                <strong>Distanza minima consigliata: 200-300 metri</strong><br>
+                Non sostare mai in linea con le testate dei contenitori cilindrici.
+            </div>
+            
+            <h3>Priorità d'azione:</h3>
+            <ol>
+                <li>Evacuazione immediata dell'area a rischio</li>
+                <li>Raffreddamento di contenitori e strutture esposte (se sicuro)</li>
+                <li>Allertare VVF e comunicare presenza materiali pericolosi</li>
+                <li>Mantenere distanze di sicurezza fino a bonifica completa</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Conclusioni: Il Principio Fondamentale</h2>
+            <p style="font-size: 1.2rem; font-weight: bold; color: #1e3a8a; text-align: center; padding: 1rem; background: #dbeafe; border-radius: 8px;">
+                "Un incendio non è pericoloso solo per ciò che brucia,<br>
+                ma per tutto ciò che riscalda."
+            </p>
+            
+            <p style="margin-top: 1.5rem;">Gli esempi di Beirut e Bologna ci insegnano che <strong>le conseguenze più catastrofiche</strong> spesso derivano non dalla combustione diretta, ma da fenomeni secondari innescati dal calore:</p>
+            
+            <ul>
+                <li>Decomposizioni esplosive di materiali chimici</li>
+                <li>BLEVE di contenitori in pressione</li>
+                <li>Collassi strutturali</li>
+                <li>Reazioni a catena impreviste</li>
+            </ul>
+            
+            <p style="margin-top: 1.5rem;"><strong>La formazione dell'addetto antincendio deve quindi includere:</strong></p>
+            <ul>
+                <li>Conoscenza dei materiali presenti in azienda</li>
+                <li>Identificazione dei contenitori in pressione</li>
+                <li>Valutazione delle distanze di sicurezza</li>
+                <li>Procedure di evacuazione e isolamento area</li>
+                <li>Comunicazione efficace con i Vigili del Fuoco</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="brand">EnneSG</div>
+        <p>Consulenza specializzata e Formazione professionale per Sistemi ISO e Sicurezza sul Lavoro</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Materiale formativo a cura di EnneSG - D.Lgs. 81/08</p>
+    </div>
+</body>
+</html>

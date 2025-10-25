@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemi di Rivelazione Incendi e EVAC - EnneSG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2a5298;
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #2a5298;
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #444;
+            margin: 20px 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffed4e 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .key-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .danger-box {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .case-study {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .scenario {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .comparison-card h4 {
+            color: #1e3c72;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .rivelatore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .rivelatore-card {
+            background: white;
+            border: 3px solid #dee2e6;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .rivelatore-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .rivelatore-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .evac-category {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .evac-category h4 {
+            color: #1565c0;
+            margin-bottom: 15px;
+        }
+
+        .faq {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .faq h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .componenti-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .componenti-table th,
+        .componenti-table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+
+        .componenti-table th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        .componenti-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .componenti-table tr:hover {
+            background: #e3f2fd;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        strong {
+            color: #1e3c72;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .comparison-grid,
+            .rivelatore-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚨 Sistemi di Rivelazione Incendi e EVAC</h1>
+        <div class="subtitle">Progettazione, Installazione e Gestione degli Impianti di Allarme Antincendio</div>
+        <div class="badge-container">
+            <div class="badge">📘 D.Lgs. 81/08 • Formazione</div>
+            <div class="badge">🔥 UNI 9795 • UNI 11224</div>
+            <div class="badge">📢 EN 54-16 • EN 54-24</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>🔔 Sistemi di Rivelazione e Allarme Incendio</h1>
+
+        <div class="intro">
+            <p>I <strong>sistemi di rivelazione e allarme incendio (IRAI)</strong> sono dispositivi di protezione attiva fondamentali per <span class="highlight">rilevare precocemente un principio d'incendio</span> e allertare gli occupanti, consentendo l'evacuazione tempestiva e l'intervento dei soccorsi.</p>
+            <p style="margin-top: 15px;">Un sistema IRAI moderno comprende:</p>
+            <ul>
+                <li>✅ <strong>Rivelatori automatici</strong> (fumo, calore, fiamma, gas)</li>
+                <li>✅ <strong>Pulsanti manuali</strong> di allarme</li>
+                <li>✅ <strong>Centrale di controllo</strong> e segnalazione</li>
+                <li>✅ <strong>Dispositivi di allarme</strong> acustici e ottici</li>
+                <li>✅ <strong>Sistemi EVAC</strong> (allarme vocale) dove richiesto</li>
+            </ul>
+        </div>
+
+        <div class="key-message">
+            "Il tempo tra l'innesco e la rilevazione può fare la differenza tra un incidente minore e una tragedia"
+        </div>
+
+        <h2>🎯 Obiettivi dei Sistemi IRAI</h2>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>👥 Salvaguardare le Persone</h4>
+                <ul>
+                    <li>Rilevazione precoce dell'incendio</li>
+                    <li>Allarme tempestivo agli occupanti</li>
+                    <li>Tempo sufficiente per evacuazione</li>
+                    <li>Riduzione panico e confusione</li>
+                    <li>Protezione squadre di emergenza</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🏢 Proteggere Beni e Attività</h4>
+                <ul>
+                    <li>Limitare danni a strutture/beni</li>
+                    <li>Ridurre tempi di fermo attività</li>
+                    <li>Contenere perdite economiche</li>
+                    <li>Proteggere patrimonio culturale</li>
+                    <li>Mantenere continuità operativa</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🚒 Facilitare i Soccorsi</h4>
+                <ul>
+                    <li>Attivazione automatica VVF</li>
+                    <li>Localizzazione precisa focolaio</li>
+                    <li>Informazioni in tempo reale</li>
+                    <li>Attivazione sistemi spegnimento</li>
+                    <li>Coordinamento evacuazione</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🔬 Tipologie di Rivelatori Automatici</h2>
+
+        <div class="rivelatore-grid">
+            <div class="rivelatore-card" style="border-color: #607d8b;">
+                <div class="rivelatore-icon">💨</div>
+                <h4>Rivelatori di Fumo</h4>
+                <p><strong>Normativa:</strong> UNI EN 54-7</p>
+                <p style="margin-top: 15px;"><strong>Principio:</strong> Rilevano particelle solide o liquide sospese nell'aria (fumo).</p>
+                <p style="margin-top: 10px;"><strong>Tecnologie:</strong></p>
+                <ul>
+                    <li><strong>Ottici puntiformi:</strong> Camera con LED e fotocellula (più comuni)</li>
+                    <li><strong>Ionici:</strong> Camera con sorgente radioattiva (rari, in dismissione)</li>
+                    <li><strong>Lineari a raggio:</strong> Emettitore e ricevitore a distanza (fino 100m)</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Vantaggi:</strong></p>
+                <ul>
+                    <li>✅ Rilevazione molto precoce</li>
+                    <li>✅ Sensibili anche a fuochi covanti</li>
+                    <li>✅ Copertura: 60-80 m² per rivelatore</li>
+                    <li>✅ Altezza max: 12 m</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Ideali per:</strong> Uffici, corridoi, camere, archivi, locali tecnici</p>
+            </div>
+
+            <div class="rivelatore-card" style="border-color: #f44336;">
+                <div class="rivelatore-icon">🌡️</div>
+                <h4>Rivelatori di Calore</h4>
+                <p><strong>Normativa:</strong> UNI EN 54-5</p>
+                <p style="margin-top: 15px;"><strong>Principio:</strong> Rilevano aumento temperatura ambiente.</p>
+                <p style="margin-top: 10px;"><strong>Tipologie:</strong></p>
+                <ul>
+                    <li><strong>Termici a soglia fissa:</strong> Intervengono a temperatura prestabilita (es. 58°C, 68°C)</li>
+                    <li><strong>Termovelocimetrici:</strong> Rilevano rapido gradiente temperatura</li>
+                    <li><strong>Lineari (cavi):</strong> Lunghezze fino 200m, per canali cavi o scaffalature</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Vantaggi:</strong></p>
+                <ul>
+                    <li>✅ Immuni a polvere, umidità, vapori</li>
+                    <li>✅ Copertura: 20-50 m² per rivelatore</li>
+                    <li>✅ Altezza max: 6-7,5 m</li>
+                    <li>✅ Economici e affidabili</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Ideali per:</strong> Cucine, magazzini polverosi, autorimesse, cantine</p>
+            </div>
+
+            <div class="rivelatore-card" style="border-color: #ff9800;">
+                <div class="rivelatore-icon">🔥</div>
+                <h4>Rivelatori di Fiamma</h4>
+                <p><strong>Normativa:</strong> UNI EN 54-10</p>
+                <p style="margin-top: 15px;"><strong>Principio:</strong> Rilevano radiazione IR e/o UV emessa dalle fiamme.</p>
+                <p style="margin-top: 10px;"><strong>Tecnologie:</strong></p>
+                <ul>
+                    <li><strong>UV:</strong> Radiazione ultravioletta</li>
+                    <li><strong>IR:</strong> Radiazione infrarossa</li>
+                    <li><strong>UV/IR combinati:</strong> Riduzione falsi allarmi</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Vantaggi:</strong></p>
+                <ul>
+                    <li>✅ Rilevazione rapidissima (secondi)</li>
+                    <li>✅ Non influenzati da fumo/polvere</li>
+                    <li>✅ Copertura: ampia (fino 100+ m²)</li>
+                    <li>✅ Per fuochi rapidi e violenti</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Ideali per:</strong> Depositi carburanti, piattaforme petrolifere, hangar, industrie chimiche</p>
+            </div>
+
+            <div class="rivelatore-card" style="border-color: #9c27b0;">
+                <div class="rivelatore-icon">🌫️</div>
+                <h4>Rivelatori Fumo ad Aspirazione (ASD)</h4>
+                <p><strong>Normativa:</strong> UNI/TR 11694:2017</p>
+                <p style="margin-top: 15px;"><strong>Principio:</strong> Aspirano continuamente aria da una rete di tubi campionamento, analizzandola in camera laser.</p>
+                <p style="margin-top: 10px;"><strong>Caratteristiche:</strong></p>
+                <ul>
+                    <li><strong>Sensibilità:</strong> Estrema (classe A fino a 0,005% oscuramento/m)</li>
+                    <li><strong>Copertura:</strong> Fino 2.000 m² per unità</li>
+                    <li><strong>Campionamento:</strong> Max 32 punti per unità</li>
+                    <li><strong>Altezza:</strong> Fino 20 metri</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Vantaggi:</strong></p>
+                <ul>
+                    <li>✅ Rilevazione precocissima</li>
+                    <li>✅ Per ambienti critici</li>
+                    <li>✅ Manutenzione facilitata</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Ideali per:</strong> CED, sale server, musei, archivi storici, clean room</p>
+            </div>
+
+            <div class="rivelatore-card" style="border-color: #795548;">
+                <div class="rivelatore-icon">🔀</div>
+                <h4>Rivelatori Multi-Sensore</h4>
+                <p><strong>Normativa:</strong> UNI EN 54-29, 54-30, 54-31</p>
+                <p style="margin-top: 15px;"><strong>Principio:</strong> Combinano più tecnologie per ridurre falsi allarmi e aumentare affidabilità.</p>
+                <p style="margin-top: 10px;"><strong>Combinazioni:</strong></p>
+                <ul>
+                    <li><strong>Fumo + Calore:</strong> EN 54-29 (più diffusi)</li>
+                    <li><strong>CO + Calore:</strong> EN 54-30</li>
+                    <li><strong>Fumo + CO + Calore:</strong> EN 54-31</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Vantaggi:</strong></p>
+                <ul>
+                    <li>✅ Algoritmi intelligenti</li>
+                    <li>✅ Riduzione falsi allarmi 90%+</li>
+                    <li>✅ Adattabilità ambienti difficili</li>
+                    <li>✅ Rilevazione affidabile</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Ideali per:</strong> Ospedali, hotel, scuole, ambienti con polvere/vapori occasionali</p>
+            </div>
+        </div>
+
+        <h2>📐 Progettazione Sistema IRAI (UNI 9795:2021)</h2>
+
+        <div class="intro">
+            <p>La <strong>UNI 9795:2021</strong> "Sistemi fissi automatici di rivelazione e di segnalazione allarme d'incendio" è la norma italiana di riferimento per progettazione, installazione ed esercizio dei sistemi IRAI.</p>
+        </div>
+
+        <h3>🗺️ Suddivisione in Zone</h3>
+
+        <div class="info-box">
+            <h4>💡 Criteri di Zonizzazione</h4>
+            <p><strong>Zona di rivelazione:</strong> Area sorvegliata da un gruppo di rivelatori che attivano lo stesso punto della centrale.</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Superficie massima:</strong> 1.600 m² per zona (2.000 m² in casi particolari)</li>
+                <li><strong>Dimensione lineare:</strong> Massimo 100 metri di lato</li>
+                <li><strong>Compartimenti antincendio:</strong> Non devono essere suddivisi tra più zone (1 zona = 1 o più compartimenti)</li>
+                <li><strong>Piani edificio:</strong> Ogni piano deve costituire almeno 1 zona separata</li>
+                <li><strong>Zone speciali:</strong> Vani scale, ascensori, condotte ventilazione → zone dedicate</li>
+            </ul>
+        </div>
+
+        <h3>📊 Livelli di Prestazione IRAI (Codice Prevenzione Incendi)</h3>
+
+        <table class="componenti-table">
+            <thead>
+                <tr>
+                    <th>Livello</th>
+                    <th>Descrizione</th>
+                    <th>Componenti Richiesti</th>
+                    <th>Tipico Impiego</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Livello I</strong></td>
+                    <td>Nessun sistema IRAI richiesto</td>
+                    <td>-</td>
+                    <td>Piccole attività basso rischio</td>
+                </tr>
+                <tr>
+                    <td><strong>Livello II</strong></td>
+                    <td>Rivelazione manuale</td>
+                    <td>Pulsanti manuali + Centrale + Allarme acustico</td>
+                    <td>Uffici < 500 persone, piccole attività</td>
+                </tr>
+                <tr>
+                    <td><strong>Livello III</strong></td>
+                    <td>Rivelazione automatica parziale</td>
+                    <td>Rivelatori in aree critiche + Pulsanti + Centrale</td>
+                    <td>Attività medie, aree con personale</td>
+                </tr>
+                <tr>
+                    <td><strong>Livello IV</strong></td>
+                    <td>Rivelazione automatica totale</td>
+                    <td>Rivelatori ovunque + Pulsanti + Centrale avanzata</td>
+                    <td>Ospedali, scuole, centri commerciali, industrie</td>
+                </tr>
+                <tr>
+                    <td><strong>Livello V</strong></td>
+                    <td>Sistema completo + EVAC</td>
+                    <td>Livello IV + Sistema EVAC certificato</td>
+                    <td>Edifici complessi, alta affluenza pubblico</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🔧 Componenti Principali Sistema IRAI</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>🖥️ Centrale di Controllo (CIE)</h4>
+                <p><strong>Normativa:</strong> UNI EN 54-2, 54-4</p>
+                <p style="margin-top: 10px;"><strong>Funzioni:</strong></p>
+                <ul>
+                    <li>Alimentazione sistema (primaria + secondaria 24h)</li>
+                    <li>Ricezione segnali dai rivelatori</li>
+                    <li>Gestione logica allarmi e zone</li>
+                    <li>Attivazione dispositivi allarme</li>
+                    <li>Supervisione guasti e malfunzionamenti</li>
+                    <li>Interfaccia con altri sistemi (EVAC, sprinkler, SENFC)</li>
+                    <li>Log eventi con data/ora</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🔴 Pulsanti Manuali</h4>
+                <p><strong>Normativa:</strong> UNI EN 54-11</p>
+                <p style="margin-top: 10px;"><strong>Caratteristiche:</strong></p>
+                <ul>
+                    <li>Colore: <strong>ROSSO</strong> (obbligatorio)</li>
+                    <li>Scritta: "ALLARME INCENDIO"</li>
+                    <li>Attivazione: Rottura vetro o pressione</li>
+                    <li>Ripristino: Con chiave o attrezzo</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Posizionamento:</strong></p>
+                <ul>
+                    <li>Lungo vie di fuga</li>
+                    <li>Presso ogni uscita</li>
+                    <li>Altezza: 1-1,4 m da pavimento</li>
+                    <li>Distanza max: 30-40 m tra loro</li>
+                    <li>Ben visibili e accessibili</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🔊 Dispositivi Allarme Acustico</h4>
+                <p><strong>Normativa:</strong> UNI EN 54-3</p>
+                <p style="margin-top: 10px;"><strong>Requisiti:</strong></p>
+                <ul>
+                    <li>Tono continuo o intermittente</li>
+                    <li>Livello sonoro: 65 dBA a 1m (in ambiente silenzioso)</li>
+                    <li>Livello minimo: 75 dBA o +5 dB sul rumore di fondo</li>
+                    <li>Distribuzione capillare preferibile</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Se presente EVAC:</strong></p>
+                <ul>
+                    <li>Sirene possono essere silenziate</li>
+                    <li>Per non interferire con messaggi vocali</li>
+                    <li>Priorità a intelligibilità EVAC</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>💡 Dispositivi Allarme Ottico (VAD)</h4>
+                <p><strong>Normativa:</strong> UNI EN 54-23</p>
+                <p style="margin-top: 10px;"><strong>Caratteristiche:</strong></p>
+                <ul>
+                    <li>Lampeggianti a LED bianchi o rossi</li>
+                    <li>Frequenza: 0,5-2 Hz</li>
+                    <li>Intensità: Regolata per ambiente</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Quando obbligatori:</strong></p>
+                <ul>
+                    <li>✅ Ambienti rumorosi (> 85 dBA)</li>
+                    <li>✅ Presenza persone con disabilità uditive</li>
+                    <li>✅ Zone con cuffie antirumore</li>
+                    <li>✅ Discoteche, sale concerti</li>
+                    <li>✅ Sempre preferibili (accessibilità)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📢 Sistemi EVAC (Emergency Voice Alarm Communication)</h2>
+
+        <div class="intro">
+            <p>I <strong>sistemi EVAC</strong> sono impianti di allarme vocale che, in caso di emergenza, trasmettono <span class="highlight">messaggi vocali chiari e comprensibili</span> agli occupanti, guidando l'evacuazione in modo più efficace rispetto ai semplici segnali acustici.</p>
+        </div>
+
+        <div class="key-message">
+            "Un messaggio vocale chiaro riduce i tempi di percezione del pericolo e di risposta all'emergenza del 30-50%"
+        </div>
+
+        <h3>🎯 Perché EVAC invece di Semplici Sirene?</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>❌ Limiti Allarme Acustico Tradizionale</h4>
+                <ul>
+                    <li>Segnale generico - non indica cosa fare</li>
+                    <li>Interpretazione ambigua (prova? test?)</li>
+                    <li>Può causare confusione e ritardi</li>
+                    <li>Non fornisce istruzioni specifiche</li>
+                    <li>Difficile coordinare evacuazione per fasi</li>
+                    <li>Inefficace in luoghi sconosciuti</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>✅ Vantaggi Sistema EVAC</h4>
+                <ul>
+                    <li>Messaggi chiari e comprensibili</li>
+                    <li>Istruzioni specifiche per azione</li>
+                    <li>Riduzione tempo di pre-movimento</li>
+                    <li>Evacuazione ordinata e controllata</li>
+                    <li>Evacuazione per fasi gestibile</li>
+                    <li>Comunicazioni in tempo reale</li>
+                    <li>Riduzione panico</li>
+                    <li>Adatto a persone con disabilità cognitive</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>🔊 Normativa e Progettazione EVAC</h3>
+
+        <div class="info-box">
+            <h4>📖 Normative di Riferimento</h4>
+            <p><strong>Componenti:</strong></p>
+            <ul>
+                <li><strong>UNI EN 54-4:</strong> Apparecchiature di alimentazione (UPS, batterie)</li>
+                <li><strong>UNI EN 54-16:</strong> Centrale EVAC (VACIE - Voice Alarm Control and Indicating Equipment)</li>
+                <li><strong>UNI EN 54-24:</strong> Altoparlanti per sistemi di allarme vocale</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Progettazione e Installazione:</strong></p>
+            <ul>
+                <li><strong>UNI ISO 7240-19:</strong> Standard internazionale per sistemi EVAC (in fase di revisione)</li>
+                <li><strong>UNI CEN/TS 54-32:</strong> Specifiche tecniche europee EVAC</li>
+                <li><strong>UNI 11988:2025</strong> (in inchiesta pubblica): Nuova norma italiana che sostituirà ISO 7240-19</li>
+            </ul>
+        </div>
+
+        <h3>📱 Categorie di Sistema EVAC</h3>
+
+        <div class="evac-category">
+            <h4>🤖 CATEGORIA 1 - Automatico</h4>
+            <p><strong>Funzionamento:</strong> Completamente automatico in base a regole pre-programmate.</p>
+            <ul style="margin-top: 10px;">
+                <li>Messaggi preregistrati attivati da centrale IRAI</li>
+                <li>Sequenza predefinita per ogni zona</li>
+                <li>Nessun intervento umano richiesto</li>
+                <li>Risposta immediata e coordinata</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Adatto per:</strong> Edifici senza presidio 24/7, attività semplici</p>
+        </div>
+
+        <div class="evac-category">
+            <h4>🎤 CATEGORIA 2 - Automatico + Microfono Generale</h4>
+            <p><strong>Funzionamento:</strong> Categoria 1 + possibilità di diffondere messaggi live dall'intero sistema.</p>
+            <ul style="margin-top: 10px;">
+                <li>Postazione microfonica in punto di controllo</li>
+                <li>Operatore può sovrascrivere messaggi automatici</li>
+                <li>Comunicazione in tempo reale a tutto l'edificio</li>
+                <li>Maggiore flessibilità gestione emergenza</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Adatto per:</strong> Uffici, piccoli hotel, strutture con reception</p>
+        </div>
+
+        <div class="evac-category">
+            <h4>🎛️ CATEGORIA 3 - Controllo Zone</h4>
+            <p><strong>Funzionamento:</strong> Categoria 2 + possibilità di inviare messaggi a zone specifiche.</p>
+            <ul style="margin-top: 10px;">
+                <li>Operatore seleziona 1 o più zone destinazione</li>
+                <li>Evacuazione per fasi gestibile</li>
+                <li>Messaggi diversi per diverse aree</li>
+                <li>Controllo evacuazione più sofisticato</li>
+                <li>Richiede personale addestrato</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Adatto per:</strong> Ospedali, grandi hotel, centri commerciali, scuole</p>
+        </div>
+
+        <div class="evac-category">
+            <h4>🖥️ CATEGORIA 4 - Controllo Avanzato</h4>
+            <p><strong>Funzionamento:</strong> Categoria 3 + selezione messaggi preregistrati per zona + inclusione/esclusione automatismi.</p>
+            <ul style="margin-top: 10px;">
+                <li>Massimo controllo sull'evacuazione</li>
+                <li>Possibilità escludere attivazioni automatiche</li>
+                <li>Visualizzazione stato sistema in tempo reale</li>
+                <li>Messaggi specifici per ogni scenario</li>
+                <li>Gestione emergenze complesse</li>
+                <li>Richiede personale altamente formato</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Adatto per:</strong> Grandi complessi, aeroporti, stazioni, edifici multipiano complessi</p>
+        </div>
+
+        <h3>🔧 Componenti Sistema EVAC</h3>
+
+        <table class="componenti-table">
+            <thead>
+                <tr>
+                    <th>Componente</th>
+                    <th>Funzione</th>
+                    <th>Normativa</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Centrale EVAC (VACIE)</strong></td>
+                    <td>Controllo e segnalazione sistema vocale</td>
+                    <td>UNI EN 54-16</td>
+                    <td>Cuore del sistema, interfaccia con CIE</td>
+                </tr>
+                <tr>
+                    <td><strong>Amplificatori Audio</strong></td>
+                    <td>Amplificazione segnale per altoparlanti</td>
+                    <td>EN 54-16</td>
+                    <td>Ridondanti, supervisionati, linee 100V</td>
+                </tr>
+                <tr>
+                    <td><strong>Altoparlanti</strong></td>
+                    <td>Diffusione messaggi vocali</td>
+                    <td>UNI EN 54-24</td>
+                    <td>Certificati, potenza adeguata all'ambiente</td>
+                </tr>
+                <tr>
+                    <td><strong>Microfoni Emergenza</strong></td>
+                    <td>Comunicazioni dal vivo</td>
+                    <td>EN 54-16</td>
+                    <td>Priorità massima, posizionati strategicamente</td>
+                </tr>
+                <tr>
+                    <td><strong>Alimentazione Primaria</strong></td>
+                    <td>Alimentazione 230V AC</td>
+                    <td>UNI EN 54-4</td>
+                    <td>Rete elettrica dedicata</td>
+                </tr>
+                <tr>
+                    <td><strong>Alimentazione Secondaria</strong></td>
+                    <td>Batterie/UPS backup</td>
+                    <td>UNI EN 54-4</td>
+                    <td>Autonomia: 24h veglia + 30 min emergenza</td>
+                </tr>
+                <tr>
+                    <td><strong>Pannello Pompieri (FMP)</strong></td>
+                    <td>Controllo VVF</td>
+                    <td>Varie locali</td>
+                    <td>Accesso prioritario per Vigili del Fuoco</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🎵 Intelligibilità e Copertura Acustica</h3>
+
+        <div class="warning-box">
+            <h4>⚠️ Parametro Fondamentale: STI (Speech Transmission Index)</h4>
+            <p>Lo <strong>STI</strong> misura quanto un messaggio vocale è comprensibile in un ambiente.</p>
+            <p style="margin-top: 10px;"><strong>Scala STI: 0 (incomprensibile) - 1 (perfetto)</strong></p>
+            <ul style="margin-top: 10px;">
+                <li><strong>STI ≥ 0,50:</strong> Minimo accettabile per emergenze (UNI 11988)</li>
+                <li><strong>STI ≥ 0,65:</strong> Raccomandato per buona intelligibilità</li>
+                <li><strong>STI < 0,50:</strong> Sistema NON conforme - messaggio incomprensibile</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Fattori che influenzano STI:</strong></p>
+            <ul>
+                <li>Riverbero dell'ambiente (eco)</li>
+                <li>Rumore di fondo</li>
+                <li>Numero e posizione altoparlanti</li>
+                <li>Qualità amplificazione</li>
+                <li>Distorsioni acustiche</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold;">È obbligatoria la misurazione STI post-installazione per certificazione impianto!</p>
+        </div>
+
+        <h3>🏗️ Quando è Obbligatorio il Sistema EVAC?</h3>
+
+        <div class="success-box">
+            <h4>✅ Normative che Richiedono EVAC</h4>
+            <p><strong>Secondo regole tecniche specifiche:</strong></p>
+            <ul>
+                <li><strong>Uffici:</strong> > 500 presenze (D.M. 22/02/2006) o > 100 persone (alcuni casi)</li>
+                <li><strong>Strutture sanitarie e ospedali:</strong> D.M. 18/09/2002</li>
+                <li><strong>Alberghi:</strong> Oltre certe dimensioni (D.M. 09/04/1994)</li>
+                <li><strong>Impianti sportivi:</strong> > 100 spettatori (D.M. 18/03/1996)</li>
+                <li><strong>Musei, gallerie, biblioteche:</strong> Edifici interesse storico (D.M. 20/05/1992)</li>
+                <li><strong>Centri commerciali:</strong> Superficie > 1.500 m² o altezza > 30 m (D.M. 10/03/1998)</li>
+                <li><strong>Teatri, cinema:</strong> Secondo D.M. specifici</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Secondo Codice Prevenzione Incendi (D.M. 3/08/2015):</strong></p>
+            <ul>
+                <li>Livello prestazione IRAI = V</li>
+                <li>Esodo per fasi richiesto</li>
+                <li>Valutazione progettista su complessità evacuazione</li>
+            </ul>
+        </div>
+
+        <h2>📋 Casi Pratici e Scenari Reali</h2>
+
+        <div class="case-study">
+            <h4>📋 Scenario 1: Hotel 4 Stelle - Sistema EVAC Salva Vite</h4>
+            <div class="scenario">
+                <p><strong>Situazione:</strong> Hotel 120 camere su 6 piani, 180 ospiti presenti. Ore 03:30, incendio parte da locale tecnico piano terra.</p>
+                <p style="margin-top: 10px;"><strong>Sistema installato:</strong></p>
+                <ul>
+                    <li>IRAI Livello IV completo (rivelatori in tutte le aree)</li>
+                    <li>Sistema EVAC Categoria 3 con 85 altoparlanti</li>
+                    <li>3 postazioni microfoniche (reception, centrale termica, locale sicurezza)</li>
+                    <li>Evacuazione per fasi programmata</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Sequenza eventi:</strong></p>
+                <ol>
+                    <li><strong>03:32:</strong> Rivelatori fumo locale tecnico attivano centrale IRAI</li>
+                    <li><strong>03:32:10:</strong> EVAC attiva automaticamente Fase 1:
+                        <ul>
+                            <li>Messaggio vocale: "Attenzione. È stato rilevato un principio d'incendio. Personale addestrato sta verificando. Attendere istruzioni"</li>
+                            <li>Diffuso solo in aree comuni (corridoi, hall, ristorante)</li>
+                        </ul>
+                    </li>
+                    <li><strong>03:33:</strong> Addetto notturno verifica: incendio reale, fumo denso</li>
+                    <li><strong>03:34:</strong> Addetto attiva da reception evacuazione totale - EVAC Fase 2:
+                        <ul>
+                            <li>"Attenzione ospiti. È in corso un'emergenza incendio. Evacuare immediatamente l'edificio utilizzando le scale di emergenza. Non usare ascensori. Dirigersi al punto di raccolta nel parcheggio"</li>
+                            <li>Messaggi in italiano e inglese alternati</li>
+                            <li>Diffusi in tutte le camere e aree</li>
+                        </ul>
+                    </li>
+                    <li><strong>03:35-03:42:</strong> Evacuazione coordinata per piani (piani bassi prima, poi alti)</li>
+                    <li><strong>03:40:</strong> Addetto usa microfono: "Ospiti piano 4° e 5°, procedere con calma verso scale nord"</li>
+                    <li><strong>03:43:</strong> Tutti i 180 ospiti fuori in sicurezza</li>
+                    <li><strong>03:50:</strong> Arrivo VVF, iniziano spegnimento</li>
+                </ol>
+                <p style="margin-top: 15px;"><strong>Risultato:</strong></p>
+                <ul>
+                    <li>✅ <strong>Zero vittime, zero feriti</strong></li>
+                    <li>✅ Evacuazione ordinata in <strong>11 minuti</strong> (con solo sirene: stima 20-30 minuti con panico)</li>
+                    <li>✅ Nessun episodio di panico o confusione</li>
+                    <li>✅ Ospiti stranieri hanno compreso istruzioni (messaggi bilingue)</li>
+                    <li>✅ VVF hanno contenuto incendio a piano terra</li>
+                    <li>✅ Hotel riaperto dopo 10 giorni</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Cosa sarebbe successo SENZA EVAC (solo sirene):</strong></p>
+                <ul>
+                    <li>❌ Sirena alle 03:30 → panico immediato</li>
+                    <li>❌ Ospiti confusi: allarme vero o test?</li>
+                    <li>❌ Molti avrebbero perso tempo a raccogliere bagagli</li>
+                    <li>❌ Congestione scale (tutti i piani insieme)</li>
+                    <li>❌ Rischio intossicazione per evacuazione più lenta</li>
+                    <li>❌ Probabile qualche ferito (cadute, calca)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h4>📋 Scenario 2: Data Center - Rivelazione Precoce ASD</h4>
+            <div class="scenario">
+                <p><strong>Situazione:</strong> Data center aziendale critico. 200 rack server, disponibilità richiesta 99,99% (downtime max 52 minuti/anno).</p>
+                <p style="margin-top: 10px;"><strong>Sistema installato:</strong></p>
+                <ul>
+                    <li>Rivelatori fumo ad aspirazione (ASD) classe A</li>
+                    <li>Rete di campionamento sotto pavimento sopraelevato e sopra controsoffitto</li>
+                    <li>32 punti di aspirazione per sala</li>
+                    <li>Sistema EVAC integrato per evacuazione personale</li>
+                    <li>Sistema spegnimento gas FM-200</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Evento:</strong> Guasto alimentatore server, surriscaldamento, inizio emissione particelle carbonizzate.</p>
+                <p style="margin-top: 15px;"><strong>Timeline:</strong></p>
+                <ol>
+                    <li><strong>T+0 min:</strong> Guasto alimentatore, temperatura locale 35°C</li>
+                    <li><strong>T+2 min:</strong> ASD rileva concentrazione fumo 0,008%/m (invisibile a occhio umano)</li>
+                    <li><strong>T+2:10:</strong> Allarme pre-warning → SMS/Email a tecnici reperibili</li>
+                    <li><strong>T+4 min:</strong> Secondo livello soglia ASD → Allarme incendio confermato</li>
+                    <li><strong>T+4:15:</strong> EVAC attiva messaggio: "Personale sala server, evacuare immediatamente. Sistema spegnimento gas si attiverà in 60 secondi"</li>
+                    <li><strong>T+5 min:</strong> 4 tecnici presenti evacuati</li>
+                    <li><strong>T+5:15:</strong> Sistema FM-200 scarica gas inerte</li>
+                    <li><strong>T+5:30:</strong> Fuoco soffocato (non c'erano fiamme, solo inizio pirolisi)</li>
+                    <li><strong>T+12 min:</strong> Tecnici rientrano con APVR, localizzano server guasto</li>
+                    <li><strong>T+20 min:</strong> Server guasto isolato e rimosso</li>
+                    <li><strong>T+30 min:</strong> Data center operativo (sistemi ridondanti hanno gestito carico)</li>
+                </ol>
+                <p style="margin-top: 15px;"><strong>Risultato:</strong></p>
+                <ul>
+                    <li>✅ <strong>Downtime ZERO</strong> (servizi mai interrotti)</li>
+                    <li>✅ Danni limitati a 1 server (€8.000)</li>
+                    <li>✅ Rilevazione 10-15 minuti prima che rivelatori tradizionali avrebbero rilevato</li>
+                    <li>✅ Nessun danneggiamento da FM-200 grazie a gas pulito</li>
+                    <li>✅ Personale evacuato in sicurezza prima scarica gas</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Cosa sarebbe successo con rivelatori tradizionali:</strong></p>
+                <ul>
+                    <li>❌ Rivelazione solo dopo sviluppo fiamme (15-20 min dopo)</li>
+                    <li>❌ Probabile propagazione a rack adiacenti</li>
+                    <li>❌ Danni stimati: €200.000-500.000</li>
+                    <li>❌ Downtime: 4-12 ore</li>
+                    <li>❌ Perdite economiche da disservizio: €100.000+</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h4>📋 Scenario 3: Centro Commerciale - EVAC Evita il Panico</h4>
+            <div class="scenario">
+                <p><strong>Situazione:</strong> Centro commerciale 15.000 m² su 3 piani, sabato pomeriggio, 2.500 persone presenti.</p>
+                <p style="margin-top: 10px;"><strong>Sistema installato:</strong></p>
+                <ul>
+                    <li>IRAI Livello IV con rivelatori in tutti i negozi e aree comuni</li>
+                    <li>Sistema EVAC Categoria 4 con 180 altoparlanti</li>
+                    <li>Evacuazione per fasi zona per zona</li>
+                    <li>6 postazioni microfoniche (centrale sicurezza + ingressi)</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Evento:</strong> Principio incendio in locale deposito negozio abbigliamento al 2° piano.</p>
+                <p style="margin-top: 15px;"><strong>Gestione emergenza:</strong></p>
+                <ol>
+                    <li><strong>14:23:</strong> Rivelatori locale deposito attivano IRAI</li>
+                    <li><strong>14:23:15:</strong> Pre-allarme solo alla centrale sicurezza e negozio coinvolto</li>
+                    <li><strong>14:23:30:</strong> Operatore sicurezza verifica tramite CCTV: fumo visibile dal deposito</li>
+                    <li><strong>14:24:</strong> Operatore attiva evacuazione per fasi - Fase 1:
+                        <ul>
+                            <li>EVAC attiva solo <strong>piano 2° e ala interessata</strong></li>
+                            <li>"Gentile clientela del secondo piano, settore nord. Per ragioni di sicurezza siete pregati di dirigervi verso le uscite di emergenza. Seguire le indicazioni del personale. L'evacuazione è per solo precauzione"</li>
+                        </ul>
+                    </li>
+                    <li><strong>14:25-14:29:</strong> Evacuazione ordinata piano 2° ala nord (circa 300 persone)</li>
+                    <li><strong>14:27:</strong> Fumo aumenta, operatore attiva Fase 2:
+                        <ul>
+                            <li>EVAC attiva <strong>tutto piano 2°</strong></li>
+                            <li>"Attenzione. Evacuazione generale secondo piano. Dirigersi con calma verso le scale di emergenza. Non utilizzare ascensori"</li>
+                        </ul>
+                    </li>
+                    <li><strong>14:30:</strong> Piano 2° completamente evacuato</li>
+                    <li><strong>14:31:</strong> VVF arrivano, valutano: incendio sotto controllo, evacuazione totale non necessaria</li>
+                    <li><strong>14:35:</strong> EVAC comunica a piani 0 e 1: "Gentile clientela. L'emergenza al secondo piano è sotto controllo. Potete continuare in sicurezza i vostri acquisti. Il secondo piano riaprirà a breve"</li>
+                    <li><strong>14:50:</strong> Incendio spento, locale messo in sicurezza</li>
+                    <li><strong>15:30:</strong> Piano 2° riaperto (escluso negozio coinvolto)</li>
+                </ol>
+                <p style="margin-top: 15px;"><strong>Risultato:</strong></p>
+                <ul>
+                    <li>✅ <strong>Zero vittime, zero feriti</strong></li>
+                    <li>✅ Evacuazione <strong>solo piano interessato</strong> → no panico di massa</li>
+                    <li>✅ Piani 0 e 1 rimasti operativi → perdita economica minimizzata</li>
+                    <li>✅ Clientela mantenuta calma grazie a comunicazioni rassicuranti</li>
+                    <li>✅ Operatore ha gestito l'evacuazione in modo proporzionato al rischio</li>
+                    <li>✅ Danni limitati a 1 negozio</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Cosa sarebbe successo con solo sirene (allarme generale):</strong></p>
+                <ul>
+                    <li>❌ Sirena in tutto il centro → panico immediato 2.500 persone</li>
+                    <li>❌ Evacuazione caotica contemporanea di 3 piani</li>
+                    <li>❌ Congestione uscite e scale</li>
+                    <li>❌ Rischio cadute, calca, feriti (soprattutto anziani e bambini)</li>
+                    <li>❌ Centro chiuso per tutta la giornata (perdite economiche massive)</li>
+                    <li>❌ Danni d'immagine e reputazione</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🔧 Manutenzione Sistemi IRAI e EVAC</h2>
+
+        <div class="intro">
+            <p>La <strong>manutenzione periodica</strong> dei sistemi di rivelazione e allarme è <span class="highlight">obbligatoria per legge</span> e fondamentale per garantire efficienza e affidabilità.</p>
+        </div>
+
+        <h3>📅 Periodicità Controlli (UNI 11224:2019)</h3>
+
+        <table class="componenti-table">
+            <thead>
+                <tr>
+                    <th>Tipo Controllo</th>
+                    <th>Frequenza</th>
+                    <th>Chi lo Esegue</th>
+                    <th>Cosa Prevede</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Sorveglianza</strong></td>
+                    <td>Settimanale/Mensile</td>
+                    <td>Personale interno formato</td>
+                    <td>Verifica visiva LED centrale, assenza allarmi anomali, log eventi</td>
+                </tr>
+                <tr>
+                    <td><strong>Controllo Periodico</strong></td>
+                    <td><strong>Semestrale</strong></td>
+                    <td>Tecnico qualificato certificato</td>
+                    <td>Test funzionali rivelatori, pulsanti, sirene, batterie, linee</td>
+                </tr>
+                <tr>
+                    <td><strong>Manutenzione Ordinaria</strong></td>
+                    <td>Secondo necessità</td>
+                    <td>Tecnico qualificato</td>
+                    <td>Pulizia rivelatori, sostituzione batterie, regolazioni, piccole riparazioni</td>
+                </tr>
+                <tr>
+                    <td><strong>Manutenzione Straordinaria</strong></td>
+                    <td>A guasto</td>
+                    <td>Tecnico qualificato</td>
+                    <td>Sostituzione componenti guasti, aggiornamenti firmware, modifiche impianto</td>
+                </tr>
+                <tr>
+                    <td><strong>Verifica EVAC (STI)</strong></td>
+                    <td>Annuale</td>
+                    <td>Tecnico con strumentazione</td>
+                    <td>Misurazione STI, verifica intelligibilità, test altoparlanti</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="danger-box">
+            <h4>⛔ Manutenzione Assente = Sistema Inutile</h4>
+            <p><strong>Statistiche allarmanti:</strong></p>
+            <ul>
+                <li>📊 30-40% dei sistemi IRAI non manutenuti <strong>non funzionano</strong> correttamente</li>
+                <li>📊 Rivelatori sporchi hanno <strong>50-70% probabilità di falso allarme</strong> o mancata rilevazione</li>
+                <li>📊 Batterie non testate possono essere <strong>scariche al momento critico</strong></li>
+                <li>📊 Sistemi EVAC non verificati possono avere <strong>STI < 0,50</strong> (messaggi incomprensibili)</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold;">⚖️ Responsabilità: Il datore di lavoro/proprietario è penalmente responsabile in caso di incidente con impianto non manutenuto!</p>
+        </div>
+
+        <h2>❓ FAQ - Domande Frequenti</h2>
+
+        <div class="faq">
+            <h3>❓ Qual è la differenza tra IRAI e EVAC?</h3>
+            <p><strong>IRAI</strong> (Impianto Rivelazione Allarme Incendio) è il sistema completo che:</p>
+            <ul style="margin-top: 10px;">
+                <li>Rileva l'incendio (rivelatori automatici + pulsanti manuali)</li>
+                <li>Gestisce le logiche (centrale)</li>
+                <li>Allerta le persone (sirene, lampeggianti)</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>EVAC</strong> (Emergency Voice Alarm Communication) è un <strong>sottosistema</strong> dell'IRAI che:</p>
+            <ul style="margin-top: 10px;">
+                <li>Sostituisce o integra le sirene</li>
+                <li>Diffonde messaggi vocali invece di semplici suoni</li>
+                <li>È collegato e comandato dalla centrale IRAI</li>
+                <li>Fornisce istruzioni chiare per l'evacuazione</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>In sintesi:</strong> EVAC è la "voce" dell'IRAI. Dove c'è EVAC, c'è sempre anche un IRAI. Ma non tutti gli IRAI hanno EVAC.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ I rivelatori di fumo funzionano anche con vapore acqueo o polvere?</h3>
+            <p><strong>Sì, possono attivarsi, generando falsi allarmi.</strong></p>
+            <p style="margin-top: 10px;">I rivelatori ottici di fumo rilevano particelle sospese nell'aria. Vapore, polvere, aerosol (spray, profumi) possono essere scambiati per fumo.</p>
+            <p style="margin-top: 15px;"><strong>Come evitare falsi allarmi:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>✅ <strong>Bagni/docce:</strong> Installare rivelatori di calore (non fumo)</li>
+                <li>✅ <strong>Cucine:</strong> Rivelatori di calore o termovelocimetrici</li>
+                <li>✅ <strong>Ambienti polverosi:</strong> Rivelatori di calore o lineari</li>
+                <li>✅ <strong>Aree critiche:</strong> Rivelatori multi-sensore con algoritmi anti-falso allarme</li>
+                <li>✅ <strong>Manutenzione:</strong> Pulizia semestrale rivelatori riduce falsi allarmi 80%</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Quanto costano un sistema IRAI e un sistema EVAC?</h3>
+            <p><strong>I costi variano moltissimo in base a:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>Superficie da proteggere</li>
+                <li>Tipologia di attività e rischio</li>
+                <li>Livello prestazione richiesto</li>
+                <li>Complessità impianto</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Ordini di grandezza indicativi (2024-2025):</strong></p>
+            <ul style="margin-top: 10px;">
+                <li><strong>IRAI base piccolo ufficio (200 m²):</strong> €3.000 - €6.000</li>
+                <li><strong>IRAI medio edificio commerciale (1.000 m²):</strong> €15.000 - €30.000</li>
+                <li><strong>IRAI complesso grande (5.000+ m²):</strong> €50.000 - €150.000+</li>
+                <li><strong>EVAC aggiuntivo (piccolo):</strong> €8.000 - €15.000</li>
+                <li><strong>EVAC complesso (grande edificio):</strong> €30.000 - €100.000+</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Costi annui manutenzione:</strong> 5-10% del valore impianto</p>
+            <p style="margin-top: 15px; font-weight: bold;">💡 Ricorda: Un impianto ben fatto è un investimento che può salvare vite e limitare danni milionari!</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Posso installare io stesso un sistema IRAI o serve un'azienda certificata?</h3>
+            <p><strong>Serve OBBLIGATORIAMENTE un'azienda abilitata e certificata.</strong></p>
+            <p style="margin-top: 10px;"><strong>Requisiti installatore:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>✅ Iscrizione CCIAA con codice ATECO appropriato</li>
+                <li>✅ Abilitazione impianti sicurezza (ex Legge 46/90, ora D.M. 37/08)</li>
+                <li>✅ Personale formato e certificato (corsi riconosciuti)</li>
+                <li>✅ Assicurazione responsabilità civile</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Al termine lavori, l'installatore rilascia:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>Dichiarazione di conformità (D.M. 37/08)</li>
+                <li>Progetto esecutivo as-built</li>
+                <li>Certificati componenti (EN 54)</li>
+                <li>Manuale uso e manutenzione</li>
+                <li>Registro verifiche periodiche</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold;">⚠️ Installazione "fai da te" = impianto non conforme = sanzioni penali + assicurazione non paga in caso di incendio!</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Il sistema EVAC può essere usato per fare annunci quotidiani (es. chiusura negozio)?</h3>
+            <p><strong>Sì, ma con precauzioni e rispetto priorità emergenza.</strong></p>
+            <p style="margin-top: 10px;"><strong>Utilizzi consentiti:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>✅ Annunci di servizio (orari, eventi)</li>
+                <li>✅ Musica di sottofondo (dove permesso)</li>
+                <li>✅ Comunicazioni interne</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>REGOLE FONDAMENTALI:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>⚠️ <strong>Priorità assoluta</strong> ai messaggi di emergenza (automatico)</li>
+                <li>⚠️ Allarme incendio <strong>interrompe immediatamente</strong> qualsiasi altro audio</li>
+                <li>⚠️ Volume messaggi normali <strong>più basso</strong> di quelli emergenza</li>
+                <li>⚠️ Tono/modalità messaggi ordinari <strong>ben distinguibile</strong> da emergenze</li>
+                <li>⚠️ Personale deve essere <strong>formato</strong> sulla differenza</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold;">❌ MAI usare EVAC per "allarmi scherzosi" o test non autorizzati → crea confusione e riduce attenzione reale emergenza!</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ I sistemi IRAI possono integrarsi con altri sistemi di sicurezza?</h3>
+            <p><strong>Sì, l'integrazione è molto comune e consigliata.</strong></p>
+            <p style="margin-top: 10px;"><strong>Sistemi tipicamente integrati:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li><strong>🚿 Sprinkler automatici:</strong> IRAI attiva scarica acqua</li>
+                <li><strong>💨 Evacuatori fumo (SENFC/SEFFC):</strong> Apertura automatica</li>
+                <li><strong>🚪 Porte tagliafuoco:</strong> Chiusura automatica porta normalmente aperte</li>
+                <li><strong>🛗 Ascensori:</strong> Richiamo piano evacuazione, blocco uso</li>
+                <li><strong>❄️ Climatizzazione:</strong> Spegnimento impianti HVAC</li>
+                <li><strong>⚡ Quadri elettrici:</strong> Distacco alimentazione aree non critiche</li>
+                <li><strong>📹 Videosorveglianza:</strong> Visualizzazione automatica zona allarme</li>
+                <li><strong>🚨 Centrale ricezione allarmi:</strong> Notifica automatica VVF/Security</li>
+                <li><strong>🏢 Building Management System (BMS):</strong> Supervisione integrata</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Vantaggi integrazione:</strong></p>
+            <ul>
+                <li>✅ Risposta automatica e coordinata</li>
+                <li>✅ Riduzione tempi intervento</li>
+                <li>✅ Gestione centralizzata</li>
+                <li>✅ Minori errori umani</li>
+            </ul>
+        </div>
+
+        <h2>📚 Normativa di Riferimento</h2>
+
+        <div class="success-box">
+            <h4>📖 Principali Riferimenti Normativi</h4>
+            <p><strong>Progettazione e Installazione IRAI:</strong></p>
+            <ul>
+                <li><strong>UNI 9795:2021:</strong> Sistemi fissi automatici di rivelazione e segnalazione allarme incendio (FONDAMENTALE)</li>
+                <li><strong>UNI 11224:2019:</strong> Controllo iniziale e manutenzione sistemi rivelazione incendio</li>
+                <li><strong>D.M. 3 agosto 2015:</strong> Codice di Prevenzione Incendi - Sezione S.7 (IRAI)</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Componenti IRAI (Serie EN 54):</strong></p>
+            <ul>
+                <li>UNI EN 54-1: Introduzione</li>
+                <li>UNI EN 54-2: Centrale di controllo e segnalazione</li>
+                <li>UNI EN 54-3: Dispositivi sonori di allarme</li>
+                <li>UNI EN 54-4: Apparecchiature di alimentazione</li>
+                <li>UNI EN 54-5: Rivelatori di calore</li>
+                <li>UNI EN 54-7: Rivelatori di fumo</li>
+                <li>UNI EN 54-10: Rivelatori di fiamma</li>
+                <li>UNI EN 54-11: Pulsanti manuali</li>
+                <li>UNI EN 54-23: Dispositivi di allarme ottico (VAD)</li>
+                <li>UNI EN 54-29/30/31: Rivelatori multi-sensore</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Sistemi EVAC:</strong></p>
+            <ul>
+                <li><strong>UNI EN 54-16:</strong> Centrale EVAC (VACIE)</li>
+                <li><strong>UNI EN 54-24:</strong> Altoparlanti</li>
+                <li><strong>UNI ISO 7240-19:</strong> Progettazione EVAC (in revisione)</li>
+                <li><strong>UNI CEN/TS 54-32:</strong> Specifiche tecniche EVAC</li>
+                <li><strong>UNI 11988:2025</strong> (in approvazione): Nuova norma italiana EVAC</li>
+                <li><strong>UNI 11744:</strong> Requisiti toni acustici allarme</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Installazione Impianti:</strong></p>
+            <ul>
+                <li><strong>D.M. 37/2008:</strong> Sicurezza impianti (ex Legge 46/90)</li>
+                <li><strong>CEI 64-8:</strong> Impianti elettrici utilizzatori</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>EnneSG</strong> - Consulenza Specializzata e Formazione Professionale</p>
+            <p style="margin-top: 10px;">📧 info@ennesg.com | 🌐 www.ennesg.com</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                Documento formativo conforme al D.Lgs. 81/08 e normativa vigente in materia di prevenzione incendi
+            </p>
+        </div>
+    </div>
+</body>
+</html>

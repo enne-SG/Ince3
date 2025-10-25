@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idranti Antincendio - Guida Completa - EnneSG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%);
+            padding: 0;
+        }
+
+        .ennesg-header {
+            background: #1E4BA0;
+            padding: 20px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ennesg-logo-strip {
+            width: 5px;
+            height: 80px;
+            background: #FFA500;
+            border-radius: 3px;
+        }
+
+        .ennesg-brand {
+            flex: 1;
+        }
+
+        .ennesg-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            margin: 0;
+        }
+
+        .ennesg-title .sg {
+            color: #FFA500;
+        }
+
+        .ennesg-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .ennesg-tagline {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #1E4BA0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1E4BA0;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFA500;
+        }
+
+        h3 {
+            color: #1E4BA0;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #2c5aa0;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, rgba(30,75,160,0.1) 0%, rgba(255,165,0,0.1) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #FFA500;
+        }
+
+        .key-message {
+            background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(30,75,160,0.3);
+        }
+
+        .info-box {
+            background: #E3F2FD;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #FFF3E0;
+            border-left: 5px solid #FF9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .danger-box {
+            background: #FFEBEE;
+            border-left: 5px solid #f44336;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #E8F5E9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .hydrant-card {
+            background: white;
+            border: 2px solid #1E4BA0;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .hydrant-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #FFA500;
+        }
+
+        .hydrant-icon {
+            font-size: 3em;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .hydrant-title h3 {
+            margin: 0;
+            color: #1E4BA0;
+        }
+
+        .hydrant-subtitle {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #1E4BA0;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .pros, .cons {
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .pros {
+            background: #E8F5E9;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .cons {
+            background: #FFEBEE;
+            border-left: 5px solid #f44336;
+        }
+
+        .scenario-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #FFA500;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .scenario-title {
+            color: #1E4BA0;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .case-study {
+            background: #fff8e1;
+            border: 2px solid #ffa726;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(255,167,38,0.2);
+        }
+
+        .case-study-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffa726;
+        }
+
+        .case-icon {
+            font-size: 2.5em;
+        }
+
+        .case-title {
+            flex: 1;
+        }
+
+        .case-title h3 {
+            color: #e65100;
+            margin: 0;
+        }
+
+        .case-subtitle {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .lesson-learned {
+            background: #e3f2fd;
+            border-left: 5px solid #1976d2;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .lesson-learned h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+
+        .faq {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+
+        .faq:hover {
+            border-color: #FFA500;
+            box-shadow: 0 4px 12px rgba(255,165,0,0.2);
+        }
+
+        .faq h3 {
+            color: #1E4BA0;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .comparison-table {
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            min-width: 800px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 5px 5px 5px 0;
+        }
+
+        .badge-mandatory {
+            background: #f44336;
+            color: white;
+        }
+
+        .badge-recommended {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .badge-optional {
+            background: #2196F3;
+            color: white;
+        }
+
+        .footer-ennesg {
+            background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%);
+            color: white;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .footer-ennesg h3 {
+            color: #FFA500;
+            margin-bottom: 15px;
+        }
+
+        .footer-ennesg a {
+            color: #FFA500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-ennesg a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+            .ennesg-header {
+                padding: 15px 20px;
+            }
+
+            .ennesg-title {
+                font-size: 1.8em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ennesg-header">
+        <div class="ennesg-logo-strip"></div>
+        <div class="ennesg-brand">
+            <div class="ennesg-title">Enne<span class="sg">SG</span></div>
+            <div class="ennesg-subtitle">Sistemi di Gestione</div>
+            <div class="ennesg-tagline">Consulenza ISO â€¢ Sicurezza sul Lavoro â€¢ Formazione Antincendio â€¢ D.Lgs. 81/08</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>💧 Idranti Antincendio - Guida Completa</h1>
+
+        <div class="intro">
+            <p>Gli <strong>idranti antincendio</strong> sono dispositivi fondamentali per la lotta contro gli incendi di grandi dimensioni, rappresentando spesso la prima linea di difesa prima dell'arrivo dei Vigili del Fuoco.</p>
+            <p style="margin-top: 15px;">A differenza degli estintori portatili (limitati a 15-60 secondi di scarica), gli idranti forniscono:</p>
+            <ul>
+                <li>✅ <strong>Portata d'acqua continua</strong> (collegati alla rete idrica o serbatoi)</li>
+                <li>✅ <strong>Grande capacità di spegnimento</strong> (fino a 300+ litri/minuto)</li>
+                <li>✅ <strong>Gittata elevata</strong> (fino a 25-30 metri)</li>
+                <li>✅ <strong>Autonomia prolungata</strong> (minuti o ore di utilizzo continuo)</li>
+                <li>✅ <strong>Copertura di ampie superfici</strong></li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold;">Questa guida completa copre tutto ciò che devi sapere sugli idranti: tipologie, normative, installazione, manutenzione e uso corretto in emergenza.</p>
+        </div>
+
+        <div class="key-message">
+            "Gli idranti sono il ponte tra estintori portatili<br>e intervento dei Vigili del Fuoco"
+        </div>
+
+        <h2>🎯 Tipologie di Idranti</h2>
+
+        <p>Esistono diverse tipologie di idranti, classificati principalmente per ubicazione e modalità di utilizzo:</p>
+
+        <div class="hydrant-card">
+            <div class="hydrant-header">
+                <div class="hydrant-icon">🏢</div>
+                <div class="hydrant-title">
+                    <h3>Idranti Interni (UNI EN 671-1 e 671-2)</h3>
+                    <div class="hydrant-subtitle">Installati all'interno degli edifici</div>
+                </div>
+            </div>
+
+            <h4>📍 Caratteristiche Generali:</h4>
+            <ul>
+                <li>Installati in <strong>cassette antincendio</strong> a muro</li>
+                <li>Collegati permanentemente alla rete idrica</li>
+                <li>Segnalati con cartelli conformi (rosso/bianco)</li>
+                <li>Accessibili e visibili in ogni momento</li>
+                <li>Dotati di manichetta e lancia</li>
+            </ul>
+
+            <h4>🔹 Tipologia A (UNI EN 671-1) - Manichetta PIANA</h4>
+            <div class="info-box">
+                <p><strong>Descrizione:</strong></p>
+                <ul>
+                    <li>Manichetta in <strong>tessuto flessibile piana</strong> (non rigida)</li>
+                    <li>Diametro: <strong>DN 25 (1") o DN 45 (1¾")</strong></li>
+                    <li>Lunghezza: tipicamente <strong>20-30 metri</strong></li>
+                    <li>Pressione: minimo <strong>2 bar</strong> dinamici all'ugello</li>
+                    <li>Portata: circa <strong>50-100 litri/minuto</strong></li>
+                    <li>Riavvolgimento: <strong>manuale su bobina</strong></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Utilizzo Tipico:</strong></p>
+                <ul>
+                    <li>✅ Grandi edifici commerciali</li>
+                    <li>✅ Centri commerciali</li>
+                    <li>✅ Alberghi</li>
+                    <li>✅ Ospedali</li>
+                    <li>✅ Magazzini e depositi</li>
+                    <li>✅ Industrie</li>
+                </ul>
+
+                <div class="pros-cons" style="margin-top: 20px;">
+                    <div class="pros">
+                        <h4>✅ Vantaggi</h4>
+                        <ul>
+                            <li>Grande portata d'acqua</li>
+                            <li>Gittata elevata</li>
+                            <li>Efficace su incendi grandi</li>
+                            <li>Durata illimitata (se rete disponibile)</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>⚠️ Svantaggi</h4>
+                        <ul>
+                            <li>Richiede 2 operatori formati</li>
+                            <li>Manichetta pesante da manovrare</li>
+                            <li>Rinculo significativo</li>
+                            <li>Tempo di dispiegamento più lungo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h4>🔹 Tipologia B (UNI EN 671-2) - Manichetta SEMIRIGIDA</h4>
+            <div class="info-box">
+                <p><strong>Descrizione:</strong></p>
+                <ul>
+                    <li>Manichetta <strong>semirigida</strong> su bobina girevole</li>
+                    <li>Diametro: <strong>DN 25 (1")</strong></li>
+                    <li>Lunghezza: tipicamente <strong>25-30 metri</strong></li>
+                    <li>Pressione: minimo <strong>3,5 bar</strong> dinamici all'ugello</li>
+                    <li>Portata: circa <strong>50 litri/minuto</strong></li>
+                    <li>Riavvolgimento: <strong>automatico o manuale su rullo girevole</strong></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Utilizzo Tipico:</strong></p>
+                <ul>
+                    <li>✅ Uffici</li>
+                    <li>✅ Scuole</li>
+                    <li>✅ Condomini</li>
+                    <li>✅ Piccole attività commerciali</li>
+                    <li>✅ Musei</li>
+                    <li>✅ Edifici pubblici</li>
+                </ul>
+
+                <div class="pros-cons" style="margin-top: 20px;">
+                    <div class="pros">
+                        <h4>✅ Vantaggi</h4>
+                        <ul>
+                            <li><strong>Più facile da usare</strong> (1 persona)</li>
+                            <li>Rapido dispiegamento</li>
+                            <li>Manichetta sempre pronta</li>
+                            <li>Minore rinculo</li>
+                            <li>Riavvolgimento semplice</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>⚠️ Svantaggi</h4>
+                        <ul>
+                            <li>Portata inferiore (rispetto a DN 45)</li>
+                            <li>Gittata leggermente ridotta</li>
+                            <li>Più costoso</li>
+                            <li>Manichetta può deteriorarsi se esposta</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hydrant-card">
+            <div class="hydrant-header">
+                <div class="hydrant-icon">🏗️</div>
+                <div class="hydrant-title">
+                    <h3>Idranti Esterni (UNI 10779)</h3>
+                    <div class="hydrant-subtitle">Installati all'esterno degli edifici</div>
+                </div>
+            </div>
+
+            <h4>📍 Caratteristiche Generali:</h4>
+            <ul>
+                <li>Posizionati <strong>fuori dagli edifici</strong></li>
+                <li>Utilizzabili sia dagli addetti che dai Vigili del Fuoco</li>
+                <li>Resistenti alle intemperie</li>
+                <li>Collegati alla rete idrica o serbatoi dedicati</li>
+            </ul>
+
+            <h4>🔹 Idranti a Colonna Soprasuolo</h4>
+            <div class="info-box">
+                <p><strong>Descrizione:</strong></p>
+                <ul>
+                    <li>Colonna verticale <strong>emergente dal suolo</strong></li>
+                    <li>Altezza: tipicamente <strong>60-120 cm</strong></li>
+                    <li>Attacchi: 1 o 2 <strong>attacchi UNI 45</strong> (per VVF) o <strong>UNI 70</strong></li>
+                    <li>Diametro collegamento: <strong>DN 80-100</strong></li>
+                    <li>Pressione: minimo <strong>2 bar</strong></li>
+                    <li>Portata: <strong>300-600 litri/minuto</strong></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Utilizzo Tipico:</strong></p>
+                <ul>
+                    <li>✅ Piazzali industriali</li>
+                    <li>✅ Parcheggi esterni</li>
+                    <li>✅ Aree di carico/scarico</li>
+                    <li>✅ Depositi all'aperto</li>
+                    <li>✅ Strade private</li>
+                </ul>
+            </div>
+
+            <h4>🔹 Idranti Sottosuolo</h4>
+            <div class="info-box">
+                <p><strong>Descrizione:</strong></p>
+                <ul>
+                    <li>Installati <strong>sotto il livello del suolo</strong></li>
+                    <li>Coperti da <strong>chiusino calpestabile</strong></li>
+                    <li>Attacchi: <strong>UNI 70</strong> (per manichette VVF)</li>
+                    <li>Diametro: <strong>DN 80-100</strong></li>
+                    <li>Utilizzabili principalmente dai Vigili del Fuoco</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Utilizzo Tipico:</strong></p>
+                <ul>
+                    <li>✅ Strade urbane</li>
+                    <li>✅ Zone dove idranti soprasuolo sarebbero d'intralcio</li>
+                    <li>✅ Centri storici</li>
+                    <li>✅ Zone pedonali</li>
+                </ul>
+            </div>
+
+            <h4>🔹 Attacchi di Mandata per Autopompa (VVF)</h4>
+            <div class="info-box">
+                <p><strong>Descrizione:</strong></p>
+                <ul>
+                    <li>Attacco <strong>UNI 70 femmina</strong></li>
+                    <li>Permette ai VVF di <strong>alimentare la rete interna</strong> dell'edificio</li>
+                    <li>Installato su facciata esterna facilmente accessibile</li>
+                    <li>Collegato direttamente alla rete di idranti interni</li>
+                    <li>Fondamentale se la pressione di rete è insufficiente</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Quando è Obbligatorio:</strong></p>
+                <ul>
+                    <li>✅ Edifici con più di 24 metri di altezza (edifici alti)</li>
+                    <li>✅ Edifici con grande superficie coperta</li>
+                    <li>✅ Attività a rischio medio-alto</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="comparison-table">
+            <h3>📊 Confronto Rapido tra Tipologie</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Caratteristica</th>
+                        <th>Idrante UNI 671-1<br>(Manichetta Piana)</th>
+                        <th>Idrante UNI 671-2<br>(Manichetta Semirigida)</th>
+                        <th>Idrante Esterno<br>Soprasuolo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ubicazione</strong></td>
+                        <td>Interno edificio</td>
+                        <td>Interno edificio</td>
+                        <td>Esterno edificio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diametro</strong></td>
+                        <td>DN 25 o DN 45</td>
+                        <td>DN 25</td>
+                        <td>DN 80-100</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Portata</strong></td>
+                        <td>50-100 L/min</td>
+                        <td>~50 L/min</td>
+                        <td>300-600 L/min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operatori necessari</strong></td>
+                        <td>2 persone</td>
+                        <td>1 persona</td>
+                        <td>2+ persone (VVF)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Facilità d'uso</strong></td>
+                        <td>Media</td>
+                        <td>Alta</td>
+                        <td>Bassa (richiede esperienza)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tempo dispiegamento</strong></td>
+                        <td>2-3 minuti</td>
+                        <td>30-60 secondi</td>
+                        <td>5-10 minuti</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Costo installazione</strong></td>
+                        <td>Basso-Medio</td>
+                        <td>Medio-Alto</td>
+                        <td>Alto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manutenzione</strong></td>
+                        <td>Semestrale</td>
+                        <td>Semestrale</td>
+                        <td>Semestrale</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>📜 Normative e Obblighi di Legge</h2>
+
+        <div class="info-box">
+            <h4>🏛️ Quadro Normativo Principale</h4>
+            <p>Gli idranti sono regolamentati da diverse normative:</p>
+            <ul>
+                <li><strong>D.Lgs. 81/2008</strong> - Testo Unico Sicurezza sul Lavoro</li>
+                <li><strong>DM 3 settembre 2021</strong> - Nuova normativa antincendio (Codice di Prevenzione Incendi)</li>
+                <li><strong>UNI EN 671-1</strong> - Idranti a muro con manichetta piana</li>
+                <li><strong>UNI EN 671-2</strong> - Idranti a muro con manichetta semirigida</li>
+                <li><strong>UNI 10779</strong> - Idranti esterni</li>
+                <li><strong>UNI EN 671-3</strong> - Manutenzione degli idranti</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚖️ Quando Sono Obbligatori gli Idranti?</h4>
+            <p>Gli idranti sono <strong>obbligatori</strong> in base a:</p>
+            <ol>
+                <li><strong>Tipo di attività</strong> (secondo il Codice di Prevenzione Incendi)</li>
+                <li><strong>Dimensioni dell'edificio</strong> (superficie e altezza)</li>
+                <li><strong>Livello di rischio incendio</strong> (basso, medio, alto)</li>
+                <li><strong>Carico di incendio</strong></li>
+                <li><strong>Affollamento</strong></li>
+            </ol>
+
+            <p style="margin-top: 15px;"><strong>Esempi di Attività con Obbligo:</strong></p>
+            <ul>
+                <li>🏢 Edifici con superficie > 300 m² (dipende dal tipo)</li>
+                <li>🏢 Edifici oltre 24 m di altezza antincendio</li>
+                <li>🏭 Attività industriali a rischio medio-alto</li>
+                <li>🏨 Hotel con più di 25 camere</li>
+                <li>🏪 Centri commerciali</li>
+                <li>🏥 Ospedali e RSA</li>
+                <li>🎭 Cinema, teatri, sale congressi</li>
+                <li>🏫 Scuole con più di 100 studenti</li>
+                <li>🏗️ Magazzini oltre determinate superfici</li>
+            </ul>
+
+            <p style="margin-top: 15px; font-weight: bold; color: #d84315;">
+                ⚠️ La mancata installazione o manutenzione comporta sanzioni penali e amministrative (D.Lgs. 81/08)
+            </p>
+        </div>
+
+        <h2>🔧 Componenti e Accessori degli Idranti</h2>
+
+        <div class="info-box">
+            <h4>📦 Componenti Standard di un Idrante Interno</h4>
+            <ul>
+                <li><strong>Cassetta antincendio</strong> - contenitore a muro in lamiera o vetroresina</li>
+                <li><strong>Tubazione di alimentazione</strong> - collegata alla rete idrica</li>
+                <li><strong>Valvola a sfera</strong> - comando manuale per apertura/chiusura acqua</li>
+                <li><strong>Manichetta</strong> - piana (UNI 671-1) o semirigida (UNI 671-2)</li>
+                <li><strong>Lancia erogatrice</strong> - con comando getto (jet/nebulizzato)</li>
+                <li><strong>Raccordi UNI</strong> - per collegamento manichetta-lancia</li>
+                <li><strong>Bobina/supporto</strong> - per avvolgimento manichetta</li>
+                <li><strong>Manichetta di alimentazione</strong> (per UNI 671-1)</li>
+                <li><strong>Vetro frangibile</strong> (opzionale) - se cassetta chiusa a chiave</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h4>🎯 Accessori Fondamentali</h4>
+            <ul>
+                <li><strong>Cartello segnaletico</strong> - rosso/bianco "IDRANTE" - obbligatorio e fotoluminescente</li>
+                <li><strong>Istruzioni d'uso</strong> - plastificate, visibili all'interno della cassetta</li>
+                <li><strong>Riduttore di pressione</strong> - se pressione di rete > 7 bar</li>
+                <li><strong>Valvola di intercettazione</strong> - per manutenzione senza svuotare l'intera rete</li>
+                <li><strong>Manometro</strong> - per controllo pressione (consigliato)</li>
+            </ul>
+        </div>
+
+        <h2>⚙️ Installazione degli Idranti</h2>
+
+        <div class="info-box">
+            <h4>📐 Criteri di Posizionamento (Normativa)</h4>
+            <p><strong>Idranti Interni:</strong></p>
+            <ul>
+                <li>Posizionati in <strong>vie di esodo</strong>, corridoi, scale protette</li>
+                <li>Distanza massima tra idranti: <strong>non oltre 40 metri</strong> (UNI 671-2) o <strong>25-30 metri</strong> (UNI 671-1)</li>
+                <li>Altezza cassetta: <strong>1,20-1,50 metri</strong> da terra (parte inferiore)</li>
+                <li>Idrante deve coprire <strong>ogni punto dell'edificio</strong> con la sua gittata</li>
+                <li><strong>Non ostruiti</strong> da porte, arredi, merci</li>
+                <li><strong>Sempre accessibili</strong> e segnalati</li>
+                <li>Protetti dal gelo (se in zone fredde)</li>
+                <li>Lontano da quadri elettrici (min. 5 metri, se possibile)</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>Idranti Esterni:</strong></p>
+            <ul>
+                <li>Perimetro edificio a distanza <strong>max 5 metri</strong> dalla facciata</li>
+                <li>Distanza tra idranti: <strong>ogni 40-60 metri</strong></li>
+                <li>Accessibili da <strong>viabilità carrabile</strong> per autopompe VVF</li>
+                <li>Segnalati con cartello visibile anche di notte</li>
+                <li>Protetti da urti (colonnine parapedonali)</li>
+                <li>Liberi da neve, vegetazione, ostacoli</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Requisiti della Rete Idrica Antincendio</h4>
+            <p>La rete idrica deve garantire:</p>
+            <ul>
+                <li><strong>Pressione minima</strong>:
+                    <ul>
+                        <li>UNI 671-1: 2 bar dinamici all'ugello più sfavorito</li>
+                        <li>UNI 671-2: 3,5 bar dinamici all'ugello più sfavorito</li>
+                        <li>Idranti esterni: 2-4 bar (a seconda del tipo)</li>
+                    </ul>
+                </li>
+                <li><strong>Portata minima</strong>: garantire almeno <strong>2 idranti contemporanei</strong></li>
+                <li><strong>Riserva idrica</strong>: sufficiente per <strong>60-90 minuti</strong> di funzionamento (se da serbatoio)</li>
+                <li><strong>Indipendenza</strong>: rete dedicata antincendio (dove richiesto)</li>
+                <li><strong>Alimentazione affidabile</strong>: acquedotto + eventuale autoclave/serbatoio sopraelevato</li>
+            </ul>
+
+            <p style="margin-top: 15px; font-weight: bold;">
+                Se la pressione di rete è insufficiente, è obbligatorio installare:
+            </p>
+            <ul>
+                <li>✅ <strong>Autoclave</strong> con pompa di rilancio</li>
+                <li>✅ <strong>Serbatoio sopraelevato</strong></li>
+                <li>✅ <strong>Attacco per autopompa VVF</strong></li>
+            </ul>
+        </div>
+
+        <h2>🔍 Manutenzione degli Idranti (UNI EN 671-3)</h2>
+
+        <div class="danger-box">
+            <h4>⚠️ IMPORTANTE: La Manutenzione È OBBLIGATORIA per Legge</h4>
+            <p>La manutenzione degli idranti è <strong>obbligatoria ogni 6 mesi</strong> (D.Lgs. 81/08 e UNI EN 671-3). Un idrante non manutenuto può:</p>
+            <ul>
+                <li>❌ Non funzionare durante un'emergenza</li>
+                <li>❌ Avere manichette deteriorate che si rompono</li>
+                <li>❌ Avere valvole bloccate</li>
+                <li>❌ Causare allagamenti incontrollati</li>
+                <li>❌ Mettere a rischio vite umane</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h4>📅 Controllo Semestrale (ogni 6 mesi)</h4>
+            <p><strong>Chi:</strong> Tecnico manutentore abilitato (con registro interventi)</p>
+            <p><strong>Cosa verificare:</strong></p>
+            <ol>
+                <li><strong>Accessibilità:</strong>
+                    <ul>
+                        <li>Cassetta non ostruita</li>
+                        <li>Segnaletica visibile e integra</li>
+                        <li>Sportello apribile senza difficoltà</li>
+                    </ul>
+                </li>
+                <li><strong>Componenti:</strong>
+                    <ul>
+                        <li>Valvola funzionante (apertura/chiusura)</li>
+                        <li>Manichetta integra (no tagli, fori, usura)</li>
+                        <li>Lancia integra e funzionante</li>
+                        <li>Raccordi ben serrati</li>
+                        <li>Guarnizioni non deteriorate</li>
+                    </ul>
+                </li>
+                <li><strong>Prova idraulica:</strong>
+                    <ul>
+                        <li>Apertura valvola e verifica flusso acqua</li>
+                        <li>Controllo pressione dinamica (con manometro)</li>
+                        <li>Verifica assenza perdite</li>
+                        <li>Test ugello lancia (jet/nebulizzato)</li>
+                        <li>Verifica gittata</li>
+                    </ul>
+                </li>
+                <li><strong>Documentazione:</strong>
+                    <ul>
+                        <li>Compilazione registro manutenzione</li>
+                        <li>Apposizione cartellino con data controllo</li>
+                        <li>Segnalazione eventuali anomalie</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="warning-box">
+            <h4>📋 Registro di Manutenzione</h4>
+            <p>Il <strong>Registro di Manutenzione</strong> è obbligatorio e deve contenere:</p>
+            <ul>
+                <li>Identificazione dell'idrante (numero, ubicazione)</li>
+                <li>Data di ogni intervento</li>
+                <li>Tipo di controllo effettuato</li>
+                <li>Anomalie riscontrate</li>
+                <li>Interventi correttivi</li>
+                <li>Firma del manutentore abilitato</li>
+            </ul>
+            <p style="margin-top: 15px;">Il registro deve essere <strong>disponibile per ispezioni VVF</strong> e organi di controllo.</p>
+        </div>
+
+        <h2>🧑‍🚒 Come Usare un Idrante in Emergenza</h2>
+
+        <div class="key-message">
+            "L'uso degli idranti richiede formazione specifica!<br>Solo addetti antincendio formati possono utilizzarli."
+        </div>
+
+        <div class="info-box">
+            <h4>🎯 Procedura di Utilizzo - Idrante UNI 671-2 (Semirigido)</h4>
+            <p><strong>1️⃣ VALUTAZIONE DELLA SITUAZIONE</strong></p>
+            <ul>
+                <li>✅ Verificare tipo di incendio (Classe A, B, C?)</li>
+                <li>✅ Idrante adatto? (NO su quadri elettrici sotto tensione!)</li>
+                <li>✅ Via di fuga sicura disponibile?</li>
+                <li>✅ Incendio gestibile? (no fiamme > 2-3 metri)</li>
+                <li>⚠️ Se in dubbio: EVACUARE e chiamare VVF 115</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>2️⃣ APERTURA E DISPIEGAMENTO</strong></p>
+            <ol>
+                <li>Aprire sportello cassetta</li>
+                <li>Estrarre lancia dalla cassetta</li>
+                <li>Svolgere manichetta tirando la lancia verso il fuoco</li>
+                <li>Manichetta semirigida si svolge automaticamente dalla bobina</li>
+                <li>Posizionarsi a distanza di sicurezza (5-8 metri dalle fiamme)</li>
+            </ol>
+
+            <p style="margin-top: 20px;"><strong>3️⃣ APERTURA VALVOLA</strong></p>
+            <ul>
+                <li>Ruotare completamente la valvola in senso antiorario</li>
+                <li>Apertura graduale per evitare rinculo improvviso</li>
+                <li>Impugnare saldamente la lancia con entrambe le mani</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>4️⃣ TECNICA DI SPEGNIMENTO</strong></p>
+            <ul>
+                <li><strong>Getto a ventaglio/nebulizzato:</strong> per fuochi di materiali solidi (Classe A)</li>
+                <li><strong>Getto pieno:</strong> per maggiore gittata (uso con cautela)</li>
+                <li>Dirigere acqua alla <strong>base delle fiamme</strong></li>
+                <li>Movimento a <strong>zig-zag</strong> orizzontale</li>
+                <li>Avanzare progressivamente man mano che l'incendio si riduce</li>
+                <li>MAI dare le spalle al fuoco</li>
+                <li>Mantenere sempre via di fuga libera</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>5️⃣ DOPO LO SPEGNIMENTO</strong></p>
+            <ul>
+                <li>Raffreddare accuratamente l'area (prevenire riaccensioni)</li>
+                <li>Chiudere valvola</li>
+                <li>Riavvolgere manichetta (se semirigida: riavvolgimento automatico/manuale)</li>
+                <li>Segnalare l'utilizzo al responsabile sicurezza</li>
+                <li>Richiedere controllo e manutenzione immediati</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h4>🎯 Procedura di Utilizzo - Idrante UNI 671-1 (Manichetta Piana)</h4>
+            <p><strong>IMPORTANTE: Richiede 2 operatori</strong></p>
+            
+            <p style="margin-top: 15px;"><strong>OPERATORE 1 (alla cassetta):</strong></p>
+            <ol>
+                <li>Apre sportello cassetta</li>
+                <li>Prende lancia e manichetta di mandata</li>
+                <li>Corre verso il fuoco svolgendo la manichetta</li>
+                <li>Si posiziona a distanza di sicurezza</li>
+                <li>Impugna lancia con entrambe le mani</li>
+                <li>Segnala all'operatore 2 di aprire acqua</li>
+            </ol>
+
+            <p style="margin-top: 15px;"><strong>OPERATORE 2 (alla valvola):</strong></p>
+            <ol>
+                <li>Attende segnale dell'operatore 1</li>
+                <li>Apre valvola gradualmente (controllo rinculo)</li>
+                <li>Supporta l'operatore 1 nella manovra se necessario</li>
+                <li>Chiude valvola a fine operazioni</li>
+            </ol>
+
+            <p style="margin-top: 15px;"><strong>Tecnica di spegnimento:</strong> come per UNI 671-2</p>
+        </div>
+
+        <div class="danger-box">
+            <h4>⛔ QUANDO NON USARE L'IDRANTE</h4>
+            <p><strong>NON utilizzare MAI idranti (acqua) su:</strong></p>
+            <ul>
+                <li>❌ <strong>Quadri elettrici sotto tensione</strong> → Rischio folgorazione MORTALE</li>
+                <li>❌ <strong>Apparecchiature elettriche in funzione</strong> → Cortocircuito + folgorazione</li>
+                <li>❌ <strong>Oli e grassi bollenti</strong> (Classe F) → Esplosione + palla di fuoco</li>
+                <li>❌ <strong>Liquidi infiammabili galleggianti</strong> (benzina, solventi) → Propagazione incendio</li>
+                <li>❌ <strong>Metalli combustibili</strong> (Mg, Al, Li) → Esplosione + produzione idrogeno</li>
+                <li>❌ <strong>Sostanze reattive con acqua</strong> (sodio, potassio, carburi) → Reazioni violente</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>NON tentare lo spegnimento se:</strong></p>
+            <ul>
+                <li>❌ Fiamme superiori a 2-3 metri</li>
+                <li>❌ Fumo denso e asfissiante</li>
+                <li>❌ Vie di fuga compromesse</li>
+                <li>❌ Presenza di bombole/contenitori pressurizzati</li>
+                <li>❌ Incendio si propaga rapidamente</li>
+                <li>❌ Non hai ricevuto formazione</li>
+            </ul>
+
+            <p style="margin-top: 20px; font-weight: bold; font-size: 1.1em; color: #c62828;">
+                In questi casi: EVACUARE IMMEDIATAMENTE e chiamare VVF 115!
+            </p>
+        </div>
+
+        <h2>🎓 Formazione Addetti Antincendio</h2>
+
+        <div class="info-box">
+            <h4>📚 Obbligo di Formazione (DM 2/9/2021)</h4>
+            <p>Gli <strong>addetti antincendio</strong> devono ricevere formazione specifica che include:</p>
+            <ul>
+                <li>✅ <strong>Teoria antincendio</strong> (triangolo del fuoco, classi di fuoco, estinguenti)</li>
+                <li>✅ <strong>Conoscenza impianti</strong> (estintori, idranti, sistemi di rivelazione)</li>
+                <li>✅ <strong>Procedure di emergenza</strong> (evacuazione, chiamata soccorsi)</li>
+                <li>✅ <strong>Esercitazioni pratiche</strong> (uso estintori e idranti su campo prove)</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>Durata Corsi:</strong></p>
+            <ul>
+                <li><strong>Rischio Basso:</strong> 4 ore (2 teoria + 2 pratica)</li>
+                <li><strong>Rischio Medio:</strong> 8 ore (5 teoria + 3 pratica)</li>
+                <li><strong>Rischio Alto:</strong> 16 ore (12 teoria + 4 pratica)</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>Aggiornamento:</strong> ogni <strong>5 anni</strong></p>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ Cosa Impari nel Corso Pratico sugli Idranti</h4>
+            <ul>
+                <li>Dispiegamento rapido della manichetta</li>
+                <li>Tecniche di impugnatura e controllo rinculo</li>
+                <li>Uso del getto (pieno/nebulizzato)</li>
+                <li>Posizionamento corretto rispetto al fuoco</li>
+                <li>Coordinamento tra operatori (per UNI 671-1)</li>
+                <li>Spegnimento su fuochi reali controllati</li>
+                <li>Gestione emergenze e imprevisti</li>
+            </ul>
+        </div>
+
+        <h2>🎬 Scenari Pratici di Utilizzo Idranti</h2>
+
+        <div class="scenario-card">
+            <div class="scenario-title">
+                <span>🔥</span>
+                <span>SCENARIO 1: Incendio in Magazzino</span>
+            </div>
+
+            <p><strong>Situazione:</strong></p>
+            <p>Magazzino logistico con scaffalature alte 6 metri. Principio di incendio su bancale di cartoni al 3° ripiano. Fumo visibile, fiamme alte circa 1 metro. Idrante UNI 671-1 (DN 45) disponibile a 15 metri.</p>
+
+            <p style="margin-top: 15px;"><strong>Azione Corretta:</strong></p>
+            <ol>
+                <li><strong>Attivare allarme</strong> antincendio</li>
+                <li><strong>Chiamare VVF 115</strong> (comunicare: magazzino, altezza scaffali, materiale combustibile)</li>
+                <li><strong>2 addetti antincendio</strong> recuperano idrante</li>
+                <li><strong>Operatore 1:</strong> porta lancia verso incendio, si posiziona 6-8 metri dalle fiamme</li>
+                <li><strong>Operatore 2:</strong> apre gradualmente valvola su segnale</li>
+                <li><strong>Tecnica:</strong> getto nebulizzato dal basso verso l'alto, bagnare anche bancali adiacenti</li>
+                <li><strong>Attenzione:</strong> rischio crollo scaffalature → mantenere distanza sicurezza</li>
+                <li>Continuare raffreddamento fino arrivo VVF</li>
+            </ol>
+
+            <div class="lesson-learned">
+                <h4>📖 Lezione Appresa:</h4>
+                <ul>
+                    <li>✅ Idrante DN 45 fornisce portata sufficiente per incendi su scaffalature alte</li>
+                    <li>✅ Getto nebulizzato riduce propagazione fumo</li>
+                    <li>✅ Raffreddamento preventivo bancali adiacenti previene propagazione</li>
+                    <li>⚠️ MAI avvicinarsi troppo a scaffalature instabili</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="scenario-card">
+            <div class="scenario-title">
+                <span>🚗</span>
+                <span>SCENARIO 2: Auto in Fiamme in Parcheggio Sotterraneo</span>
+            </div>
+
+            <p><strong>Situazione:</strong></p>
+            <p>Parcheggio sotterraneo pluripiano. Auto in fiamme nel vano motore. Fumo denso nero (combustibili petroliferi). Idrante UNI 671-2 disponibile nel corridoio.</p>
+
+            <p style="margin-top: 15px;"><strong>Azione Corretta:</strong></p>
+            <ol>
+                <li><strong>Attivare allarme</strong> ed evacuazione parcheggio</li>
+                <li><strong>Chiamare VVF 115</strong> immediatamente</li>
+                <li><strong>VALUTAZIONE CRITICA:</strong>
+                    <ul>
+                        <li>✅ Se fumo limitato e fiamme contenute: intervento possibile</li>
+                        <li>❌ Se fumo denso invade corridoi: NON intervenire → EVACUARE</li>
+                        <li>❌ Se rischio esplosione serbatoio (auto GPL/metano): NON avvicinarsi</li>
+                    </ul>
+                </li>
+                <li>Se SICURO:
+                    <ul>
+                        <li>1 addetto usa idrante con getto nebulizzato sul vano motore</li>
+                        <li>Avvicinarsi progressivamente</li>
+                        <li>Raffreddare anche auto adiacenti</li>
+                        <li>Mantenere sempre via di fuga libera verso uscita</li>
+                    </ul>
+                </li>
+                <li>Attendere VVF mantenendo raffreddamento</li>
+            </ol>
+
+            <div class="lesson-learned">
+                <h4>📖 Lezione Appresa:</h4>
+                <ul>
+                    <li>⚠️ Parcheggi sotterranei = ambiente confinato → fumo ristagna pericolosamente</li>
+                    <li>✅ Valutazione rischio SEMPRE prima di intervenire</li>
+                    <li>✅ Priorità assoluta: sicurezza operatori</li>
+                    <li>❌ MAI rischiare intossicazione da fumi per salvare un'auto</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="scenario-card">
+            <div class="scenario-title">
+                <span>🏭</span>
+                <span>SCENARIO 3: Incendio Quadro Elettrico (ERRORE FATALE)</span>
+            </div>
+
+            <p><strong>Situazione:</strong></p>
+            <p>Azienda metalmeccanica. Principio incendio in quadro elettrico principale (400V trifase). Scintille e fumo. Addetto non formato tenta di usare idrante.</p>
+
+            <p style="margin-top: 15px;"><strong>ERRORE COMMESSO:</strong></p>
+            <p style="color: #c62828; font-weight: bold;">❌ Addetto spruzza acqua direttamente sul quadro elettrico sotto tensione</p>
+
+            <p style="margin-top: 15px;"><strong>CONSEGUENZE:</strong></p>
+            <ul style="color: #c62828;">
+                <li>⚡ Arco elettrico violento</li>
+                <li>⚡ Cortocircuito generalizzato</li>
+                <li>⚡ Folgorazione dell'operatore (ustioni gravi)</li>
+                <li>🔥 Propagazione incendio per cortocircuito</li>
+                <li>💥 Esplosione componenti elettrici</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>AZIONE CORRETTA:</strong></p>
+            <ol>
+                <li><strong>NON usare MAI acqua su impianti elettrici</strong></li>
+                <li><strong>Staccare corrente</strong> da interruttore generale (se accessibile in sicurezza)</li>
+                <li><strong>Se non si può staccare corrente:</strong>
+                    <ul>
+                        <li>Chiamare VVF 115</li>
+                        <li>Evacuare l'area</li>
+                        <li>Isolare la zona</li>
+                        <li>Attendere intervento specializzato</li>
+                    </ul>
+                </li>
+                <li><strong>Usare estintore CO₂</strong> (se disponibile e dopo distacco corrente)</li>
+            </ol>
+
+            <div class="lesson-learned">
+                <h4>📖 Lezione Appresa:</h4>
+                <ul>
+                    <li>⚡ <strong>ACQUA + ELETTRICITÀ = MORTE</strong></li>
+                    <li>❌ Idranti VIETATI su impianti elettrici sotto tensione</li>
+                    <li>✅ Formazione addetti antincendio FONDAMENTALE</li>
+                    <li>✅ Estintore CO₂ obbligatorio vicino quadri elettrici</li>
+                    <li>✅ Procedure chiare per distacco corrente in emergenza</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📚 Casi Reali Accaduti</h2>
+
+        <div class="case-study">
+            <div class="case-study-header">
+                <div class="case-icon">🏢</div>
+                <div class="case-title">
+                    <h3>CASO 1: Incendio Grenfell Tower - Londra, 14 giugno 2017</h3>
+                    <div class="case-subtitle">72 vittime | Torre residenziale 24 piani</div>
+                </div>
+            </div>
+
+            <h4>📍 Cosa è Successo:</h4>
+            <p>Incendio catastrofico in torre residenziale di 24 piani. Le fiamme si sono propagate attraverso il rivestimento esterno infiammabile, avvolgendo l'intero edificio in poche ore.</p>
+
+            <h4>🔥 Problemi con Idranti e Impianti Antincendio:</h4>
+            <ul>
+                <li>❌ <strong>Idranti interni insufficienti</strong> per un edificio così alto</li>
+                <li>❌ <strong>Pressione idrica inadeguata</strong> ai piani alti (oltre 15° piano)</li>
+                <li>❌ <strong>Sistema sprinkler NON installato</strong> (non obbligatorio all'epoca)</li>
+                <li>❌ Manichette idranti VVF non raggiungevano piani alti</li>
+                <li>❌ Un solo vano scala (insufficiente per evacuazione e accesso VVF)</li>
+            </ul>
+
+            <h4>⚠️ Fattori Aggravanti:</h4>
+            <ul>
+                <li>Rivestimento esterno in <strong>pannelli compositi infiammabili</strong></li>
+                <li>Propagazione verticale rapidissima (effetto camino)</li>
+                <li>Consigli errati: residenti invitati a "restare in casa" (stay put policy)</li>
+                <li>Sistema di allarme inefficace</li>
+            </ul>
+
+            <div class="lesson-learned">
+                <h4>📖 Lezioni Apprese - Rilevanza per Idranti:</h4>
+                <ul>
+                    <li>✅ <strong>Edifici alti richiedono sistemi idranti potenziati</strong>:
+                        <ul>
+                            <li>Gruppi di pompaggio dedicati</li>
+                            <li>Serbatoi sopraelevati di riserva</li>
+                            <li>Pressioni adeguate anche ai piani più alti</li>
+                            <li>Colonne montanti multiple e ridondanti</li>
+                        </ul>
+                    </li>
+                    <li>✅ <strong>Attacchi di mandata VVF multipli</strong> su edifici oltre 24m</li>
+                    <li>✅ <strong>Sistemi sprinkler SEMPRE in edifici > 24m</strong> (ora obbligatori)</li>
+                    <li>✅ Test periodici di pressione su tutti i piani</li>
+                    <li>✅ Vie di fuga multiple e indipendenti</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 20px; padding: 15px; background: #fff3e0; border-left: 5px solid #ff9800; border-radius: 5px;">
+                <strong>Impatto Normativo:</strong> Dopo Grenfell, UK e molti paesi EU hanno reso <strong>obbligatori i sistemi sprinkler</strong> in edifici residenziali oltre 18-24 metri, con <strong>requisiti più stringenti</strong> per impianti idrici antincendio.
+            </p>
+        </div>
+
+        <div class="case-study">
+            <div class="case-study-header">
+                <div class="case-icon">🏭</div>
+                <div class="case-title">
+                    <h3>CASO 2: Incendio Thyssen Krupp - Torino, 6 dicembre 2007</h3>
+                    <div class="case-subtitle">7 vittime | Acciaieria</div>
+                </div>
+            </div>
+
+            <h4>📍 Cosa è Successo:</h4>
+            <p>Incendio in linea di forgiatura dell'acciaieria. Perdita di olio dal sistema idraulico innescata su superfici calde. Fiamme si propagano rapidamente attraverso canaline contenenti cavi elettrici impregnati di olio.</p>
+
+            <h4>🔥 Problemi con Idranti e Sistemi Antincendio:</h4>
+            <ul>
+                <li>❌ <strong>Idranti presenti ma MAI testati</strong> (non funzionanti)</li>
+                <li>❌ <strong>Manichette deteriorate</strong> per mancata manutenzione</li>
+                <li>❌ <strong>Valvole bloccate</strong> per corrosione/disuso</li>
+                <li>❌ Addetti NON formati sull'uso idranti</li>
+                <li>❌ Sistema di rivelazione fumi inadeguato</li>
+                <li>❌ Vie di fuga ostruite</li>
+            </ul>
+
+            <h4>💔 Conseguenze:</h4>
+            <ul>
+                <li>7 operai morti intrappolati</li>
+                <li>Incendio propagato per mancanza intervento tempestivo</li>
+                <li>Condanne penali per omicidio colposo e violazione norme sicurezza</li>
+            </ul>
+
+            <div class="lesson-learned">
+                <h4>📖 Lezioni Apprese:</h4>
+                <ul>
+                    <li>✅ <strong>Manutenzione idranti NON è opzionale</strong> - è questione di vita o morte</li>
+                    <li>✅ <strong>Test semestrale obbligatorio</strong> con apertura e prova flusso</li>
+                    <li>✅ <strong>Formazione addetti fondamentale</strong> - idrante inutilizzabile senza formazione</li>
+                    <li>✅ <strong>Registro manutenzione aggiornato</strong> e verifiche documentate</li>
+                    <li>✅ Responsabilità penale datore di lavoro per mancata manutenzione</li>
+                    <li>⚠️ Un impianto antincendio non manutenuto = impianto inesistente</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 20px; padding: 15px; background: #ffebee; border-left: 5px solid #f44336; border-radius: 5px; font-weight: bold;">
+                ⚖️ <strong>Impatto Legale:</strong> Questo tragico caso ha portato a <strong>controlli più severi</strong> da parte degli ispettori ASL e VVF, con <strong>sanzioni pesanti</strong> per chi non mantiene in efficienza i sistemi antincendio. La manutenzione degli idranti è ora oggetto di <strong>verifiche ispettive periodiche</strong>.
+            </p>
+        </div>
+
+        <div class="case-study">
+            <div class="case-study-header">
+                <div class="case-icon">🏨</div>
+                <div class="case-title">
+                    <h3>CASO 3: Successo - Incendio Centro Commerciale con Idranti Funzionanti</h3>
+                    <div class="case-subtitle">0 vittime | Intervento efficace</div>
+                </div>
+            </div>
+
+            <h4>📍 Cosa è Successo:</h4>
+            <p>Centro commerciale con 120 negozi. Incendio in deposito magazzino causato da cortocircuito. Sistema di rivelazione attiva allarme. Addetti antincendio intervengono immediatamente con idranti UNI 671-1.</p>
+
+            <h4>✅ Fattori di Successo:</h4>
+            <ul>
+                <li>✅ <strong>Sistema idranti ben progettato</strong>: copertura totale edificio</li>
+                <li>✅ <strong>Manutenzione regolare</strong>: controllo 6 mesi prima, tutto funzionante</li>
+                <li>✅ <strong>Addetti formati</strong>: corso recente con prove pratiche</li>
+                <li>✅ <strong>Pressione adeguata</strong>: autoclave con gruppo pompaggio</li>
+                <li>✅ <strong>Intervento coordinato</strong>: 2 squadre di 2 addetti ciascuna</li>
+                <li>✅ <strong>Evacuazione immediata</strong>: clienti e personale fuori in 5 minuti</li>
+            </ul>
+
+            <h4>🎯 Sequenza Intervento:</h4>
+            <ol>
+                <li><strong>T+0 min:</strong> Allarme rivelazione fumi → Evacuazione</li>
+                <li><strong>T+2 min:</strong> Addetti localizzano incendio in deposito</li>
+                <li><strong>T+3 min:</strong> Prima squadra dispone idrante DN 45, inizia spegnimento</li>
+                <li><strong>T+4 min:</strong> Seconda squadra dispone secondo idrante (copertura)</li>
+                <li><strong>T+5 min:</strong> Chiamata VVF 115</li>
+                <li><strong>T+12 min:</strong> Incendio sotto controllo, raffreddamento in corso</li>
+                <li><strong>T+18 min:</strong> Arrivo VVF, bonifica finale</li>
+            </ol>
+
+            <h4>💰 Risultato:</h4>
+            <ul>
+                <li>✅ <strong>Zero vittime o feriti</strong></li>
+                <li>✅ Danni limitati a un solo locale deposito (~30 m²)</li>
+                <li>✅ Centro commerciale riaperto dopo 36 ore</li>
+                <li>✅ Danni stimati: €50.000 (vs potenziali milioni)</li>
+            </ul>
+
+            <div class="lesson-learned">
+                <h4>📖 Lezioni di Successo:</h4>
+                <ul>
+                    <li>✅ <strong>Investimento in sicurezza = protezione economica</strong></li>
+                    <li>✅ <strong>Triangolo vincente:</strong> Impianti + Manutenzione + Formazione</li>
+                    <li>✅ Idranti ben funzionanti possono contenere incendi prima che divengano incontrollabili</li>
+                    <li>✅ Costo manutenzione/formazione irrisorio rispetto a potenziali perdite</li>
+                    <li>✅ Risposta rapida (entro 5 minuti) cruciale per successo spegnimento</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-left: 5px solid #4CAF50; border-radius: 5px; font-weight: bold;">
+                💚 <strong>Best Practice:</strong> Questo caso dimostra che un sistema antincendio <strong>ben progettato, manutenuto e con personale formato</strong> può fare la differenza tra un incidente minore e una catastrofe.
+            </p>
+        </div>
+
+        <h2>❓ FAQ - Domande Frequenti sugli Idranti</h2>
+
+        <div class="faq">
+            <h3>❓ Qual è la differenza principale tra idrante UNI 671-1 e UNI 671-2?</h3>
+            <p>La differenza principale riguarda il <strong>tipo di manichetta</strong>:</p>
+            <ul>
+                <li><strong>UNI 671-1:</strong> Manichetta <strong>piana</strong> (tessuto), richiede <strong>2 operatori</strong>, portata maggiore (fino a 100 L/min con DN 45), dispiegamento più lento ma più potente.</li>
+                <li><strong>UNI 671-2:</strong> Manichetta <strong>semirigida</strong> su bobina, utilizzabile da <strong>1 operatore</strong>, portata ~50 L/min, dispiegamento rapido (30-60 secondi), più facile da usare.</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Quale scegliere?</strong></p>
+            <ul>
+                <li>UNI 671-2 è ideale per <strong>uffici, scuole, piccoli edifici</strong> (facilità d'uso)</li>
+                <li>UNI 671-1 è preferibile per <strong>industrie, magazzini, grandi spazi</strong> (maggiore potenza)</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Ogni quanto va fatta la manutenzione degli idranti?</h3>
+            <p>La manutenzione è <strong>OBBLIGATORIA ogni 6 mesi</strong> secondo:</p>
+            <ul>
+                <li>UNI EN 671-3 (norma tecnica)</li>
+                <li>D.Lgs. 81/2008 (obblighi sicurezza sul lavoro)</li>
+                <li>DM 3 settembre 2021 (Codice Prevenzione Incendi)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Cosa comprende il controllo semestrale:</strong></p>
+            <ul>
+                <li>Verifica accessibilità e segnaletica</li>
+                <li>Ispezione visiva componenti</li>
+                <li><strong>Prova idraulica con apertura e flusso acqua</strong></li>
+                <li>Controllo pressione dinamica</li>
+                <li>Verifica assenza perdite</li>
+                <li>Compilazione registro manutenzione</li>
+            </ul>
+            <p style="margin-top: 10px; font-weight: bold; color: #c62828;">
+                ⚠️ La mancata manutenzione comporta sanzioni penali e, in caso di incendio con vittime, può configurare reati di omicidio colposo.
+            </p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Posso usare un idrante su un incendio di origine elettrica?</h3>
+            <p style="font-weight: bold; color: #c62828; font-size: 1.1em;">❌ ASSOLUTAMENTE NO se l'impianto è sotto tensione!</p>
+            <p style="margin-top: 10px;">L'<strong>acqua conduce elettricità</strong> e spruzzare acqua su apparecchiature elettriche sotto tensione causa:</p>
+            <ul>
+                <li>⚡ <strong>Folgorazione MORTALE</strong> dell'operatore</li>
+                <li>💥 Cortocircuito con arco elettrico violento</li>
+                <li>🔥 Propagazione incendio</li>
+                <li>💥 Esplosione componenti elettrici</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Procedura corretta:</strong></p>
+            <ol>
+                <li><strong>Staccare la corrente</strong> dall'interruttore generale (se accessibile in sicurezza)</li>
+                <li>Solo <strong>DOPO distacco</strong> si può usare l'idrante</li>
+                <li>Se non si può staccare corrente: <strong>EVACUARE e chiamare VVF 115</strong></li>
+            </ol>
+            <p style="margin-top: 15px;"><strong>Alternative:</strong></p>
+            <ul>
+                <li>Estintori <strong>CO₂</strong> o <strong>Polvere ABC</strong> (solo dopo distacco corrente)</li>
+                <li>Attendere intervento VVF con attrezzatura idonea</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Gli idranti possono sostituire gli estintori?</h3>
+            <p><strong>NO, sono complementari e hanno funzioni diverse:</strong></p>
+            
+            <p style="margin-top: 15px;"><strong>ESTINTORI:</strong></p>
+            <ul>
+                <li>✅ Intervento <strong>immediato</strong> su princìpi di incendio</li>
+                <li>✅ <strong>Portatili</strong> e facilmente accessibili</li>
+                <li>✅ <strong>Rapidi</strong> da usare (10-60 secondi)</li>
+                <li>✅ Adatti a <strong>incendi piccoli</strong> (fuoco iniziale)</li>
+                <li>✅ Diversi agenti estinguenti (anche per elettricità, metalli, oli)</li>
+                <li>⚠️ Durata limitata</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>IDRANTI:</strong></p>
+            <ul>
+                <li>✅ Per <strong>incendi già sviluppati</strong></li>
+                <li>✅ <strong>Portata continua</strong> e illimitata</li>
+                <li>✅ <strong>Grande capacità</strong> di spegnimento</li>
+                <li>✅ Copertura <strong>ampie superfici</strong></li>
+                <li>⚠️ Richiedono formazione</li>
+                <li>⚠️ Tempo dispiegamento più lungo</li>
+                <li>⚠️ Solo per fuochi Classe A (solidi)</li>
+            </ul>
+
+            <p style="margin-top: 15px; padding: 15px; background: #e3f2fd; border-left: 5px solid #2196F3; border-radius: 5px;">
+                <strong>💡 Strategia Ottimale:</strong> Usare <strong>estintore su principio incendio</strong> (primi 30-60 secondi). Se incendio non si controlla, passare a <strong>idrante</strong> per maggiore potenza. Chiamare <strong>sempre VVF 115</strong> per incendi che si propagano.
+            </p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Cosa fare se l'idrante non funziona durante un'emergenza?</h3>
+            <p>Se durante un'emergenza l'idrante <strong>non eroga acqua o ha malfunzionamenti</strong>:</p>
+            
+            <p style="margin-top: 15px;"><strong>AZIONI IMMEDIATE:</strong></p>
+            <ol>
+                <li><strong>NON perdere tempo</strong> cercando di ripararlo</li>
+                <li><strong>Passare all'idrante successivo</strong> più vicino</li>
+                <li><strong>Usare estintori</strong> disponibili nel frattempo</li>
+                <li><strong>Chiamare VVF 115</strong> immediatamente (comunicare problema idranti)</li>
+                <li><strong>Evacuare</strong> se incendio non controllabile</li>
+            </ol>
+
+            <p style="margin-top: 20px;"><strong>CAUSE COMUNI MALFUNZIONAMENTO:</strong></p>
+            <ul>
+                <li>❌ Valvola bloccata (corrosione/disuso)</li>
+                <li>❌ Manichetta deteriorata (perdite, rotture)</li>
+                <li>❌ Pressione rete insufficiente</li>
+                <li>❌ Guarnizioni usurate</li>
+                <li>❌ Tubazioni ostruite (calcare, ghiaccio)</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>PREVENZIONE:</strong></p>
+            <ul>
+                <li>✅ <strong>Manutenzione semestrale rigorosa</strong> con prova flusso</li>
+                <li>✅ Test periodici di tutti gli idranti</li>
+                <li>✅ Sostituzione componenti usurati</li>
+                <li>✅ Verifica pressione rete</li>
+                <li>✅ Registro manutenzione aggiornato</li>
+            </ul>
+
+            <p style="margin-top: 15px; padding: 15px; background: #ffebee; border-left: 5px solid #f44336; border-radius: 5px; font-weight: bold;">
+                ⚖️ Un idrante non funzionante in emergenza può configurare <strong>responsabilità penale</strong> per il datore di lavoro per <strong>omessa manutenzione</strong> e <strong>messa a rischio dei lavoratori</strong>.
+            </p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Quanto costa l'installazione e manutenzione di un impianto idranti?</h3>
+            <p><strong>COSTI INSTALLAZIONE (indicativi, variabili per progetto):</strong></p>
+            
+            <p style="margin-top: 15px;"><strong>Idrante UNI 671-2 (Semirigido):</strong></p>
+            <ul>
+                <li>Cassetta + manichetta + lancia: <strong>€800-1.500</strong> cadauno</li>
+                <li>Tubazioni e raccordi: <strong>€50-100/metro</strong></li>
+                <li>Installazione: <strong>€300-600</strong> per idrante</li>
+                <li><strong>Totale per idrante:</strong> €1.500-3.000</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>Idrante UNI 671-1 (Piana DN 45):</strong></p>
+            <ul>
+                <li>Cassetta + manichetta + lancia: <strong>€600-1.200</strong> cadauno</li>
+                <li>Tubazioni e raccordi: <strong>€80-150/metro</strong> (DN maggiore)</li>
+                <li>Installazione: <strong>€400-800</strong></li>
+                <li><strong>Totale per idrante:</strong> €1.500-2.500</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>Idrante Esterno Soprasuolo:</strong></p>
+            <ul>
+                <li>Colonna + attacchi: <strong>€1.500-3.000</strong></li>
+                <li>Scavo e posa tubazioni: <strong>€100-200/metro</strong></li>
+                <li>Installazione: <strong>€800-1.500</strong></li>
+                <li><strong>Totale:</strong> €3.000-6.000+</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>COSTI AGGIUNTIVI:</strong></p>
+            <ul>
+                <li>Gruppo pompaggio/autoclave: <strong>€3.000-10.000</strong> (se necessario)</li>
+                <li>Serbatoi accumulo: <strong>€2.000-15.000</strong> (se necessario)</li>
+                <li>Progettazione impianto: <strong>€1.000-5.000</strong></li>
+                <li>Pratiche VVF: <strong>€500-2.000</strong></li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>COSTI MANUTENZIONE ANNUALE:</strong></p>
+            <ul>
+                <li><strong>Controllo semestrale</strong> (obbligatorio ogni 6 mesi): <strong>€80-150</strong> per idrante</li>
+                <li>Sostituzione guarnizioni: <strong>€30-80</strong></li>
+                <li>Sostituzione manichetta usurata: <strong>€200-600</strong></li>
+                <li><strong>Costo annuale medio:</strong> €200-400 per idrante</li>
+            </ul>
+
+            <p style="margin-top: 15px; padding: 15px; background: #e8f5e9; border-left: 5px solid #4CAF50; border-radius: 5px;">
+                <strong>💰 ROI (Return on Investment):</strong> Anche se l'investimento iniziale può sembrare elevato, un solo incendio evitato o controllato rapidamente può far risparmiare <strong>centinaia di migliaia di euro</strong> in danni, fermo produzione e vite umane. L'assicurazione spesso offre <strong>sconti sui premi</strong> per edifici dotati di idranti certificati.
+            </p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ È obbligatorio avere attacchi per autopompa VVF?</h3>
+            <p>Gli <strong>attacchi di mandata per autopompa VVF</strong> sono obbligatori in base a:</p>
+            
+            <p style="margin-top: 15px;"><strong>QUANDO SONO OBBLIGATORI:</strong></p>
+            <ul>
+                <li>✅ Edifici con <strong>altezza antincendio > 24 metri</strong></li>
+                <li>✅ Edifici con <strong>grande superficie</strong> (dipende dall'attività)</li>
+                <li>✅ Attività a <strong>rischio medio-alto</strong> secondo Codice Prevenzione Incendi</li>
+                <li>✅ Quando la <strong>pressione di rete potrebbe essere insufficiente</strong></li>
+                <li>✅ Centri commerciali, alberghi, ospedali, grandi industrie</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>CARATTERISTICHE ATTACCO AUTOPOMPA:</strong></p>
+            <ul>
+                <li>Attacco <strong>UNI 70 femmina</strong> (compatibile manichette VVF)</li>
+                <li>Posizionato su <strong>facciata esterna</strong> facilmente accessibile</li>
+                <li>Distanza da strada: <strong>max 5 metri</strong></li>
+                <li>Altezza da terra: <strong>0,60-1,20 metri</strong></li>
+                <li>Segnalato con cartello <strong>"ATTACCO AUTOPOMPA VVF"</strong></li>
+                <li>Collegato alla rete idranti interni</li>
+                <li>Valvola di non ritorno per evitare riflussi</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>PERCHÉ È IMPORTANTE:</strong></p>
+            <p>Permette ai Vigili del Fuoco di:</p>
+            <ul>
+                <li>✅ <strong>Alimentare la rete idranti interna</strong> con le proprie autopompe</li>
+                <li>✅ Garantire <strong>pressione sufficiente</strong> anche ai piani alti</li>
+                <li>✅ Assicurare <strong>portata illimitata</strong> anche se rete acquedotto insufficiente</li>
+                <li>✅ Intervenire rapidamente senza dover cercare idranti pubblici</li>
+            </ul>
+
+            <p style="margin-top: 15px; padding: 15px; background: #e3f2fd; border-left: 5px solid #2196F3; border-radius: 5px;">
+                <strong>💡 Best Practice:</strong> Anche quando non strettamente obbligatorio, l'installazione di attacchi autopompa è <strong>fortemente consigliata</strong> per facilitare l'intervento VVF e aumentare le possibilità di salvare edificio e vite umane.
+            </p>
+        </div>
+
+        <h2>📊 Riepilogo e Punti Chiave</h2>
+
+        <div class="success-box">
+            <h4>✅ Concetti Fondamentali da Ricordare</h4>
+            <ul>
+                <li>Gli idranti sono <strong>complementari agli estintori</strong>, non sostitutivi</li>
+                <li>Esistono <strong>2 tipologie principali</strong>:
+                    <ul>
+                        <li>UNI 671-1 (manichetta piana, 2 operatori, maggiore portata)</li>
+                        <li>UNI 671-2 (manichetta semirigida, 1 operatore, più facile)</li>
+                    </ul>
+                </li>
+                <li>Manutenzione <strong>semestrale obbligatoria</strong> con prova idraulica</li>
+                <li><strong>MAI usare acqua su impianti elettrici</strong> sotto tensione</li>
+                <li>Richiedono <strong>formazione specifica</strong> degli addetti antincendio</li>
+                <li>Pressione minima: <strong>2 bar (UNI 671-1)</strong> o <strong>3,5 bar (UNI 671-2)</strong></li>
+                <li>Idranti devono coprire <strong>ogni punto dell'edificio</strong></li>
+                <li>Un idrante non manutenuto = <strong>idrante inutilizzabile</strong></li>
+                <li>Casi reali dimostrano: manutenzione e formazione <strong>salvano vite</strong></li>
+            </ul>
+        </div>
+
+        <div class="key-message">
+            "La sicurezza antincendio è una catena:<br>ogni anello deve essere forte.<br>Impianti + Manutenzione + Formazione = Protezione Efficace"
+        </div>
+
+        <div class="footer-ennesg">
+            <h3>📞 Consulenza e Formazione Antincendio con EnneSG</h3>
+            <p><strong>EnneSG - Sistemi di Gestione</strong></p>
+            <p>📋 Valutazione del Rischio Incendio • Progettazione Impianti Antincendio</p>
+            <p>🎓 Corsi Addetti Antincendio (Rischio Basso/Medio/Alto) • Formazione Pratica Uso Idranti</p>
+            <p>🔧 Consulenza Installazione Idranti • Verifiche Periodiche Impianti</p>
+            <p>📜 Pratiche VVF • Conformità Normativa D.Lgs. 81/08 • Codice Prevenzione Incendi</p>
+            
+            <p style="margin-top: 25px; font-size: 1.05em;">
+                <strong>Hai bisogno di:</strong>
+            </p>
+            <ul style="text-align: left; max-width: 600px; margin: 15px auto;">
+                <li>✅ Valutare se la tua attività necessita di idranti?</li>
+                <li>✅ Progettare e installare un impianto idranti conforme?</li>
+                <li>✅ Formare i tuoi addetti antincendio sull'uso degli idranti?</li>
+                <li>✅ Gestire la manutenzione semestrale obbligatoria?</li>
+                <li>✅ Metterti in regola con le normative antincendio?</li>
+            </ul>
+
+            <p style="margin-top: 25px; font-size: 1.1em; font-weight: bold;">
+                Contattaci per una consulenza personalizzata!
+            </p>
+
+            <p style="margin-top: 20px;">
+                🌐 <a href="https://enne-sg.github.io/EnneSG/" target="_blank">www.ennesg.it</a>
+            </p>
+            
+            <p style="font-size: 0.9em; color: rgba(255,255,255,0.8); margin-top: 30px;">
+                Guida Completa agli Idranti Antincendio<br>
+                © 2025 EnneSG - Tutti i diritti riservati
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Triangolo del Fuoco - EnneSG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%);
+            padding: 0;
+        }
+
+        .ennesg-header {
+            background: #1E4BA0;
+            padding: 20px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ennesg-logo-strip {
+            width: 5px;
+            height: 80px;
+            background: #FFA500;
+            border-radius: 3px;
+        }
+
+        .ennesg-brand {
+            flex: 1;
+        }
+
+        .ennesg-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            margin: 0;
+        }
+
+        .ennesg-title .sg {
+            color: #FFA500;
+        }
+
+        .ennesg-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .ennesg-tagline {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #1E4BA0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1E4BA0;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFA500;
+        }
+
+        h3 {
+            color: #1E4BA0;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, rgba(30,75,160,0.1) 0%, rgba(255,165,0,0.1) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #FFA500;
+        }
+
+        .triangle-visual {
+            text-align: center;
+            margin: 40px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(30,75,160,0.05) 0%, rgba(255,165,0,0.05) 100%);
+            border-radius: 15px;
+        }
+
+        .triangle-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .element-card {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 6px solid #1E4BA0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .element-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 6px 25px rgba(30,75,160,0.2);
+        }
+
+        .element-card.combustibile {
+            border-left-color: #dc143c;
+        }
+
+        .element-card.comburente {
+            border-left-color: #007bff;
+        }
+
+        .element-card.innesco {
+            border-left-color: #FFA500;
+        }
+
+        .element-card.reazione {
+            border-left-color: #28a745;
+        }
+
+        .element-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .element-card h3 {
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #1E4BA0 0%, #FFA500 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(30,75,160,0.05);
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .info-box h4 {
+            color: #0c5460;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #FFA500;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box h4 {
+            color: #856404;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .success-box h4 {
+            color: #155724;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .comparison-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 4px solid #1E4BA0;
+        }
+
+        .comparison-card h3 {
+            margin-top: 0;
+            color: #1E4BA0;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .method-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #1E4BA0;
+            transition: transform 0.3s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .method-card h4 {
+            color: #1E4BA0;
+            margin-top: 0;
+        }
+
+        .faq {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 5px solid #28a745;
+        }
+
+        .faq h3 {
+            color: #28a745;
+            margin-top: 0;
+        }
+
+        .video-container {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(30,75,160,0.3);
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-info h4 {
+            color: #1E4BA0;
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .video-source {
+            display: inline-block;
+            background: #FFA500;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-top: 8px;
+        }
+
+        .footer-ennesg {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(30,75,160,0.05) 0%, rgba(255,165,0,0.05) 100%);
+            border-radius: 10px;
+            border-top: 3px solid #FFA500;
+        }
+
+        .footer-ennesg h3 {
+            color: #1E4BA0;
+            margin-bottom: 15px;
+        }
+
+        .footer-ennesg p {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .footer-ennesg a {
+            color: #1E4BA0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-ennesg a:hover {
+            color: #FFA500;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .highlight {
+            background: rgba(255,165,0,0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .ennesg-header {
+                padding: 15px 20px;
+            }
+
+            .ennesg-title {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ennesg-header">
+        <div class="ennesg-logo-strip"></div>
+        <div class="ennesg-brand">
+            <div class="ennesg-title">Enne<span class="sg">SG</span></div>
+            <div class="ennesg-subtitle">Sistemi di Gestione</div>
+            <div class="ennesg-tagline">Consulenza ISO • Sicurezza D.Lgs. 81/08 • Formazione</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>🔥 Il Triangolo del Fuoco</h1>
+
+        <div class="intro">
+            <p><strong>Il triangolo del fuoco</strong> è un modello concettuale fondamentale per comprendere la combustione e la prevenzione incendi. Rappresenta i <strong>tre elementi essenziali</strong> che devono essere simultaneamente presenti affinché si verifichi e si mantenga un incendio.</p>
+            <p style="margin-top: 15px;">Comprendere questo concetto è cruciale per:</p>
+            <ul>
+                <li>✅ Prevenire gli incendi eliminando uno o più elementi</li>
+                <li>✅ Spegnere un incendio in modo efficace</li>
+                <li>✅ Valutare i rischi di incendio negli ambienti di lavoro</li>
+                <li>✅ Scegliere i sistemi di protezione antincendio appropriati</li>
+            </ul>
+        </div>
+
+        <div class="triangle-visual">
+            <h3 style="color: #1E4BA0; margin-bottom: 30px;">I Tre Elementi del Triangolo</h3>
+            
+            <svg viewBox="0 0 600 550" class="triangle-image">
+                <!-- Triangolo principale -->
+                <polygon points="300,100 500,400 100,400" 
+                         fill="rgba(30,75,160,0.05)" 
+                         stroke="#1E4BA0" 
+                         stroke-width="5"/>
+                
+                <!-- Vertice superiore - INNESCO -->
+                <circle cx="300" cy="100" r="45" fill="#FFA500" opacity="0.95"/>
+                <text x="300" y="115" text-anchor="middle" font-size="32" fill="white">⚡</text>
+                
+                <text x="300" y="50" text-anchor="middle" font-size="22" font-weight="bold" fill="#1E4BA0">INNESCO</text>
+                <text x="300" y="70" text-anchor="middle" font-size="14" fill="#666">(Energia)</text>
+                
+                <!-- Vertice sinistro - COMBUSTIBILE -->
+                <circle cx="100" cy="400" r="45" fill="#dc143c" opacity="0.95"/>
+                <text x="100" y="415" text-anchor="middle" font-size="32" fill="white">🔥</text>
+                
+                <text x="100" y="465" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E4BA0">COMBUSTIBILE</text>
+                
+                <!-- Vertice destro - COMBURENTE -->
+                <circle cx="500" cy="400" r="45" fill="#007bff" opacity="0.95"/>
+                <text x="500" y="415" text-anchor="middle" font-size="32" fill="white">💨</text>
+                
+                <text x="500" y="465" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E4BA0">COMBURENTE</text>
+                <text x="500" y="485" text-anchor="middle" font-size="14" fill="#666">(Ossigeno)</text>
+                
+                <!-- Centro - FUOCO -->
+                <circle cx="300" cy="270" r="55" fill="#ff6b6b" opacity="0.85"/>
+                <text x="300" y="285" text-anchor="middle" font-size="38" fill="white">🔥</text>
+                <text x="300" y="318" text-anchor="middle" font-size="18" font-weight="bold" fill="white">FUOCO</text>
+            </svg>
+            
+            <p style="margin-top: 30px; color: #666; font-style: italic; font-size: 1.1em;">
+                <strong>Principio fondamentale:</strong> Rimuovendo anche solo uno dei tre elementi, l'incendio non può iniziare o continuare.
+            </p>
+        </div>
+
+        <h2>🔺 I Tre Elementi Essenziali</h2>
+
+        <div class="element-card combustibile">
+            <span class="element-icon">🔥</span>
+            <h3>1. COMBUSTIBILE</h3>
+            <p>Il <strong>combustibile</strong> è qualsiasi materiale capace di bruciare, rilasciando energia sotto forma di calore e luce. È la "materia prima" della combustione.</p>
+            
+            <h4 style="color: #dc143c; margin-top: 20px;">Classificazione per Stato Fisico:</h4>
+            
+            <table style="margin-top: 15px;">
+                <thead>
+                    <tr>
+                        <th>Stato</th>
+                        <th>Esempi</th>
+                        <th>Caratteristiche</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Solidi</strong></td>
+                        <td>Legno, carta, tessuti, plastica, gomma, carbone</td>
+                        <td>Devono decomporsi termicamente (pirolisi) prima di bruciare</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Liquidi</strong></td>
+                        <td>Benzina, alcool, gasolio, acetone, oli, solventi</td>
+                        <td>Bruciano i vapori emessi dalla superficie</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gas</strong></td>
+                        <td>Metano, GPL, idrogeno, acetilene</td>
+                        <td>Sono già in forma gassosa, altamente infiammabili</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box" style="margin-top: 20px;">
+                <h4>💡 Combustibili Comuni in Casa e Ufficio</h4>
+                <ul>
+                    <li><strong>Casa:</strong> mobili, tende, tappeti, vestiti, carta, prodotti per pulizia, gas da cucina</li>
+                    <li><strong>Ufficio:</strong> carta, cartoni, mobili, computer, cavi elettrici, toner stampanti</li>
+                    <li><strong>Garage:</strong> benzina, oli, vernici, solventi, legno, gomme</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="element-card comburente">
+            <span class="element-icon">💨</span>
+            <h3>2. COMBURENTE (Ossigeno)</h3>
+            <p>Il <strong>comburente</strong> è la sostanza che permette e sostiene la combustione reagendo chimicamente con il combustibile. Nell'aria che respiriamo, il comburente è l'<strong>ossigeno (O₂)</strong>, presente al 21%.</p>
+            
+            <h4 style="color: #007bff; margin-top: 20px;">Concentrazione di Ossigeno e Combustione:</h4>
+            
+            <table style="margin-top: 15px;">
+                <thead>
+                    <tr>
+                        <th>Concentrazione O₂</th>
+                        <th>Effetto sulla Combustione</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>21%</strong></td>
+                        <td>Concentrazione normale dell'aria</td>
+                        <td>Combustione normale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>16-21%</strong></td>
+                        <td>Combustione possibile ma rallentata</td>
+                        <td>Alcuni materiali faticano ad accendersi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&lt; 16%</strong></td>
+                        <td>Combustione non si autosostiene</td>
+                        <td>Fiamme si spengono gradualmente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&gt; 21%</strong></td>
+                        <td>Combustione accelerata e violenta</td>
+                        <td>⚠️ Estremamente pericoloso!</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box" style="margin-top: 20px;">
+                <h4>⚠️ Attenzione agli Ambienti Confinati</h4>
+                <p>In <strong>spazi chiusi</strong> o <strong>poco ventilati</strong>, l'ossigeno può diminuire rapidamente durante un incendio, causando:</p>
+                <ul>
+                    <li>Combustione incompleta con produzione di <strong>monossido di carbonio (CO)</strong> - gas tossico</li>
+                    <li>Accumulo di gas incombusti che possono esplodere (backdraft)</li>
+                    <li>Asfissia per chi è intrappolato nell'ambiente</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="margin-top: 20px;">
+                <h4>💡 Lo Sapevi Che...</h4>
+                <p>Alcuni materiali contengono ossigeno nella loro struttura molecolare (come la <strong>celluloide</strong> o gli <strong>esplosivi</strong>) e possono bruciare anche in assenza di aria! Questi sono chiamati <strong>combustibili autocomburenti</strong>.</p>
+            </div>
+        </div>
+
+        <div class="element-card innesco">
+            <span class="element-icon">⚡</span>
+            <h3>3. INNESCO (Energia di Attivazione)</h3>
+            <p>L'<strong>innesco</strong> è la fonte di energia necessaria per portare il combustibile alla sua temperatura di accensione, permettendo l'inizio della reazione di combustione.</p>
+            
+            <h4 style="color: #FFA500; margin-top: 20px;">Principali Fonti di Innesco:</h4>
+
+            <table style="margin-top: 15px;">
+                <thead>
+                    <tr>
+                        <th>Tipo di Innesco</th>
+                        <th>Esempi</th>
+                        <th>Contesti Tipici</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🔥 Fiamme Libere</strong></td>
+                        <td>Candele, fornelli, camini, fiammiferi, accendini</td>
+                        <td>Casa, cucina, laboratori</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⚡ Scintille Elettriche</strong></td>
+                        <td>Cortocircuiti, interruttori difettosi, saldatrici</td>
+                        <td>Impianti elettrici, officine</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🌡️ Superfici Calde</strong></td>
+                        <td>Stufe, resistenze, motori, lampade alogene</td>
+                        <td>Riscaldamento, macchinari</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⚡ Elettricità Statica</strong></td>
+                        <td>Scariche elettrostatiche durante travasi</td>
+                        <td>Industria chimica, distributori carburante</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🔬 Reazioni Chimiche</strong></td>
+                        <td>Sostanze incompatibili, reazioni esotermiche</td>
+                        <td>Laboratori, industria chimica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⚙️ Attrito Meccanico</strong></td>
+                        <td>Smerigliatrici, trapani, cuscinetti surriscaldati</td>
+                        <td>Officine meccaniche</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🚬 Fumatori</strong></td>
+                        <td>Sigarette, mozziconi non spenti</td>
+                        <td>Ovunque (causa frequente!)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>☀️ Raggi Solari</strong></td>
+                        <td>Concentrazione attraverso vetro/lenti</td>
+                        <td>Effetto lente (raro ma possibile)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box" style="margin-top: 20px;">
+                <h4>⚠️ Temperature di Innesco Comuni</h4>
+                <ul>
+                    <li><strong>Carta:</strong> 230-260°C</li>
+                    <li><strong>Legno:</strong> 300-350°C</li>
+                    <li><strong>Benzina:</strong> 250-280°C (vapori molto infiammabili già a -20°C!)</li>
+                    <li><strong>Tessuti:</strong> 200-300°C</li>
+                    <li><strong>Sigaretta accesa:</strong> 700-800°C (può innescare molti materiali!)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🔷 Dal Triangolo al Tetraedro del Fuoco</h2>
+
+        <div class="intro">
+            <p>Il modello del triangolo, pur essendo efficace per spiegare i concetti base, è stato <strong>evoluto nel Tetraedro del Fuoco</strong> per includere un quarto elemento fondamentale scoperto dalla ricerca scientifica moderna.</p>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h3>🔺 Triangolo del Fuoco (Modello Classico)</h3>
+                <ul style="margin-top: 15px;">
+                    <li>✅ Modello semplice e intuitivo</li>
+                    <li>✅ Perfetto per formazione base</li>
+                    <li>✅ Spiega combustione e spegnimento</li>
+                    <li>✅ Tre elementi: Combustibile, Comburente, Innesco</li>
+                    <li>⚠️ Non spiega completamente l'autosostentamento della fiamma</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h3>🔷 Tetraedro del Fuoco (Modello Avanzato)</h3>
+                <ul style="margin-top: 15px;">
+                    <li>✅ Modello più completo e accurato</li>
+                    <li>✅ Spiega la natura chimica della combustione</li>
+                    <li>✅ Include il 4° elemento: <strong>Reazione a Catena</strong></li>
+                    <li>✅ Fondamentale per comprendere estinguenti chimici</li>
+                    <li>✅ Usato in ambito professionale avanzato</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="element-card reazione">
+            <span class="element-icon">🔗</span>
+            <h3>4. REAZIONE CHIMICA A CATENA</h3>
+            <p>Il quarto elemento del tetraedro rappresenta la <strong>reazione chimica a catena</strong> che si autoalimenta durante la combustione, permettendo al fuoco di continuare a bruciare.</p>
+
+            <h4 style="color: #28a745; margin-top: 20px;">Come Funziona:</h4>
+            <ol style="margin-left: 25px; margin-top: 15px;">
+                <li><strong>Fase 1:</strong> Il calore della fiamma decompone il combustibile producendo <span class="highlight">radicali liberi</span> (molecole altamente reattive)</li>
+                <li><strong>Fase 2:</strong> I radicali liberi reagiscono rapidamente con l'ossigeno liberando <span class="highlight">energia (calore)</span></li>
+                <li><strong>Fase 3:</strong> Il calore prodotto genera altri radicali liberi dal combustibile</li>
+                <li><strong>Fase 4:</strong> Il ciclo si ripete continuamente → <span class="highlight">autosostentamento</span></li>
+            </ol>
+
+            <div class="info-box" style="margin-top: 20px;">
+                <h4>💡 Esempio Pratico: La Candela</h4>
+                <p>Quando accendi una candela:</p>
+                <ol style="margin-left: 25px; margin-top: 10px;">
+                    <li>Il calore della fiammella scioglie la cera (combustibile)</li>
+                    <li>La cera liquida sale per capillarità nello stoppino</li>
+                    <li>Il calore evapora la cera creando vapori combustibili</li>
+                    <li>I vapori bruciano producendo calore che mantiene il processo</li>
+                    <li>La reazione a catena continua finché c'è cera!</li>
+                </ol>
+            </div>
+
+            <div class="success-box" style="margin-top: 20px;">
+                <h4>✅ Importanza per lo Spegnimento</h4>
+                <p>Alcuni sistemi di spegnimento moderni agiscono proprio <strong>interrompendo la reazione a catena</strong>:</p>
+                <ul>
+                    <li><strong>Polveri chimiche:</strong> Le particelle interferiscono con i radicali liberi</li>
+                    <li><strong>Halon</strong> (ora vietati): Bloccavano chimicamente la reazione</li>
+                    <li><strong>Agenti puliti moderni:</strong> Sostituiscono gli Halon con meccanismo simile</li>
+                </ul>
+                <p style="margin-top: 10px;">Questo metodo è chiamato <strong>inibizione chimica</strong> o <strong>catalisi negativa</strong>.</p>
+            </div>
+        </div>
+
+        <h2>🛡️ Come Prevenire e Spegnere gli Incendi</h2>
+
+        <div class="intro">
+            <p>Comprendere il triangolo/tetraedro del fuoco ci permette di capire che per <strong>prevenire</strong> o <strong>spegnere</strong> un incendio dobbiamo <span class="highlight">eliminare almeno uno dei suoi elementi</span>.</p>
+        </div>
+
+        <div class="method-grid">
+            <div class="method-card" style="border-top-color: #dc143c;">
+                <h4>🔥 1. SOTTRAZIONE DEL COMBUSTIBILE</h4>
+                <p><strong>Principio:</strong> Rimuovere o isolare il materiale che brucia</p>
+                <p style="margin-top: 10px;"><strong>Metodi:</strong></p>
+                <ul>
+                    <li>Allontanare materiali combustibili dalla zona</li>
+                    <li>Chiudere valvole del gas</li>
+                    <li>Svuotare serbatoi di liquidi</li>
+                    <li>Creare fasce tagliafuoco (incendi boschivi)</li>
+                    <li>Demolizione controllata edifici</li>
+                </ul>
+                <p style="margin-top: 10px; font-style: italic; color: #666;">
+                    <strong>Esempio:</strong> Chiudere il rubinetto del gas se prende fuoco una pentola sul fornello
+                </p>
+            </div>
+
+            <div class="method-card" style="border-top-color: #007bff;">
+                <h4>💨 2. SOFFOCAMENTO (Sottrazione Comburente)</h4>
+                <p><strong>Principio:</strong> Impedire all'ossigeno di raggiungere il combustibile</p>
+                <p style="margin-top: 10px;"><strong>Metodi:</strong></p>
+                <ul>
+                    <li>Coprire con coperte antifiamma</li>
+                    <li>Usare schiuma antincendio</li>
+                    <li>Coperchi su pentole in fiamme</li>
+                    <li>Gas inerti (CO₂, azoto)</li>
+                    <li>Sabbia o terra</li>
+                    <li>Chiusura porte/finestre</li>
+                </ul>
+                <p style="margin-top: 10px; font-style: italic; color: #666;">
+                    <strong>Esempio:</strong> Mettere il coperchio sulla padella con olio in fiamme
+                </p>
+            </div>
+
+            <div class="method-card" style="border-top-color: #17a2b8;">
+                <h4>❄️ 3. RAFFREDDAMENTO (Sottrazione Calore)</h4>
+                <p><strong>Principio:</strong> Abbassare la temperatura sotto il punto di accensione</p>
+                <p style="margin-top: 10px;"><strong>Metodi:</strong></p>
+                <ul>
+                    <li>Acqua (il più comune ed efficace)</li>
+                    <li>Neve carbonica (CO₂ solida)</li>
+                    <li>Acqua nebulizzata</li>
+                    <li>Schiuma acquosa</li>
+                </ul>
+                <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                    <strong>⚠️ Attenzione:</strong> Mai usare acqua su:
+                    <ul>
+                        <li>Oli e grassi (schizzano)</li>
+                        <li>Apparecchiature elettriche</li>
+                        <li>Metalli in combustione</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="method-card" style="border-top-color: #28a745;">
+                <h4>🔗 4. INIBIZIONE CHIMICA (Interruzione Reazione)</h4>
+                <p><strong>Principio:</strong> Bloccare la reazione chimica a catena</p>
+                <p style="margin-top: 10px;"><strong>Metodi:</strong></p>
+                <ul>
+                    <li>Polveri chimiche (ABC, BC)</li>
+                    <li>Agenti puliti (HFC, FK)</li>
+                    <li>Halon (ora vietati per l'ozono)</li>
+                </ul>
+                <p style="margin-top: 10px; font-style: italic; color: #666;">
+                    <strong>Vantaggi:</strong> Spegnimento rapido ed efficace su tutti i tipi di incendio
+                </p>
+                <p style="font-style: italic; color: #666;">
+                    <strong>Svantaggi:</strong> Costosi, alcuni inquinanti
+                </p>
+            </div>
+        </div>
+
+        <h2>📋 Applicazioni Pratiche nella Prevenzione</h2>
+
+        <div class="success-box">
+            <h4>✅ In Casa - Checklist di Sicurezza</h4>
+            <p><strong>Controllo del COMBUSTIBILE:</strong></p>
+            <ul>
+                <li>Non accumulare carta, cartoni, stracci imbevuti</li>
+                <li>Tenere materiali infiammabili lontano da fonti di calore</li>
+                <li>Pulire canne fumarie e filtri cappa cucina</li>
+                <li>Non sovraccaricare le prese elettriche</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Controllo dell'INNESCO:</strong></p>
+            <ul>
+                <li>Spegnere candele prima di dormire</li>
+                <li>Non fumare a letto</li>
+                <li>Controllare periodicamente l'impianto elettrico</li>
+                <li>Non lasciare fornelli accesi incustoditi</li>
+                <li>Tenere fiammiferi/accendini lontano dai bambini</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Controllo del COMBURENTE:</strong></p>
+            <ul>
+                <li>Assicurare ventilazione adeguata (caldaie, stufe)</li>
+                <li>Tenere chiuse porte tra locali (compartimentazione)</li>
+                <li>Installare porte tagliafuoco dove necessario</li>
+            </ul>
+        </div>
+
+        <div class="info-box" style="margin-top: 20px;">
+            <h4>🏢 In Ufficio/Azienda - Prevenzione Attiva</h4>
+            <ul>
+                <li><strong>Piano di Emergenza:</strong> Procedure chiare per evacuazione</li>
+                <li><strong>Formazione:</strong> Addetti antincendio formati regolarmente</li>
+                <li><strong>Manutenzione:</strong> Controllo impianti elettrici, riscaldamento, condizionamento</li>
+                <li><strong>Ordine e Pulizia:</strong> Eliminare accumuli di materiale combustibile</li>
+                <li><strong>Segnaletica:</strong> Vie di fuga, estintori, uscite di emergenza ben segnalate</li>
+                <li><strong>Depositi:</strong> Stoccaggio sicuro di sostanze infiammabili</li>
+            </ul>
+        </div>
+
+        <h2>❓ FAQ - Domande Frequenti</h2>
+
+        <div class="faq">
+            <h3>❓ Perché si chiama "triangolo" del fuoco?</h3>
+            <p>Si chiama triangolo perché rappresenta visivamente i <strong>tre elementi fondamentali</strong> della combustione, disposti ai vertici di un triangolo. Ogni lato rappresenta un elemento e la figura sottolinea che sono tutti <strong>ugualmente necessari</strong>. Se rimuovi un vertice (un elemento), il triangolo "crolla" e l'incendio non può esistere.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Cosa succede se manca anche solo uno degli elementi?</h3>
+            <p>Se manca <strong>anche solo uno</strong> dei tre/quattro elementi, la combustione <strong>non può avvenire</strong> o si interrompe immediatamente. Questo è il principio alla base di tutti i sistemi di spegnimento:</p>
+            <ul style="margin-top: 10px;">
+                <li>Niente combustibile → niente da bruciare</li>
+                <li>Niente ossigeno → la reazione non può avvenire</li>
+                <li>Niente innesco → la temperatura non raggiunge il punto critico</li>
+                <li>Reazione a catena bloccata → la combustione non si autosostiene</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Qual è la differenza principale tra triangolo e tetraedro?</h3>
+            <p>Il <strong>triangolo</strong> identifica i tre elementi fisici necessari (combustibile, ossigeno, calore), mentre il <strong>tetraedro</strong> aggiunge il concetto di <strong>reazione chimica a catena</strong>, spiegando come la combustione si autoalimenta a livello molecolare. Il tetraedro è più accurato scientificamente ed essenziale per comprendere gli estinguenti chimici moderni.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Perché l'acqua spegne il fuoco?</h3>
+            <p>L'acqua agisce principalmente con il metodo del <strong>raffreddamento</strong>:</p>
+            <ul style="margin-top: 10px;">
+                <li>Assorbe grandi quantità di calore (alta capacità termica)</li>
+                <li>Evapora sottraendo ulteriore calore (calore latente)</li>
+                <li>Il vapore acqueo prodotto diluisce l'ossigeno (effetto soffocante secondario)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Attenzione:</strong> Non va usata su oli (galleggiano e schizzano) né su apparecchiature elettriche (rischio folgorazione).</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Come funziona una coperta antifiamma?</h3>
+            <p>La coperta antifiamma agisce con il metodo del <strong>soffocamento</strong>: coprendo completamente il fuoco, impedisce all'ossigeno dell'aria di raggiungere il combustibile. Senza ossigeno, la combustione si spegne rapidamente. È particolarmente efficace per:</p>
+            <ul style="margin-top: 10px;">
+                <li>Incendi su persone (indumenti in fiamme)</li>
+                <li>Piccoli incendi in cucina (pentole, padelle)</li>
+                <li>Incendi iniziali su superfici piane</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Tutti i materiali hanno la stessa temperatura di accensione?</h3>
+            <p><strong>No!</strong> Ogni materiale ha una sua specifica temperatura di accensione. Alcuni esempi:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Molto infiammabili:</strong> Benzina vapori (-20°C), Etere (160°C)</li>
+                <li><strong>Moderatamente infiammabili:</strong> Carta (230°C), Legno (300°C)</li>
+                <li><strong>Difficilmente infiammabili:</strong> Gomma (260-300°C), Alcuni plastici (400°C+)</li>
+            </ul>
+            <p style="margin-top: 10px;">Questa differenza è fondamentale per la <strong>valutazione del rischio</strong> e la scelta dei sistemi di protezione.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ È possibile avere un incendio senza ossigeno?</h3>
+            <p><strong>Sì, in casi particolari!</strong> Alcuni materiali contengono ossigeno nella loro struttura chimica e possono bruciare senza aria esterna. Esempi:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Esplosivi:</strong> Nitrocellulosa, nitroglicerina</li>
+                <li><strong>Perossidi:</strong> Acqua ossigenata concentrata</li>
+                <li><strong>Alcuni polimeri:</strong> Celluloide</li>
+            </ul>
+            <p style="margin-top: 10px;">Per questi materiali speciali, gli estinguenti tradizionali a soffocamento sono <strong>inefficaci</strong>!</p>
+        </div>
+
+        <h2>🎥 Risorse Video Educative</h2>
+        
+        <div class="video-container">
+            <p>Approfondisci la tua conoscenza con questi video educativi professionali sulla combustione e il triangolo del fuoco:</p>
+            
+            <div class="video-grid">
+                <div class="video-card" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/fondamenti-della-protezione-contro-le-esplosioni', '_blank')">
+                    <div style="background: linear-gradient(135deg, #1E4BA0 0%, #FFA500 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        🔺🔥
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Fondamenti della Combustione - SUVA</h4>
+                        <p>Principi base della combustione, triangolo del fuoco e tetraedro. Approccio sistematico alla protezione contro incendi ed esplosioni.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/liquidi-infiammabili/misure-di-protezione-liquidi-infiammabili-video', '_blank')">
+                    <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        💧⚡
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Combustibili Liquidi - SUVA</h4>
+                        <p>Come i liquidi infiammabili partecipano al triangolo del fuoco. Vapori, atmosfere esplosive e fonti di innesco.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/gase/misure-di-protezione-per-i-gas-video', '_blank')">
+                    <div style="background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        💨🔥
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Combustibili Gassosi - SUVA</h4>
+                        <p>Gas infiammabili nel triangolo del fuoco. Come gestire bombole, GPL e gas naturali in sicurezza.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Suggerimento:</strong> Clicca su una card per accedere ai video SUVA con esperimenti dimostrativi e spiegazioni pratiche del triangolo del fuoco applicato a situazioni reali.
+            </div>
+        </div>
+
+        <h2>📚 Riepilogo e Punti Chiave</h2>
+
+        <div class="success-box">
+            <h4>✅ Concetti Fondamentali da Ricordare</h4>
+            <ul>
+                <li>Il <strong>triangolo del fuoco</strong> rappresenta i 3 elementi essenziali: Combustibile, Comburente (O₂), Innesco</li>
+                <li>Il <strong>tetraedro del fuoco</strong> aggiunge la Reazione Chimica a Catena (4° elemento)</li>
+                <li>Rimuovendo <strong>anche solo uno</strong> degli elementi, l'incendio non può esistere</li>
+                <li>Ogni metodo di spegnimento agisce su almeno uno degli elementi del triangolo</li>
+                <li>La <strong>prevenzione</strong> consiste nell'evitare che i tre elementi si trovino insieme</li>
+                <li>L'ossigeno deve essere almeno al <strong>16%</strong> per sostenere la combustione</li>
+                <li>Ogni combustibile ha una sua <strong>temperatura di accensione</strong> specifica</li>
+                <li>Conoscere il triangolo è essenziale per la <strong>sicurezza antincendio</strong></li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Regola d'Oro della Sicurezza</h4>
+            <p style="font-size: 1.1em;"><strong>"Prima di ogni azione, chiediti: sto eliminando uno degli elementi del triangolo?"</strong></p>
+            <p style="margin-top: 10px;">Questa semplice domanda ti guiderà nelle scelte corrette per prevenire e spegnere gli incendi in modo sicuro ed efficace.</p>
+        </div>
+
+        <div class="footer-ennesg">
+            <h3>📞 Formazione Antincendio con EnneSG</h3>
+            <p><strong>EnneSG - Sistemi di Gestione</strong></p>
+            <p>Corsi di Formazione Antincendio • Addetti Antincendio Rischio Basso/Medio/Alto</p>
+            <p>Valutazione del Rischio Incendio • Consulenza D.Lgs. 81/08</p>
+            <p style="margin-top: 20px;">
+                Vuoi approfondire questi concetti con una <strong>formazione pratica certificata</strong>?<br>
+                Contattaci per i nostri <strong>corsi antincendio</strong> conformi alla normativa vigente.
+            </p>
+            <p style="margin-top: 15px;">
+                <a href="https://enne-sg.github.io/EnneSG/" target="_blank">🌐 www.ennesg.it</a>
+            </p>
+            <p style="font-size: 0.9em; color: #999; margin-top: 20px;">
+                Documento educativo sul Triangolo e Tetraedro del Fuoco<br>
+                © 2025 EnneSG - Tutti i diritti riservati
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Stazione 4: REI e Reazione al Fuoco</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%); padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid #FFA500; }
+        .header h1 { color: #1E4BA0; font-size: 2em; margin-bottom: 10px; }
+        .quiz-info { background: #e3f2fd; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 5px solid #2196f3; }
+        .domanda { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid #1E4BA0; }
+        .domanda h3 { color: #1E4BA0; margin-bottom: 15px; }
+        .risposta { background: white; padding: 15px 20px; margin: 10px 0; border-radius: 8px; border: 2px solid #dee2e6; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; }
+        .risposta:hover { border-color: #FFA500; background: #fff8f0; transform: translateX(5px); }
+        .risposta input { margin-right: 12px; width: 20px; height: 20px; cursor: pointer; }
+        .risposta label { cursor: pointer; flex: 1; }
+        .btn-submit { background: #FFA500; color: white; padding: 15px 40px; border: none; border-radius: 8px; font-size: 1.2em; font-weight: bold; cursor: pointer; width: 100%; margin-top: 30px; }
+        .btn-submit:hover { background: #ff8c00; }
+        .btn-back { background: #6c757d; color: white; padding: 12px 30px; text-decoration: none; display: inline-block; margin-top: 15px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Quiz Stazione 4</h1>
+            <p>Resistenza e Reazione al Fuoco</p>
+        </div>
+        <div class="quiz-info">
+            <h3>ℹ️ Info Quiz</h3>
+            <p><strong>Domande:</strong> 7 | <strong>Badge:</strong> 🥇 90%+ | 🥈 70-89% | 🥉 50-69%</p>
+        </div>
+        <form id="quiz-form">
+            <div class="domanda">
+                <h3>Domanda 1/7</h3>
+                <p>Cosa significa REI in una porta o parete?</p>
+                <div class="risposta"><input type="radio" name="q1" value="a" id="q1a"><label for="q1a">Resistenza meccanica (R), Ermeticità ai gas (E), Isolamento termico (I)</label></div>
+                <div class="risposta"><input type="radio" name="q1" value="b" id="q1b"><label for="q1b">Reazione, Estinzione, Innesco</label></div>
+                <div class="risposta"><input type="radio" name="q1" value="c" id="q1c"><label for="q1c">Resistenza Elettrica Ignifuga</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 2/7</h3>
+                <p>Una porta REI 60 significa che resiste al fuoco per:</p>
+                <div class="risposta"><input type="radio" name="q2" value="a" id="q2a"><label for="q2a">60 secondi</label></div>
+                <div class="risposta"><input type="radio" name="q2" value="b" id="q2b"><label for="q2b">60 minuti mantenendo R, E, I</label></div>
+                <div class="risposta"><input type="radio" name="q2" value="c" id="q2c"><label for="q2c">60 gradi di temperatura</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 3/7</h3>
+                <p>La reazione al fuoco di un materiale indica:</p>
+                <div class="risposta"><input type="radio" name="q3" value="a" id="q3a"><label for="q3a">Quanto tempo resiste prima di crollare</label></div>
+                <div class="risposta"><input type="radio" name="q3" value="b" id="q3b"><label for="q3b">Come il materiale partecipa alla combustione (si accende facilmente?)</label></div>
+                <div class="risposta"><input type="radio" name="q3" value="c" id="q3c"><label for="q3c">Il peso del materiale</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 4/7</h3>
+                <p>Nelle Euroclassi, un materiale A1 significa:</p>
+                <div class="risposta"><input type="radio" name="q4" value="a" id="q4a"><label for="q4a">Non combustibile (migliore classe)</label></div>
+                <div class="risposta"><input type="radio" name="q4" value="b" id="q4b"><label for="q4b">Altamente infiammabile</label></div>
+                <div class="risposta"><input type="radio" name="q4" value="c" id="q4c"><label for="q4c">Combustibilità media</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 5/7</h3>
+                <p>Un materiale classificato Euroclasse E:</p>
+                <div class="risposta"><input type="radio" name="q5" value="a" id="q5a"><label for="q5a">È ignifugo</label></div>
+                <div class="risposta"><input type="radio" name="q5" value="b" id="q5b"><label for="q5b">È altamente combustibile (classe bassa)</label></div>
+                <div class="risposta"><input type="radio" name="q5" value="c" id="q5c"><label for="q5c">Non brucia mai</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 6/7</h3>
+                <p>Il compartimento antincendio serve a:</p>
+                <div class="risposta"><input type="radio" name="q6" value="a" id="q6a"><label for="q6a">Contenere l'incendio in un'area limitata impedendo propagazione</label></div>
+                <div class="risposta"><input type="radio" name="q6" value="b" id="q6b"><label for="q6b">Spegnere automaticamente l'incendio</label></div>
+                <div class="risposta"><input type="radio" name="q6" value="c" id="q6c"><label for="q6c">Ventilare il fumo</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 7/7</h3>
+                <p>Una parete REI 120 separa due aree. Dopo 90 minuti di incendio:</p>
+                <div class="risposta"><input type="radio" name="q7" value="a" id="q7a"><label for="q7a">La parete mantiene ancora R, E, I (resiste fino a 120 min)</label></div>
+                <div class="risposta"><input type="radio" name="q7" value="b" id="q7b"><label for="q7b">La parete è già crollata</label></div>
+                <div class="risposta"><input type="radio" name="q7" value="c" id="q7c"><label for="q7c">La parete ha perso tutte le sue proprietà</label></div>
+            </div>
+            <button type="submit" class="btn-submit">✅ Invia Risposte</button>
+        </form>
+        <a href="index.html" class="btn-back">← Torna al Corso</a>
+    </div>
+    <script src="gamification.js"></script>
+    <script>
+        const risposteCorrette = { q1: 'a', q2: 'b', q3: 'b', q4: 'a', q5: 'b', q6: 'a', q7: 'a' };
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let corrette = 0;
+            for (let q in risposteCorrette) {
+                const r = document.querySelector(`input[name="${q}"]:checked`);
+                if (r && r.value === risposteCorrette[q]) corrette++;
+            }
+            inviaQuiz(4, corrette, 7);
+        });
+    </script>
+</body>
+</html>

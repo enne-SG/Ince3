@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vie di Fuga e Illuminazione di Emergenza - EnneSG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%);
+            padding: 0;
+        }
+
+        .ennesg-header {
+            background: #1E4BA0;
+            padding: 20px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ennesg-logo-strip {
+            width: 5px;
+            height: 80px;
+            background: #FFA500;
+            border-radius: 3px;
+        }
+
+        .ennesg-brand {
+            flex: 1;
+        }
+
+        .ennesg-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            margin: 0;
+        }
+
+        .ennesg-title .sg {
+            color: #FFA500;
+        }
+
+        .ennesg-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .ennesg-tagline {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #1E4BA0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1E4BA0;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFA500;
+        }
+
+        h3 {
+            color: #1E4BA0;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #2c5aa0;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, rgba(30,75,160,0.1) 0%, rgba(255,165,0,0.1) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #FFA500;
+        }
+
+        .highlight {
+            color: #1E4BA0;
+            font-weight: bold;
+        }
+
+        .key-message {
+            background: #FFA500;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255,165,0,0.3);
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #1E4BA0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .danger-box {
+            background: #f8d7da;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #dc3545;
+        }
+
+        .success-box {
+            background: #d4edda;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #28a745;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #1E4BA0;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, rgba(30,75,160,0.05) 0%, rgba(255,165,0,0.05) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #1E4BA0;
+        }
+
+        .scenario {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .faq {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #FFA500;
+        }
+
+        .faq h3 {
+            color: #1E4BA0;
+            margin-bottom: 10px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #1E4BA0;
+        }
+
+        .ennesg-footer {
+            background: #1E4BA0;
+            color: white;
+            padding: 30px 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .ennesg-footer p {
+            margin: 10px 0;
+        }
+
+        .ennesg-footer a {
+            color: #FFA500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+
+        .normativa-ref {
+            display: inline-block;
+            background: #1E4BA0;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 0 3px;
+        }
+
+        .esempio-pratico {
+            background: linear-gradient(to right, rgba(255,165,0,0.1), rgba(30,75,160,0.1));
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #FFA500;
+        }
+    </style>
+</head>
+<body>
+    <div class="ennesg-header">
+        <div class="ennesg-logo-strip"></div>
+        <div class="ennesg-brand">
+            <h1 class="ennesg-title">Enne<span class="sg">SG</span></h1>
+            <p class="ennesg-subtitle">Il Partner per la Tua Crescita</p>
+            <p class="ennesg-tagline">Consulenza ISO e Sicurezza sul Lavoro</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>🚨 Vie di Fuga e Illuminazione di Emergenza</h1>
+
+        <div class="intro">
+            <p>Le <strong>vie di fuga</strong>, l'<strong>illuminazione di emergenza</strong>, le <strong>scale</strong>, il <strong>punto di raccolta</strong> e il <strong>locale di attesa</strong> rappresentano gli <span class="highlight">elementi fondamentali del sistema di esodo</span> in caso di emergenza.</p>
+            <p style="margin-top: 15px;">In caso di incendio o altra emergenza, la capacità di evacuare rapidamente e in sicurezza un edificio può fare la differenza tra la vita e la morte. Ogni anno in Italia ci sono incidenti dove una progettazione inadeguata delle vie di fuga o la mancanza di illuminazione di emergenza contribuiscono a vittime e feriti.</p>
+        </div>
+
+        <div class="key-message">
+            "Una via di fuga ben progettata e illuminata vale più di qualsiasi sistema di spegnimento"
+        </div>
+
+        <h2>🚪 Le Vie di Fuga (Vie di Esodo)</h2>
+
+        <div class="intro">
+            <p>Le <strong>vie di fuga</strong> (o <strong>vie di esodo</strong>) sono <span class="highlight">percorsi protetti e segnalati</span> che consentono alle persone di raggiungere un luogo sicuro all'esterno dell'edificio in caso di emergenza.</p>
+        </div>
+
+        <h3>📋 Definizione Normativa</h3>
+
+        <div class="info-box">
+            <p><strong>Secondo il D.M. 03/08/2015 (Codice di Prevenzione Incendi):</strong></p>
+            <p style="margin-top: 10px;">"Il sistema di vie di uscita è il sistema di percorsi che consente agli occupanti di raggiungere un luogo sicuro in modo autonomo"</p>
+            <p style="margin-top: 15px;"><strong>Una via di fuga comprende:</strong></p>
+            <ul>
+                <li><strong>Percorso di uscita:</strong> dalla posizione dell'occupante fino all'uscita del compartimento</li>
+                <li><strong>Luogo sicuro temporaneo:</strong> spazio calmo, filtro a prova di fumo, scala protetta</li>
+                <li><strong>Uscita finale:</strong> porta che immette direttamente in luogo sicuro esterno</li>
+            </ul>
+        </div>
+
+        <h3>🎯 Caratteristiche Fondamentali delle Vie di Fuga</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>✅ Numero e Distribuzione</h4>
+                <ul>
+                    <li><strong>Almeno 2 vie indipendenti</strong> da ogni punto dell'edificio</li>
+                    <li>Angolate tra loro (non parallele)</li>
+                    <li>Distanza massima da percorrere fino all'uscita: <strong>30-60 metri</strong> (dipende dal rischio)</li>
+                    <li>Ambienti con più di 50 persone: vie separate e distanziate</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>📏 Dimensioni Minime</h4>
+                <ul>
+                    <li><strong>Larghezza minima:</strong> 80 cm (1 modulo di uscita = 60 cm)</li>
+                    <li><strong>Altezza minima:</strong> 2 metri</li>
+                    <li><strong>Porte:</strong> apertura nel senso dell'esodo se > 25 persone</li>
+                    <li>Larghezza proporzionale al numero di occupanti</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🔥 Protezione e Resistenza</h4>
+                <ul>
+                    <li><strong>REI adeguato:</strong> resistenza al fuoco delle strutture (30-120 minuti)</li>
+                    <li><strong>Materiali:</strong> classe di reazione al fuoco idonea</li>
+                    <li>Separazione da locali pericolosi</li>
+                    <li>Porte REI se attraversano compartimenti</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🚫 Divieti Assoluti</h4>
+                <ul>
+                    <li><strong>MAI ostruire</strong> le vie di fuga con materiali, arredi, merci</li>
+                    <li><strong>NO chiavi</strong> o lucchetti su porte di emergenza</li>
+                    <li><strong>NO specchi</strong> che possono disorientare</li>
+                    <li><strong>NO porte girevoli</strong> come unica via</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>🔍 Calcolo della Larghezza delle Vie di Fuga</h3>
+
+        <div class="info-box">
+            <h4>📐 Formula di Base (D.M. 3/08/2015)</h4>
+            <p><strong>Larghezza minima (metri) = N° occupanti × 0,006 metri/persona</strong></p>
+            <p style="margin-top: 15px;">Dove:</p>
+            <ul>
+                <li>1 modulo di uscita = <strong>0,60 metri</strong></li>
+                <li>Larghezza minima assoluta: <strong>0,80 metri</strong> (anche per 1 persona)</li>
+                <li>Larghezza arrotondata per eccesso al mezzo modulo superiore</li>
+            </ul>
+        </div>
+
+        <div class="esempio-pratico">
+            <h4>💡 Esempio Pratico: Ufficio Open Space</h4>
+            <p><strong>Situazione:</strong> Ufficio con 85 persone, 2 uscite di emergenza disponibili.</p>
+            <p style="margin-top: 10px;"><strong>Calcolo:</strong></p>
+            <ol>
+                <li>Occupanti da evacuare per singola uscita: <strong>85 / 2 = 42,5</strong> → <strong>43 persone</strong></li>
+                <li>Larghezza necessaria: <strong>43 × 0,006 = 0,258 metri</strong></li>
+                <li>Arrotondamento: <strong>0,80 metri</strong> (minimo normativo)</li>
+            </ol>
+            <p style="margin-top: 15px;"><strong>✅ Soluzione:</strong> Ciascuna delle 2 uscite deve avere larghezza minima di <strong>0,80 metri</strong>.</p>
+            <p style="margin-top: 10px;"><strong>Nota:</strong> Se l'ufficio avesse 150 persone e 2 uscite: 75 × 0,006 = 0,45 m → si arrotonda a <strong>0,90 metri</strong> (1,5 moduli).</p>
+        </div>
+
+        <h3>🚷 Tipologie di Vie di Fuga</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Descrizione</th>
+                    <th>Protezione Richiesta</th>
+                    <th>Esempi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Via di fuga ordinaria</strong></td>
+                    <td>Corridoi, atri, spazi aperti verso l'uscita</td>
+                    <td>REI 30-60 se necessario</td>
+                    <td>Corridoi uffici, hall alberghi</td>
+                </tr>
+                <tr>
+                    <td><strong>Scala protetta</strong></td>
+                    <td>Scala in vano separato da porte REI</td>
+                    <td>REI 60-120, porte REI</td>
+                    <td>Condomini, uffici multipiano</td>
+                </tr>
+                <tr>
+                    <td><strong>Scala a prova di fumo</strong></td>
+                    <td>Scala con filtro a prova di fumo (spazio ventilato)</td>
+                    <td>REI 120, pressurizzazione</td>
+                    <td>Edifici alti, ospedali</td>
+                </tr>
+                <tr>
+                    <td><strong>Spazio calmo</strong></td>
+                    <td>Area protetta dove sostare temporaneamente</td>
+                    <td>REI 60-120, comunicazione</td>
+                    <td>Per persone con disabilità</td>
+                </tr>
+                <tr>
+                    <td><strong>Uscita diretta</strong></td>
+                    <td>Porta che immette direttamente all'esterno</td>
+                    <td>Resistenza minima REI 30</td>
+                    <td>Negozi, capannoni</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🪜 Le Scale di Emergenza</h2>
+
+        <div class="intro">
+            <p>Le <strong>scale</strong> rappresentano l'elemento critico delle vie di fuga negli edifici multipiano. La loro corretta progettazione e protezione è <span class="highlight">fondamentale per la sicurezza</span>.</p>
+        </div>
+
+        <h3>📐 Requisiti Dimensionali delle Scale</h3>
+
+        <div class="info-box">
+            <h4>Dimensioni Minime (D.M. 3/08/2015 + Norme Tecniche)</h4>
+            <ul>
+                <li><strong>Larghezza minima rampa:</strong> 1,20 metri (edifici con più di 50 persone)</li>
+                <li><strong>Larghezza minima assoluta:</strong> 0,90 metri (edifici residenziali piccoli)</li>
+                <li><strong>Pedata (profondità gradino):</strong> minimo 25 cm (ottimale: 30 cm)</li>
+                <li><strong>Alzata (altezza gradino):</strong> massimo 17 cm (ottimale: 15-16 cm)</li>
+                <li><strong>Pianerottoli:</strong> profondità minima = larghezza scala (minimo 1,20 m)</li>
+                <li><strong>Numero massimo gradini per rampa:</strong> 15 (consigliato: 12)</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Regola 2H + P</h4>
+            <p>Per garantire comodità e sicurezza, deve valere la relazione di Blondel:</p>
+            <p style="margin-top: 10px; font-size: 1.2em; font-weight: bold; text-align: center;">
+                2H + P = 62-64 cm
+            </p>
+            <p style="margin-top: 10px;">Dove:</p>
+            <ul>
+                <li><strong>H</strong> = Alzata (altezza gradino)</li>
+                <li><strong>P</strong> = Pedata (profondità gradino)</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Esempio:</strong> Se alzata = 16 cm → Pedata = 64 - (2×16) = 32 cm ✅</p>
+        </div>
+
+        <h3>🛡️ Tipologie di Scale</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>🏢 Scala Ordinaria</h4>
+                <p><strong>Caratteristiche:</strong></p>
+                <ul>
+                    <li>Non separata dal resto dell'edificio</li>
+                    <li>Aperta su piani e corridoi</li>
+                    <li>Minima protezione REI</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>❌ Limiti:</strong></p>
+                <ul>
+                    <li>Fumo e calore si propagano facilmente</li>
+                    <li>Utilizzabile solo in edifici a basso rischio</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>✅ Dove:</strong> Edifici bassi residenziali, piccoli uffici</p>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🔒 Scala Protetta</h4>
+                <p><strong>Caratteristiche:</strong></p>
+                <ul>
+                    <li>Racchiusa in vano con porte REI</li>
+                    <li>Resistenza al fuoco REI 60-120</li>
+                    <li>Accesso tramite porte REI autochiudenti</li>
+                    <li>Ventilazione naturale in sommità</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>✅ Protezione:</strong></p>
+                <ul>
+                    <li>Impedisce ingresso fumo e calore</li>
+                    <li>Via di fuga sicura per tempo prolungato</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>✅ Dove:</strong> Edifici alti, uffici, scuole, ospedali</p>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🔥 Scala a Prova di Fumo</h4>
+                <p><strong>Caratteristiche:</strong></p>
+                <ul>
+                    <li>Accesso tramite <strong>filtro a prova di fumo</strong> (disimpegno ventilato)</li>
+                    <li>REI 120 minimo</li>
+                    <li>Pressurizzazione o ventilazione forzata</li>
+                    <li>Doppia porta REI in sequenza</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>✅ Massima Protezione:</strong></p>
+                <ul>
+                    <li>Fumo non può entrare nella scala</li>
+                    <li>Pressione positiva mantiene aria pulita</li>
+                    <li>Sicurezza anche in incendi prolungati</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>✅ Obbligatoria per:</strong> Edifici > 54 m di altezza, ospedali, grandi centri commerciali</p>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🏗️ Scala Esterna</h4>
+                <p><strong>Caratteristiche:</strong></p>
+                <ul>
+                    <li>Completamente esterna all'edificio</li>
+                    <li>Struttura metallica o cemento armato</li>
+                    <li>Accesso da porte REI</li>
+                    <li>Resistenza agli agenti atmosferici</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>✅ Vantaggi:</strong></p>
+                <ul>
+                    <li>Massima sicurezza (fuori dall'edificio)</li>
+                    <li>Costo contenuto in retrofit</li>
+                    <li>Facile da ispezionare</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>⚠️ Attenzione:</strong> Verificare accessibilità in condizioni meteo avverse e per persone con disabilità</p>
+            </div>
+        </div>
+
+        <h3>🚨 Filtro a Prova di Fumo</h3>
+
+        <div class="info-box">
+            <h4>Cos'è il Filtro a Prova di Fumo?</h4>
+            <p>È uno <strong>spazio di disimpegno</strong> interposto tra l'edificio e la scala protetta, progettato per impedire l'ingresso di fumo nella scala. Funziona come una "camera di decompressione".</p>
+            
+            <p style="margin-top: 15px;"><strong>Caratteristiche tecniche:</strong></p>
+            <ul>
+                <li><strong>Superficie minima:</strong> 4,5 m² (per affollamento fino a 500 persone)</li>
+                <li><strong>Lato minimo:</strong> 1,20 metri</li>
+                <li><strong>Porte:</strong> due porte REI in sequenza, mai contemporaneamente aperte</li>
+                <li><strong>Ventilazione:</strong> naturale (aperture permanenti verso esterno) o meccanica (pressurizzazione)</li>
+                <li><strong>REI:</strong> pareti REI 120</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>Come funziona:</strong></p>
+            <ol>
+                <li>Persona esce dal piano attraverso porta REI → entra nel filtro</li>
+                <li>Porta REI si richiude automaticamente</li>
+                <li>Nel filtro l'aria è ventilata (fumo espulso o diluito)</li>
+                <li>Persona apre seconda porta REI → entra nella scala protetta</li>
+                <li>Scala rimane libera da fumo</li>
+            </ol>
+        </div>
+
+        <h2>💡 Illuminazione di Emergenza</h2>
+
+        <div class="intro">
+            <p>L'<strong>illuminazione di emergenza</strong> garantisce <span class="highlight">visibilità minima sufficiente</span> per permettere l'evacuazione in sicurezza anche in assenza di alimentazione elettrica normale (blackout, incendio che danneggia l'impianto elettrico).</p>
+        </div>
+
+        <div class="key-message">
+            "Nel buio totale, anche una via di fuga perfetta diventa una trappola mortale"
+        </div>
+
+        <h3>📋 Normativa di Riferimento</h3>
+
+        <div class="info-box">
+            <p><strong>Principali riferimenti normativi:</strong></p>
+            <ul>
+                <li><span class="normativa-ref">D.M. 3/08/2015</span> Codice di Prevenzione Incendi</li>
+                <li><span class="normativa-ref">UNI EN 1838:2013</span> Applicazione dell'illuminotecnica - Illuminazione di emergenza</li>
+                <li><span class="normativa-ref">UNI 11222:2023</span> Luce e illuminazione - Impianti di illuminazione di sicurezza</li>
+                <li><span class="normativa-ref">CEI 64-8</span> Impianti elettrici utilizzatori</li>
+            </ul>
+        </div>
+
+        <h3>🔦 Tipologie di Illuminazione di Emergenza</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Scopo</th>
+                    <th>Illuminamento Minimo</th>
+                    <th>Applicazioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Illuminazione di sicurezza per l'esodo</strong></td>
+                    <td>Garantire visibilità lungo le vie di fuga</td>
+                    <td><strong>5 lux</strong> sull'asse centrale<br><strong>1 lux</strong> su tutta la larghezza</td>
+                    <td>Corridoi, scale, uscite</td>
+                </tr>
+                <tr>
+                    <td><strong>Illuminazione antipanico</strong></td>
+                    <td>Evitare panico in ampi spazi</td>
+                    <td><strong>0,5 lux</strong> (minimo)<br><strong>1 lux</strong> (raccomandato)</td>
+                    <td>Sale riunioni, aule, open space > 60 m²</td>
+                </tr>
+                <tr>
+                    <td><strong>Illuminazione aree ad alto rischio</strong></td>
+                    <td>Permettere arresto sicuro macchinari</td>
+                    <td><strong>10% illuminazione normale</strong> (min. 15 lux)</td>
+                    <td>Locali quadri, centrali termiche, laboratori</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>⚡ Caratteristiche Tecniche degli Apparecchi</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>🔋 Autonomia</h4>
+                <ul>
+                    <li><strong>Minimo normativo:</strong> 1 ora</li>
+                    <li><strong>Raccomandato:</strong> 3 ore</li>
+                    <li><strong>Edifici complessi:</strong> anche più di 3 ore</li>
+                    <li>Tempo necessario per evacuazione completa + margine di sicurezza</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>⏱️ Tempo di Intervento</h4>
+                <ul>
+                    <li><strong>Luoghi di pubblico spettacolo:</strong> accensione istantanea (< 0,5 secondi)</li>
+                    <li><strong>Altri luoghi:</strong> entro 5 secondi</li>
+                    <li><strong>Luoghi ad alto rischio:</strong> entro 0,5 secondi con almeno 50% del flusso</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🔌 Alimentazione</h4>
+                <ul>
+                    <li><strong>Centralizzata:</strong> batterie in locale tecnico + linee dedicate</li>
+                    <li><strong>Autonoma:</strong> batteria integrata in ogni apparecchio (più diffusa)</li>
+                    <li>Ricarica automatica quando torna alimentazione normale</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>💡 Tecnologia LED</h4>
+                <ul>
+                    <li>✅ Bassi consumi → autonomia maggiore</li>
+                    <li>✅ Lunga durata (50.000 ore)</li>
+                    <li>✅ Accensione istantanea</li>
+                    <li>✅ Bassa manutenzione</li>
+                    <li>✅ Standard attuale</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>🎯 Posizionamento Apparecchi Illuminazione di Emergenza</h3>
+
+        <div class="success-box">
+            <h4>✅ Dove Installare gli Apparecchi (obbligatorio)</h4>
+            <ul>
+                <li><strong>Presso ogni uscita di emergenza</strong> e uscita finale</li>
+                <li><strong>In corrispondenza di ogni cambio di direzione</strong> delle vie di fuga</li>
+                <li><strong>In prossimità di ogni scala</strong> (sopra ogni pianerottolo)</li>
+                <li><strong>In prossimità di ogni variazione di livello</strong> del pavimento</li>
+                <li><strong>All'esterno degli edifici</strong> in corrispondenza delle uscite</li>
+                <li><strong>Presso ogni attrezzatura antincendio</strong> (estintori, idranti, allarmi)</li>
+                <li><strong>Presso i quadri elettrici</strong> e locali tecnici</li>
+                <li><strong>Nei servizi igienici</strong> con superficie > 8 m²</li>
+                <li><strong>Negli spazi aperti > 60 m²</strong> (illuminazione antipanico)</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Distanze Massime</h4>
+            <ul>
+                <li>Lungo vie di fuga: <strong>massimo 15 metri</strong> tra un apparecchio e l'altro</li>
+                <li>Altezza installazione: <strong>2-2,5 metri</strong> da terra</li>
+                <li>Ogni punto del percorso deve essere <strong>visibilmente illuminato</strong></li>
+            </ul>
+        </div>
+
+        <h3>🧪 Manutenzione Illuminazione di Emergenza</h3>
+
+        <div class="info-box">
+            <h4>📅 Periodicità Controlli</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo Verifica</th>
+                        <th>Frequenza</th>
+                        <th>Attività</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Verifica funzionale</strong></td>
+                        <td><strong>Mensile</strong></td>
+                        <td>Simulazione mancanza rete (test breve 30-60 sec)<br>Verifica accensione di tutti gli apparecchi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Verifica di autonomia</strong></td>
+                        <td><strong>Semestrale</strong></td>
+                        <td>Test prolungato fino a completo scaricamento batterie<br>Verifica durata minima 1 ora (o quella dichiarata)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manutenzione completa</strong></td>
+                        <td><strong>Annuale</strong></td>
+                        <td>Pulizia ottiche, verifica fissaggi, controllo cavi<br>Misure illuminotecniche, sostituzione componenti difettosi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sostituzione batterie</strong></td>
+                        <td><strong>3-5 anni</strong></td>
+                        <td>In base a indicazioni costruttore e stato batterie</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="danger-box">
+            <h4>❌ Errori Comuni da Evitare</h4>
+            <ul>
+                <li>❌ Apparecchi installati ma <strong>non collegati</strong> (decorativi!)</li>
+                <li>❌ Batterie <strong>mai sostituite</strong> da anni → autonomia ridotta o nulla</li>
+                <li>❌ Test <strong>mai eseguiti</strong> → scoperta di guasti solo in emergenza reale</li>
+                <li>❌ Apparecchi <strong>coperti da controsoffitti</strong> o mobili</li>
+                <li>❌ Ottiche <strong>sporche o danneggiate</strong> → flusso luminoso insufficiente</li>
+                <li>❌ <strong>Numero insufficiente</strong> di apparecchi → zone buie lungo le vie di fuga</li>
+            </ul>
+        </div>
+
+        <h2>📍 Punto di Raccolta (Punto di Ritrovo)</h2>
+
+        <div class="intro">
+            <p>Il <strong>punto di raccolta</strong> (o <strong>punto di ritrovo</strong>) è il <span class="highlight">luogo sicuro all'esterno dell'edificio</span> dove tutte le persone evacuate devono radunarsi per consentire il controllo delle presenze e coordinare i soccorsi.</p>
+        </div>
+
+        <h3>🎯 Caratteristiche del Punto di Raccolta</h3>
+
+        <div class="success-box">
+            <h4>✅ Requisiti Fondamentali</h4>
+            <ul>
+                <li><strong>🔥 Distanza di sicurezza:</strong> minimo <strong>15 metri</strong> dall'edificio (anche da eventuali crolli, esplosioni, proiezione di materiali)</li>
+                <li><strong>🚗 Lontano da pericoli:</strong> non su vie di traffico intenso, non sotto cavi elettrici, non vicino a depositi pericolosi</li>
+                <li><strong>🚑 Accessibile ai soccorsi:</strong> raggiungibile da ambulanze e VVF senza ostacoli</li>
+                <li><strong>👥 Capiente:</strong> spazio sufficiente per tutti gli occupanti (stima: 0,5 m²/persona)</li>
+                <li><strong>🌧️ Protetto:</strong> possibilmente coperto o riparato (se possibile)</li>
+                <li><strong>🚪 Raggiungibile facilmente:</strong> da tutte le uscite di emergenza</li>
+                <li><strong>📢 Chiaramente segnalato:</strong> cartellonistica ben visibile</li>
+                <li><strong>💡 Illuminato:</strong> visibile anche di notte</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Dove NON Posizionare il Punto di Raccolta</h4>
+            <ul>
+                <li>❌ Troppo vicino all'edificio (< 15 metri)</li>
+                <li>❌ Su strada trafficata o carreggiata</li>
+                <li>❌ Sotto alberi ad alto fusto (rischio caduta rami)</li>
+                <li>❌ In zone soggette a allagamenti</li>
+                <li>❌ Vicino ad altri edifici a rischio</li>
+                <li>❌ In aree private non sempre accessibili</li>
+                <li>❌ Dove ostacolerebbe i mezzi di soccorso</li>
+            </ul>
+        </div>
+
+        <h3>🪧 Segnaletica del Punto di Raccolta</h3>
+
+        <div class="info-box">
+            <p><strong>Cartello normato:</strong> cartello di salvataggio secondo <span class="normativa-ref">ISO 7010</span></p>
+            <ul style="margin-top: 15px;">
+                <li><strong>Simbolo:</strong> E007 (gruppo di persone) su sfondo verde</li>
+                <li><strong>Scritta:</strong> "PUNTO DI RACCOLTA" / "ASSEMBLY POINT"</li>
+                <li><strong>Dimensioni minime:</strong> 300 x 400 mm (visibile da distanza)</li>
+                <li><strong>Materiale:</strong> resistente alle intemperie, fotoluminescente se richiesto</li>
+                <li><strong>Installazione:</strong> altezza 2-2,5 metri, ben visibile da tutte le direzioni</li>
+            </ul>
+        </div>
+
+        <h3>📋 Gestione del Punto di Raccolta</h3>
+
+        <div class="info-box">
+            <h4>Procedure Operative</h4>
+            <ol>
+                <li><strong>Evacuazione:</strong> Tutte le persone raggiungono il punto di raccolta senza fermarsi</li>
+                <li><strong>Appello:</strong> Il responsabile dell'evacuazione effettua l'appello nominale (registro presenze, visitatori)</li>
+                <li><strong>Verifica:</strong> Controllo che tutti siano presenti e in sicurezza</li>
+                <li><strong>Comunicazione ai VVF:</strong> Se mancano persone, riferire subito ai Vigili del Fuoco</li>
+                <li><strong>Permanenza:</strong> Nessuno si allontana senza autorizzazione</li>
+                <li><strong>Rientro:</strong> Solo dopo autorizzazione dei Vigili del Fuoco / Responsabile Sicurezza</li>
+            </ol>
+        </div>
+
+        <div class="danger-box">
+            <h4>⚠️ Cosa NON Fare al Punto di Raccolta</h4>
+            <ul>
+                <li>❌ <strong>NON rientrare</strong> nell'edificio per recuperare oggetti personali</li>
+                <li>❌ <strong>NON allontanarsi</strong> senza comunicarlo al responsabile</li>
+                <li>❌ <strong>NON ostacolare</strong> i mezzi di soccorso</li>
+                <li>❌ <strong>NON creare confusione</strong> o panico</li>
+                <li>❌ <strong>NON usare telefoni</strong> se non per emergenze (liberare linee)</li>
+            </ul>
+        </div>
+
+        <h2>🛑 Spazio Calmo / Locale di Attesa</h2>
+
+        <div class="intro">
+            <p>Lo <strong>spazio calmo</strong> (o <strong>locale di attesa</strong>) è un <span class="highlight">luogo protetto temporaneo</span> all'interno dell'edificio dove le persone con disabilità motoria possono attendere i soccorsi in sicurezza durante un'evacuazione.</p>
+        </div>
+
+        <h3>♿ Perché Esiste lo Spazio Calmo?</h3>
+
+        <div class="info-box">
+            <p>Le persone con <strong>disabilità motoria</strong> (su sedia a rotelle, con difficoltà di deambulazione) non possono utilizzare le scale autonomamente. Lo spazio calmo permette loro di:</p>
+            <ul style="margin-top: 15px;">
+                <li>✅ <strong>Mettersi in sicurezza</strong> in uno spazio protetto dal fuoco e fumo</li>
+                <li>✅ <strong>Attendere i soccorritori</strong> che li trasporteranno fuori (VVF o personale addestrato)</li>
+                <li>✅ <strong>Comunicare</strong> la propria posizione tramite interfono/telefono</li>
+                <li>✅ <strong>Respirare aria pulita</strong> in attesa dell'evacuazione assistita</li>
+            </ul>
+        </div>
+
+        <h3>📐 Caratteristiche Tecniche dello Spazio Calmo</h3>
+
+        <div class="success-box">
+            <h4>Requisiti Normativi (D.M. 3/08/2015)</h4>
+            <ul>
+                <li><strong>Posizione:</strong> in <strong>comunicazione diretta con la scala protetta</strong> o in area protetta adiacente</li>
+                <li><strong>Resistenza al fuoco:</strong> REI minimo <strong>60 minuti</strong> (120 se edificio alto)</li>
+                <li><strong>Dimensioni:</strong> almeno <strong>1,5 m × 1,5 m</strong> per ogni persona con disabilità (spazio per sedia a rotelle + accompagnatore)</li>
+                <li><strong>Numero:</strong> almeno <strong>uno per piano</strong> in prossimità di ogni scala protetta</li>
+                <li><strong>Separazione:</strong> porta REI autochiudente verso scala protetta</li>
+                <li><strong>Ventilazione:</strong> naturale (apertura verso esterno) o meccanica (pressurizzazione)</li>
+                <li><strong>Comunicazione:</strong> interfono o telefono collegato a centrale controllo/portineria</li>
+                <li><strong>Segnalazione:</strong> cartello specifico "SPAZIO CALMO" (ISO 7010 - E024)</li>
+                <li><strong>Illuminazione di emergenza:</strong> obbligatoria, autonomia minima 1 ora</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Lo Spazio Calmo NON È:</h4>
+            <ul>
+                <li>❌ Un ripostiglio o locale deposito</li>
+                <li>❌ Un locale tecnico con macchinari</li>
+                <li>❌ Uno spazio aperto o corridoio</li>
+                <li>❌ Un luogo dove restare indefinitamente (è temporaneo!)</li>
+            </ul>
+        </div>
+
+        <h3>🔧 Componenti dello Spazio Calmo</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Componente</th>
+                    <th>Funzione</th>
+                    <th>Requisiti</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Porta REI</strong></td>
+                    <td>Separazione da scala protetta</td>
+                    <td>REI 60-120, autochiudente, maniglia abbassabile</td>
+                </tr>
+                <tr>
+                    <td><strong>Interfono/Telefono</strong></td>
+                    <td>Comunicazione con soccorritori</td>
+                    <td>Collegato a centrale, pulsante a portata mano</td>
+                </tr>
+                <tr>
+                    <td><strong>Cartello Segnaletico</strong></td>
+                    <td>Identificazione spazio</td>
+                    <td>Fotoluminescente, "SPAZIO CALMO"</td>
+                </tr>
+                <tr>
+                    <td><strong>Illuminazione Emergenza</strong></td>
+                    <td>Visibilità in assenza corrente</td>
+                    <td>Autonomia 1 ora, accensione automatica</td>
+                </tr>
+                <tr>
+                    <td><strong>Apertura Ventilazione</strong></td>
+                    <td>Ricambio aria / evacuazione fumo</td>
+                    <td>Verso esterno, dimensioni adeguate</td>
+                </tr>
+                <tr>
+                    <td><strong>Istruzioni d'Uso</strong></td>
+                    <td>Informare su come comportarsi</td>
+                    <td>Affisse, chiare, leggibili</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>📞 Procedure nell'uso dello Spazio Calmo</h3>
+
+        <div class="esempio-pratico">
+            <h4>Come Utilizzare lo Spazio Calmo</h4>
+            <ol>
+                <li><strong>Allarme emergenza:</strong> Persona con disabilità si dirige verso lo spazio calmo più vicino</li>
+                <li><strong>Ingresso:</strong> Entra nello spazio calmo con eventuale accompagnatore</li>
+                <li><strong>Chiusura porta:</strong> Chiude la porta REI (si chiude automaticamente)</li>
+                <li><strong>Comunicazione:</strong> Usa interfono/telefono per comunicare alla centrale:
+                    <ul>
+                        <li>Nome e cognome</li>
+                        <li>Piano e posizione</li>
+                        <li>Numero di persone presenti</li>
+                        <li>Eventuali problemi di salute</li>
+                    </ul>
+                </li>
+                <li><strong>Attesa:</strong> Resta nello spazio calmo fino all'arrivo dei soccorritori (VVF)</li>
+                <li><strong>Evacuazione assistita:</strong> Personale addestrato o VVF lo evacuano con ausili (sedie portantine, barelle, ecc.)</li>
+            </ol>
+        </div>
+
+        <h2>📋 Casi Pratici e Scenari Reali</h2>
+
+        <div class="case-study">
+            <h4>🏢 Scenario 1: Ufficio - Via di Fuga Ostruita</h4>
+            <div class="scenario">
+                <p><strong>Luogo:</strong> Edificio uffici 6 piani, 250 dipendenti, Milano, gennaio 2019</p>
+                
+                <p style="margin-top: 15px;"><strong>Situazione:</strong></p>
+                <ul>
+                    <li>Ore 14:30, principio incendio al 3° piano (corto circuito impianto elettrico)</li>
+                    <li>Sistema di rivelazione attiva allarme</li>
+                    <li>Evacuazione ordinata inizia regolarmente</li>
+                    <li><strong>PROBLEMA:</strong> La scala protetta ovest (principale) ha il pianerottolo del 3° piano <strong>ostruito da scatoloni</strong> di archivio accatastati da giorni</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Conseguenze:</strong></p>
+                <ul>
+                    <li>❌ Congestione evacuazione dal 3°, 4°, 5°, 6° piano</li>
+                    <li>❌ Persone devono scavalcare scatoloni in condizione di fumo</li>
+                    <li>❌ 3 persone cadono, 2 anziane riportano fratture</li>
+                    <li>❌ Evacuazione ritardata di <strong>12 minuti</strong></li>
+                    <li>❌ Necessario intervento VVF anche per soccorso feriti</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Esito:</strong></p>
+                <ul>
+                    <li>🚨 Sanzioni pesanti per il datore di lavoro (ostruzione vie di fuga)</li>
+                    <li>🚨 Risarcimenti ai feriti</li>
+                    <li>🚨 Processo per lesioni colpose</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Lezione Appresa:</strong></p>
+                <p><strong>MAI, per NESSUN motivo, ostruire le vie di fuga.</strong> Anche depositi "temporanei" possono causare tragedie. Controlli settimanali delle vie di fuga sono fondamentali.</p>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h4>💡 Scenario 2: Illuminazione di Emergenza Salva Vite</h4>
+            <div class="scenario">
+                <p><strong>Luogo:</strong> Hotel 4 stelle, 80 camere, Firenze, dicembre 2020</p>
+                
+                <p style="margin-top: 15px;"><strong>Situazione:</strong></p>
+                <ul>
+                    <li>Ore 02:15, guasto elettrico generale (blackout totale) a causa di temporale</li>
+                    <li>Hotel completamente al buio</li>
+                    <li>120 ospiti presenti, molti anziani e stranieri</li>
+                    <li>Sistema di illuminazione di emergenza <strong>si attiva automaticamente</strong></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Sequenza eventi:</strong></p>
+                <ol>
+                    <li><strong>02:15:05:</strong> Luci di emergenza si accendono (< 5 secondi)</li>
+                    <li><strong>02:15-02:20:</strong> Ospiti svegli vedono le vie di fuga illuminate, non entrano in panico</li>
+                    <li><strong>02:17:</strong> Personale notturno comunica via megafono che è solo un blackout</li>
+                    <li><strong>02:45:</strong> Corrente ripristinata, tutto torna normale</li>
+                </ol>
+
+                <p style="margin-top: 15px;"><strong>Risultato:</strong></p>
+                <ul>
+                    <li>✅ <strong>Zero panico</strong> grazie a vie di fuga illuminate</li>
+                    <li>✅ Nessuna evacuazione necessaria</li>
+                    <li>✅ Ospiti rassicurati dalla visibilità</li>
+                    <li>✅ Nessun ferimento o incidente</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Cosa sarebbe successo SENZA illuminazione di emergenza:</strong></p>
+                <ul>
+                    <li>❌ Buio totale in corridoi e scale</li>
+                    <li>❌ Probabile panico, ospiti che cercano di evacuare al buio</li>
+                    <li>❌ Alto rischio cadute nelle scale</li>
+                    <li>❌ Possibili feriti gravi</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Lezione Appresa:</strong></p>
+                <p>L'illuminazione di emergenza <strong>non serve solo in caso di incendio</strong>, ma in qualsiasi interruzione dell'alimentazione elettrica. È un investimento che si ripaga con la sicurezza quotidiana.</p>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h4>♿ Scenario 3: Spazio Calmo Salva una Vita</h4>
+            <div class="scenario">
+                <p><strong>Luogo:</strong> Università, edificio didattico 5 piani, Bologna, marzo 2021</p>
+                
+                <p style="margin-top: 15px;"><strong>Situazione:</strong></p>
+                <ul>
+                    <li>Principio incendio al piano terra (locale fotocopiatrici)</li>
+                    <li>Allarme evacuale, studenti e personale evacuano</li>
+                    <li>Al 4° piano c'è una <strong>studentessa su sedia a rotelle</strong> (paraplegia)</li>
+                    <li>L'edificio ha spazi calmi certificati su ogni piano</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Sequenza eventi:</strong></p>
+                <ol>
+                    <li><strong>15:42:</strong> Allarme incendio suona</li>
+                    <li><strong>15:43:</strong> Studentessa, seguendo il piano di evacuazione, si dirige subito allo spazio calmo (addestramento annuale)</li>
+                    <li><strong>15:44:</strong> Entra nello spazio calmo, chiude porta REI</li>
+                    <li><strong>15:44:30:</strong> Usa interfono: "Sono Sara Bianchi, 4° piano est, spazio calmo, sedia a rotelle, sono sola e sto bene"</li>
+                    <li><strong>15:45:</strong> Centrale sicurezza conferma ricezione: "Sara, resta lì, VVF in arrivo, sei al sicuro"</li>
+                    <li><strong>15:52:</strong> VVF arrivano, incendio già domato dagli addetti interni</li>
+                    <li><strong>15:55:</strong> VVF raggiungono spazio calmo, evacuano Sara con sedia portantina</li>
+                </ol>
+
+                <p style="margin-top: 15px;"><strong>Risultato:</strong></p>
+                <ul>
+                    <li>✅ Sara in totale sicurezza nello spazio calmo</li>
+                    <li>✅ Aria pulita, nessuna inalazione di fumo</li>
+                    <li>✅ Comunicazione costante con centrale</li>
+                    <li>✅ Evacuazione assistita ordinata</li>
+                    <li>✅ <strong>Zero feriti, zero panico</strong></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Cosa sarebbe successo SENZA spazio calmo:</strong></p>
+                <ul>
+                    <li>❌ Sara bloccata al 4° piano, senza posto sicuro</li>
+                    <li>❌ Possibile inalazione di fumo (il fumo sale!)</li>
+                    <li>❌ Panico e stress estremo</li>
+                    <li>❌ Necessità di evacuazione d'urgenza da parte VVF con rischi aggiuntivi</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Lezione Appresa:</strong></p>
+                <p>Gli spazi calmi <strong>salvano vite</strong>. Non sono optional burocratici, ma <strong>salvavita reali</strong> per persone con disabilità. La formazione periodica su come usarli è essenziale.</p>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h4>🏃 Scenario 4: Punto di Raccolta Troppo Vicino</h4>
+            <div class="scenario">
+                <p><strong>Luogo:</strong> Azienda metalmeccanica, capannone industriale, Torino, luglio 2018</p>
+                
+                <p style="margin-top: 15px;"><strong>Situazione:</strong></p>
+                <ul>
+                    <li>Incendio violento in reparto verniciatura (solventi)</li>
+                    <li>Evacuazione attivata immediatamente</li>
+                    <li>80 lavoratori evacuano verso il punto di raccolta</li>
+                    <li><strong>PROBLEMA:</strong> Il punto di raccolta è posizionato a soli <strong>8 metri dal capannone</strong> (anziché minimo 15 metri)</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Conseguenze:</strong></p>
+                <ul>
+                    <li>❌ Lavoratori radunati troppo vicini all'incendio</li>
+                    <li>❌ Calore intenso percepito dal gruppo</li>
+                    <li>❌ Fumo denso raggiunge il punto di raccolta</li>
+                    <li>❌ <strong>Esplosione</strong> di un serbatoio solventi → proiezione di materiali incandescenti</li>
+                    <li>❌ 5 lavoratori feriti da schegge e detriti</li>
+                    <li>❌ Gruppo deve evacuare ulteriormente in fretta e disordine</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Esito:</strong></p>
+                <ul>
+                    <li>🚨 Azienda sanzionata per punto di raccolta non conforme</li>
+                    <li>🚨 Responsabile sicurezza denunciato</li>
+                    <li>🚨 Feriti con prognosi fino a 30 giorni</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Soluzione Successiva:</strong></p>
+                <ul>
+                    <li>✅ Punto di raccolta spostato a <strong>25 metri</strong> dal capannone</li>
+                    <li>✅ In area aperta, senza ostacoli</li>
+                    <li>✅ Accessibile da tutti i lati</li>
+                    <li>✅ Segnaletica rifatta con cartelli più grandi e illuminati</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Lezione Appresa:</strong></p>
+                <p>Il punto di raccolta deve essere <strong>sufficientemente lontano</strong> da garantire sicurezza anche in caso di esplosioni, crolli o proiezione di materiali. 15 metri è il minimo, ma valutare caso per caso.</p>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h4>🪜 Scenario 5: Scala Protetta Impedisce Tragedia</h4>
+            <div class="scenario">
+                <p><strong>Luogo:</strong> Condominio residenziale 8 piani, Roma, febbraio 2022</p>
+                
+                <p style="margin-top: 15px;"><strong>Situazione:</strong></p>
+                <ul>
+                    <li>Ore 03:00, incendio appartamento 2° piano (causa: stufa elettrica difettosa)</li>
+                    <li>Fumo denso si propaga rapidamente</li>
+                    <li>Edificio dotato di <strong>scala protetta</strong> (vano scala separato con porte REI autochiudenti)</li>
+                    <li>45 residenti nei piani superiori devono evacuare</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Sequenza eventi:</strong></p>
+                <ol>
+                    <li><strong>03:02:</strong> Residenti si svegliano per odore fumo</li>
+                    <li><strong>03:03:</strong> Chi esce sul pianerottolo vede fumo denso</li>
+                    <li><strong>03:04:</strong> Entrano nella scala protetta chiudendo porta REI dietro di sé</li>
+                    <li><strong>03:05-03:12:</strong> 45 persone evacuano tramite scala protetta</li>
+                    <li><strong>03:15:</strong> VVF arrivano, spengono incendio</li>
+                </ol>
+
+                <p style="margin-top: 15px;"><strong>Risultato:</strong></p>
+                <ul>
+                    <li>✅ <strong>Scala protetta completamente libera da fumo</strong></li>
+                    <li>✅ Porte REI hanno impedito ingresso fumo nella scala</li>
+                    <li>✅ Evacuazione ordinata e sicura</li>
+                    <li>✅ <strong>Zero intossicazioni, zero feriti</strong></li>
+                    <li>✅ Visibilità perfetta in tutta la scala</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Cosa sarebbe successo con scala ordinaria (non protetta):</strong></p>
+                <ul>
+                    <li>❌ Fumo avrebbe invaso la scala immediatamente</li>
+                    <li>❌ Residenti piani alti intrappolati o costretti a scendere al buio tra il fumo</li>
+                    <li>❌ Alto rischio intossicazione da CO e gas tossici</li>
+                    <li>❌ Probabile necessità evacuazione VVF da finestre (rischio altissimo)</li>
+                    <li>❌ Possibili vittime</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Testimonianza Residente:</strong></p>
+                <p style="font-style: italic; margin-top: 10px;">"Quando sono uscita sul pianerottolo, c'era fumo dappertutto. Ma appena ho aperto la porta della scala e sono entrata, l'aria era pulitissima. Non ci potevo credere. Abbiamo fatto tutti le scale senza problemi. La scala protetta ci ha salvato la vita."</p>
+
+                <p style="margin-top: 15px;"><strong>Lezione Appresa:</strong></p>
+                <p>Le <strong>scale protette</strong> sono investimenti salvavita. Nei condomini e edifici multipiano, fanno la differenza tra evacuazione sicura e tragedia. Le porte REI devono essere sempre autochiudenti e mai bloccate aperte.</p>
+            </div>
+        </div>
+
+        <h2>❓ FAQ - Domande Frequenti</h2>
+
+        <div class="faq">
+            <h3>❓ Quante vie di fuga sono obbligatorie?</h3>
+            <p>Il numero di vie di fuga dipende dall'<strong>affollamento</strong> (numero di persone) e dalla <strong>lunghezza del percorso</strong> fino all'uscita. In generale:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Almeno 2 vie di fuga indipendenti</strong> da ogni punto dell'edificio</li>
+                <li>In ambienti con < 25 persone e percorso < 15 metri: può essere sufficiente 1 sola via</li>
+                <li>In ambienti con > 50 persone: obbligatoriamente 2 o più vie distanziate</li>
+                <li>Le due vie devono essere <strong>angolate tra loro</strong>, non parallele</li>
+            </ul>
+            <p style="margin-top: 10px;">La regola generale è: <strong>"Se una via è bloccata, devo poter uscire dall'altra senza tornare indietro"</strong></p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Posso usare l'ascensore come via di fuga?</h3>
+            <p><strong>NO. Gli ascensori normali NON possono mai essere usati come vie di fuga.</strong></p>
+            <p style="margin-top: 10px;">Motivi:</p>
+            <ul>
+                <li>❌ In caso di incendio, l'energia elettrica viene interrotta → ascensore si blocca</li>
+                <li>❌ Il vano ascensore è una "ciminiera" per il fumo che sale</li>
+                <li>❌ Persone bloccate in ascensore rischiano l'intossicazione</li>
+                <li>❌ I VVF devono usare gli ascensori per i soccorsi</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Eccezione:</strong> Esistono <strong>ascensori antincendio</strong> certificati (rari, costosissimi) con vano protetto, alimentazione di emergenza e comandi prioritari per VVF. Ma <strong>NON per uso da parte degli occupanti</strong>, solo per i soccorritori.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Ogni quanto vanno verificate le vie di fuga?</h3>
+            <p>Le vie di fuga devono essere <strong>controllate frequentemente</strong>:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Controllo visivo:</strong> <strong>giornaliero</strong> o <strong>settimanale</strong> (a seconda del luogo)
+                    <ul>
+                        <li>Verificare che non ci siano ostruzioni</li>
+                        <li>Porte apribili e non bloccate</li>
+                        <li>Segnaletica visibile</li>
+                    </ul>
+                </li>
+                <li><strong>Verifica funzionale porte REI:</strong> <strong>semestrale</strong>
+                    <ul>
+                        <li>Autochiusura corretta</li>
+                        <li>Guarnizioni integre</li>
+                        <li>Maniglioni antipanico funzionanti</li>
+                    </ul>
+                </li>
+                <li><strong>Manutenzione straordinaria:</strong> quando necessario (danni, malfunzionamenti)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Buona pratica:</strong> Durante le <strong>prove di evacuazione</strong> (almeno 1-2 volte/anno), si verifica anche la percorribilità delle vie di fuga.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ L'illuminazione di emergenza deve essere sempre accesa?</h3>
+            <p><strong>No.</strong> L'illuminazione di emergenza in <strong>modalità "non permanente"</strong> (la più diffusa) <strong>resta spenta</strong> in condizioni normali e <strong>si accende automaticamente</strong> solo quando manca la corrente.</p>
+            <p style="margin-top: 10px;">Esiste anche la modalità <strong>"permanente"</strong>, dove l'apparecchio è sempre acceso (di serie alimentato da rete, in caso di blackout passa a batteria), ma è meno comune e usata in luoghi particolari.</p>
+            <p style="margin-top: 10px;"><strong>Come capire se funziona?</strong></p>
+            <ul>
+                <li>Gli apparecchi hanno un <strong>LED verde</strong> di segnalazione (carica batteria OK)</li>
+                <li>Test mensile: premere tasto "TEST" → lampada si accende → verifica funzionamento</li>
+                <li>Se LED rosso o nessun LED: batteria scarica o guasto → intervento tecnico immediato</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Cosa fare se trovo una via di fuga ostruita?</h3>
+            <p><strong>Ostruire le vie di fuga è un REATO penale</strong> (art. 650 Codice Penale - Inosservanza di provvedimenti dell'autorità).</p>
+            <p style="margin-top: 10px;"><strong>Se trovi una via di fuga ostruita:</strong></p>
+            <ol>
+                <li><strong>Segnala immediatamente</strong> al datore di lavoro / RSPP / responsabile sicurezza</li>
+                <li><strong>Rimuovi l'ostruzione</strong> se è semplice e sicuro farlo (es. scatoloni spostabili)</li>
+                <li><strong>Non aspettare:</strong> le vie di fuga devono essere libere SEMPRE</li>
+                <li>Se l'ostruzione persiste, puoi fare <strong>segnalazione ai Vigili del Fuoco</strong> o ASL (organi di vigilanza)</li>
+            </ol>
+            <p style="margin-top: 10px;"><strong>Perché è così grave?</strong> Perché in caso di emergenza reale, quella ostruzione può causare morti. Non è "solo una disattenzione".</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ A che distanza deve stare il punto di raccolta dall'edificio?</h3>
+            <p>La <strong>distanza minima</strong> raccomandata è di <strong>15 metri</strong> dall'edificio, ma dipende da:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Tipo di edificio:</strong> edifici con rischio esplosione richiedono distanze maggiori (30-50 metri)</li>
+                <li><strong>Altezza edificio:</strong> edifici alti possono avere crolli o caduta oggetti più estesi</li>
+                <li><strong>Presenza di sostanze pericolose:</strong> depositi chimici, GPL, etc. richiedono distanze maggiori</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Regola pratica:</strong></p>
+            <ul>
+                <li>Edificio standard: <strong>15-20 metri</strong></li>
+                <li>Edificio alto o industriale: <strong>25-30 metri</strong></li>
+                <li>Deposito sostanze pericolose: <strong>50+ metri</strong></li>
+            </ul>
+            <p style="margin-top: 10px;">Il punto di raccolta deve comunque essere <strong>visibile dall'edificio</strong> per controllo evacuazione, ma abbastanza lontano per sicurezza.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ È obbligatorio avere uno spazio calmo in tutti gli edifici?</h3>
+            <p>Lo spazio calmo è <strong>obbligatorio solo se nell'edificio sono presenti (o possono essere presenti) persone con disabilità motoria</strong> che non possono usare autonomamente le scale.</p>
+            <p style="margin-top: 10px;"><strong>Obbligatorio in:</strong></p>
+            <ul>
+                <li>✅ Edifici pubblici e aperti al pubblico (uffici PA, ospedali, scuole, università, musei, teatri)</li>
+                <li>✅ Edifici dove lavorano o possono accedere persone con disabilità</li>
+                <li>✅ Strutture ricettive (hotel, RSA)</li>
+                <li>✅ Centri commerciali, uffici privati con più piani (potenziali visitatori disabili)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Non obbligatorio in:</strong></p>
+            <ul>
+                <li>❌ Abitazioni private monofamiliari</li>
+                <li>❌ Piccoli uffici su un solo piano</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Attenzione:</strong> Anche se non obbligatorio, prevedere spazi calmi è una <strong>buona pratica</strong> di inclusività e sicurezza. Il D.M. 3/08/2015 raccomanda comunque di valutare soluzioni per l'esodo assistito di tutti.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Qual è la differenza tra scala protetta e scala a prova di fumo?</h3>
+            <p>Entrambe sono progettate per tenere fuori fumo e calore, ma hanno livelli di protezione diversi:</p>
+            
+            <table style="margin-top: 15px;">
+                <thead>
+                    <tr>
+                        <th>Caratteristica</th>
+                        <th>Scala Protetta</th>
+                        <th>Scala a Prova di Fuoco</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Separazione</strong></td>
+                        <td>Porte REI dirette sui piani</td>
+                        <td>Filtro a prova di fumo (doppia porta REI)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resistenza al fuoco</strong></td>
+                        <td>REI 60 (standard)</td>
+                        <td>REI 120 (elevata)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ventilazione</strong></td>
+                        <td>Naturale in sommità</td>
+                        <td>Pressurizzazione o ventilazione forzata</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Protezione fumo</strong></td>
+                        <td>Buona (se porte chiuse)</td>
+                        <td>Massima (filtro impedisce ingresso)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Obbligatoria per</strong></td>
+                        <td>Edifici > 24 m o > 4 piani</td>
+                        <td>Edifici > 54 m (grattacieli)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Costo</strong></td>
+                        <td>Medio</td>
+                        <td>Elevato</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="margin-top: 15px;"><strong>In sintesi:</strong> La scala a prova di fumo è il "top di gamma" della protezione, necessaria per edifici molto alti o ad alto rischio. La scala protetta è lo standard per la maggior parte degli edifici multipiano.</p>
+        </div>
+
+    </div>
+
+    <div class="ennesg-footer">
+        <p><strong>Enne<span style="color: #FFA500;">SG</span></strong> - Il Partner per la Tua Crescita</p>
+        <p>Consulenza ISO e Sicurezza sul Lavoro</p>
+        <p>📧 Per informazioni: <a href="https://enne-sg.github.io/EnneSG/">enne-sg.github.io/EnneSG</a></p>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+            Documento informativo a scopo didattico. Per applicazioni specifiche consultare sempre la normativa vigente e professionisti qualificati.
+        </p>
+    </div>
+</body>
+</html>

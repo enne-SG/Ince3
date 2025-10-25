@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistenza e Reazione al Fuoco | Compartimentazione | Evacuatori Fumo - EnneSG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2a5298;
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #2a5298;
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #444;
+            margin: 20px 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffed4e 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .key-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .danger-box {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .case-study {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .scenario {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .comparison-card h4 {
+            color: #1e3c72;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .rei-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .rei-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .euroclassi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .euroclassi-table th,
+        .euroclassi-table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+
+        .euroclassi-table th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        .euroclassi-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .euroclassi-table tr:hover {
+            background: #e3f2fd;
+        }
+
+        .classe-a1 { background: #d4edda; font-weight: bold; }
+        .classe-a2 { background: #d1ecf1; }
+        .classe-b { background: #fff3cd; }
+        .classe-c { background: #ffe8cc; }
+        .classe-d { background: #ffd4cc; }
+        .classe-e { background: #ffcccc; }
+        .classe-f { background: #f8d7da; }
+
+        .evacuatori-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .evacuatore-card {
+            background: white;
+            border: 3px solid #dee2e6;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .evacuatore-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .evacuatore-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .faq {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .faq h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        strong {
+            color: #1e3c72;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .comparison-grid,
+            .evacuatori-grid,
+            .rei-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛡️ Resistenza e Reazione al Fuoco</h1>
+        <div class="subtitle">Compartimentazione ed Evacuatori di Fumo e Calore</div>
+        <div class="badge-container">
+            <div class="badge">📘 D.Lgs. 81/08 • Formazione</div>
+            <div class="badge">🔥 Prevenzione Incendi</div>
+            <div class="badge">🏢 Sicurezza Edilizia</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>🏗️ Resistenza e Reazione al Fuoco nella Prevenzione Incendi</h1>
+
+        <div class="intro">
+            <p>La <strong>sicurezza antincendio degli edifici</strong> si basa su due concetti fondamentali e complementari: la <span class="highlight">resistenza al fuoco</span> e la <span class="highlight">reazione al fuoco</span>. Comprendere la differenza tra questi due parametri è essenziale per progettare edifici sicuri e conformi alla normativa.</p>
+            <p style="margin-top: 15px;">Questo documento approfondisce:</p>
+            <ul>
+                <li>✅ <strong>Resistenza al fuoco:</strong> quanto tempo una struttura resiste al fuoco (REI)</li>
+                <li>✅ <strong>Reazione al fuoco:</strong> quanto un materiale contribuisce all'incendio (Euroclassi)</li>
+                <li>✅ <strong>Compartimentazione:</strong> come dividere gli edifici per limitare la propagazione</li>
+                <li>✅ <strong>Evacuatori di fumo e calore:</strong> sistemi per mantenere vie di fuga sicure</li>
+            </ul>
+        </div>
+
+        <div class="key-message">
+            "La resistenza al fuoco protegge la struttura, la reazione al fuoco previene l'alimentazione dell'incendio"
+        </div>
+
+        <h2>🔥 Resistenza al Fuoco (REI/EI)</h2>
+
+        <div class="intro">
+            <p>La <strong>resistenza al fuoco</strong> è una misura di <span class="highlight">protezione passiva</span> che indica per quanto tempo un elemento costruttivo (muro, solaio, porta, struttura) è in grado di mantenere le sue prestazioni in caso di incendio.</p>
+        </div>
+
+        <h3>📋 La Sigla REI - Significato</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>R - Résistance (Resistenza)</h4>
+                <p><strong>Definizione:</strong> Capacità di mantenere la resistenza meccanica sotto l'azione del fuoco.</p>
+                <p style="margin-top: 10px;"><strong>In pratica:</strong> La struttura non crolla e continua a sostenere i carichi anche quando esposta alle fiamme.</p>
+                <p style="margin-top: 10px;"><strong>Si applica a:</strong></p>
+                <ul>
+                    <li>Strutture portanti (travi, pilastri)</li>
+                    <li>Solai</li>
+                    <li>Elementi strutturali in generale</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>E - Etanchéité (Ermeticità/Tenuta)</h4>
+                <p><strong>Definizione:</strong> Capacità di non lasciar passare né produrre fiamme, vapori o gas caldi sul lato non esposto.</p>
+                <p style="margin-top: 10px;"><strong>In pratica:</strong> L'elemento impedisce la propagazione dell'incendio oltre il compartimento dove è nato.</p>
+                <p style="margin-top: 10px;"><strong>Si applica a:</strong></p>
+                <ul>
+                    <li>Porte tagliafuoco</li>
+                    <li>Pareti di separazione</li>
+                    <li>Serramenti</li>
+                    <li>Elementi di compartimentazione</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>I - Isolation (Isolamento Termico)</h4>
+                <p><strong>Definizione:</strong> Capacità di limitare la trasmissione del calore entro determinati limiti (temperatura massima 140°C media e 180°C in un punto sul lato non esposto).</p>
+                <p style="margin-top: 10px;"><strong>In pratica:</strong> La faccia opposta alle fiamme non si scalda abbastanza da innescare nuovi incendi o ustionare chi la tocca.</p>
+                <p style="margin-top: 10px;"><strong>Si applica a:</strong></p>
+                <ul>
+                    <li>Porte tagliafuoco</li>
+                    <li>Pareti divisorie</li>
+                    <li>Elementi separanti</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h4>💡 REI vs EI - Quando Si Usa Cosa?</h4>
+            <p><strong>REI</strong> (con la R) si usa per:</p>
+            <ul>
+                <li>✅ <strong>Elementi strutturali portanti:</strong> travi, pilastri, solai portanti, pareti portanti</li>
+                <li>✅ Tutto ciò che sostiene carichi oltre al proprio peso</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>EI</strong> (senza la R) si usa per:</p>
+            <ul>
+                <li>✅ <strong>Elementi NON portanti:</strong> porte tagliafuoco, pareti di tamponamento, serrande</li>
+                <li>✅ Tutto ciò che non ha funzione strutturale ma solo di separazione</li>
+            </ul>
+            <p style="margin-top: 15px; font-style: italic;">Una porta tagliafuoco è sempre <strong>EI</strong> e mai REI, perché non sostiene carichi strutturali!</p>
+        </div>
+
+        <h3>⏱️ Classi di Resistenza al Fuoco</h3>
+
+        <div class="intro">
+            <p>Il numero che accompagna la sigla REI o EI indica i <strong>minuti primi</strong> durante i quali l'elemento mantiene le sue caratteristiche. Più alto è il numero, maggiore è la protezione.</p>
+        </div>
+
+        <div class="rei-grid">
+            <div class="rei-card">REI 30<br><small>30 minuti</small></div>
+            <div class="rei-card">REI 45<br><small>45 minuti</small></div>
+            <div class="rei-card">REI 60<br><small>1 ora</small></div>
+            <div class="rei-card">REI 90<br><small>1,5 ore</small></div>
+            <div class="rei-card">REI 120<br><small>2 ore</small></div>
+            <div class="rei-card">REI 180<br><small>3 ore</small></div>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ Come si Determina la Classe REI Necessaria?</h4>
+            <p>La classe di resistenza al fuoco richiesta dipende da:</p>
+            <ul>
+                <li><strong>Carico di incendio:</strong> Quantità e tipo di materiali combustibili presenti</li>
+                <li><strong>Altezza dell'edificio:</strong> Più alto l'edificio, maggiore la resistenza richiesta</li>
+                <li><strong>Destinazione d'uso:</strong> Ospedali, scuole, uffici, industrie hanno requisiti diversi</li>
+                <li><strong>Affollamento:</strong> Numero di persone che occupano gli spazi</li>
+                <li><strong>Normativa specifica:</strong> D.M. 3 agosto 2015 (Codice di Prevenzione Incendi)</li>
+            </ul>
+        </div>
+
+        <div class="case-study">
+            <h4>📋 Scenario 1: Ufficio Open Space</h4>
+            <div class="scenario">
+                <p><strong>Situazione:</strong> Un'azienda occupa il terzo piano di un edificio per uffici con 50 dipendenti. Altezza totale edificio: 12 metri (circa 4 piani).</p>
+                <p style="margin-top: 10px;"><strong>Valutazione:</strong></p>
+                <ul>
+                    <li>Altezza antincendio tra 12 e 24 metri → requisito minimo <strong>REI 60</strong></li>
+                    <li>Carico di incendio: medio (arredi ufficio, carta, computer)</li>
+                    <li>Affollamento: moderato (50 persone/piano)</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Soluzione applicata:</strong></p>
+                <ul>
+                    <li>✅ Strutture portanti: <strong>REI 60</strong> (pilastri e solai)</li>
+                    <li>✅ Porte tagliafuoco vano scale: <strong>EI 60</strong></li>
+                    <li>✅ Pareti compartimentazione: <strong>EI 60</strong></li>
+                    <li>✅ Serrande tagliafuoco condotte aerazione: <strong>EI 60</strong></li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Risultato:</strong> In caso di incendio, la struttura resiste almeno 60 minuti, tempo sufficiente per l'evacuazione completa e l'arrivo dei Vigili del Fuoco.</p>
+            </div>
+        </div>
+
+        <h3>🧱 Come Aumentare la Resistenza al Fuoco</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>Protezione Strutture in Acciaio</h4>
+                <ul>
+                    <li><strong>Vernici intumescenti:</strong> Si gonfiano con il calore formando uno strato isolante</li>
+                    <li><strong>Pannelli in cartongesso REI:</strong> Rivestimento con lastre specifiche ignifughe</li>
+                    <li><strong>Intonaci speciali:</strong> Malte cementizie con vermiculite o perlite</li>
+                    <li><strong>Riempimento cassoni:</strong> Con materiali isolanti incombustibili</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>Protezione Strutture in Calcestruzzo</h4>
+                <ul>
+                    <li><strong>Copriferro adeguato:</strong> Aumentare lo spessore di calcestruzzo sui ferri</li>
+                    <li><strong>Calcestruzzi speciali:</strong> Con inerti leggeri ad alta resistenza termica</li>
+                    <li><strong>Dimensionamento sezioni:</strong> Sezioni più grandi resistono meglio</li>
+                    <li><strong>Rivestimenti ignifughi:</strong> Pannelli o intonaci protettivi</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>Protezione Strutture in Legno</h4>
+                <ul>
+                    <li><strong>Sezioni sovradimensionate:</strong> La parte esterna carbonizza proteggendo l'interno</li>
+                    <li><strong>Trattamenti ignifughi:</strong> Impregnazione con sali ritardanti</li>
+                    <li><strong>Rivestimenti:</strong> Pannelli in cartongesso REI o intonaci</li>
+                    <li><strong>Legno lamellare:</strong> Prestazioni migliori del legno massiccio</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🎨 Reazione al Fuoco dei Materiali</h2>
+
+        <div class="intro">
+            <p>La <strong>reazione al fuoco</strong> indica il <span class="highlight">grado di partecipazione di un materiale alla combustione</span> quando è sottoposto al fuoco. In altre parole: quanto quel materiale "aiuta" l'incendio a svilupparsi e propagarsi.</p>
+            <p style="margin-top: 15px;"><strong>Parametri valutati:</strong></p>
+            <ul>
+                <li>Velocità di propagazione delle fiamme</li>
+                <li>Rilascio di calore (contributo energetico all'incendio)</li>
+                <li>Produzione di fumo</li>
+                <li>Gocciolamento di materiale incandescente</li>
+                <li>Emissione di gas tossici</li>
+            </ul>
+        </div>
+
+        <div class="key-message">
+            La reazione al fuoco NON misura quanto tempo un materiale resiste, ma quanto AIUTA l'incendio a crescere
+        </div>
+
+        <h3>🇪🇺 Euroclassi di Reazione al Fuoco</h3>
+
+        <div class="info-box">
+            <h4>💡 Dalla Classificazione Italiana alle Euroclassi</h4>
+            <p>Fino al <strong>27 ottobre 2023</strong> in Italia coesistevano due sistemi:</p>
+            <ul>
+                <li><strong>Sistema italiano:</strong> Classi da 0 a 5 (D.M. 26 giugno 1984)</li>
+                <li><strong>Sistema europeo:</strong> Euroclassi da A1 a F (UNI EN 13501-1)</li>
+            </ul>
+            <p style="margin-top: 15px;">Dal <strong>28 ottobre 2023</strong> (D.M. 14 ottobre 2022) è <span class="highlight">obbligatorio utilizzare esclusivamente le Euroclassi</span> per tutti i prodotti da costruzione.</p>
+        </div>
+
+        <table class="euroclassi-table">
+            <thead>
+                <tr>
+                    <th>Euroclasse</th>
+                    <th>Descrizione</th>
+                    <th>Combustibilità</th>
+                    <th>Esempi Materiali</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="classe-a1">
+                    <td><strong>A1</strong></td>
+                    <td>Materiale <strong>incombustibile</strong> - nessun contributo al fuoco</td>
+                    <td>❌ Nulla</td>
+                    <td>Cemento, calcestruzzo, ceramica, vetro, pietra naturale, metalli non rivestiti, lana di roccia</td>
+                </tr>
+                <tr class="classe-a2">
+                    <td><strong>A2</strong></td>
+                    <td>Materiale <strong>quasi incombustibile</strong> - contributo trascurabile</td>
+                    <td>⚠️ Minima</td>
+                    <td>Cartongesso REI, pannelli sandwich con nucleo minerale, lana di vetro</td>
+                </tr>
+                <tr class="classe-b">
+                    <td><strong>B</strong></td>
+                    <td>Materiale con <strong>contributo molto limitato</strong> al fuoco</td>
+                    <td>⚠️ Molto bassa</td>
+                    <td>Pannelli in legno trattato ignifugo, alcuni rivestimenti speciali</td>
+                </tr>
+                <tr class="classe-c">
+                    <td><strong>C</strong></td>
+                    <td>Materiale con <strong>contributo limitato</strong> al fuoco</td>
+                    <td>⚠️ Bassa</td>
+                    <td>Pavimenti in legno trattato, alcuni pannelli isolanti, moquette ignifughe</td>
+                </tr>
+                <tr class="classe-d">
+                    <td><strong>D</strong></td>
+                    <td>Materiale con <strong>contributo accettabile</strong> - propagazione controllata</td>
+                    <td>🔥 Media</td>
+                    <td>Legno non trattato, alcuni materiali plastici, pavimenti vinilici</td>
+                </tr>
+                <tr class="classe-e">
+                    <td><strong>E</strong></td>
+                    <td>Materiale con <strong>contributo elevato</strong> - si accende facilmente</td>
+                    <td>🔥 Alta</td>
+                    <td>Materiali sintetici non trattati, tessuti non ignifughi</td>
+                </tr>
+                <tr class="classe-f">
+                    <td><strong>F</strong></td>
+                    <td>Materiale <strong>non classificato</strong> o prestazioni non determinate</td>
+                    <td>🔥 Molto alta o sconosciuta</td>
+                    <td>Materiali senza test o non conformi alle prove minime</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>💨 Classificazioni Aggiuntive: Fumo e Gocciolamento</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>📊 Produzione di Fumo (s)</h4>
+                <p><strong>s1:</strong> Produzione di fumo <strong>limitata</strong></p>
+                <ul>
+                    <li>✅ Bassa opacità</li>
+                    <li>✅ Visibilità mantenuta più a lungo</li>
+                    <li>✅ Preferibile per vie di fuga</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>s2:</strong> Produzione di fumo <strong>media</strong></p>
+                <ul>
+                    <li>⚠️ Opacità moderata</li>
+                    <li>⚠️ Visibilità ridotta dopo alcuni minuti</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>s3:</strong> Produzione di fumo <strong>elevata</strong></p>
+                <ul>
+                    <li>❌ Alta opacità</li>
+                    <li>❌ Visibilità rapidamente compromessa</li>
+                    <li>❌ Non adatto per vie di esodo</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>💧 Gocciolamento (d)</h4>
+                <p><strong>d0:</strong> <strong>Nessun gocciolamento</strong></p>
+                <ul>
+                    <li>✅ Materiale non produce gocce incandescenti</li>
+                    <li>✅ Sicuro per pavimenti e sopra vie di fuga</li>
+                    <li>✅ Non propaga incendio verso il basso</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>d1:</strong> Gocciolamento <strong>limitato</strong></p>
+                <ul>
+                    <li>⚠️ Produce gocce che si spengono entro 10 secondi</li>
+                    <li>⚠️ Rischio contenuto</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>d2:</strong> Gocciolamento <strong>significativo</strong></p>
+                <ul>
+                    <li>❌ Gocce persistenti e incandescenti</li>
+                    <li>❌ Possono innescare nuovi focolai</li>
+                    <li>❌ Rischio elevato per persone sottostanti</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ Esempio di Classificazione Completa</h4>
+            <p>Un materiale classificato <strong>B-s1,d0</strong> significa:</p>
+            <ul>
+                <li><strong>B:</strong> Contributo molto limitato al fuoco (bassa combustibilità)</li>
+                <li><strong>s1:</strong> Bassa produzione di fumo (buona visibilità)</li>
+                <li><strong>d0:</strong> Nessun gocciolamento di materiale fuso</li>
+            </ul>
+            <p style="margin-top: 15px;">Questo materiale è <span class="highlight">ideale per rivestimenti in vie di fuga e locali pubblici</span>.</p>
+        </div>
+
+        <h3>🏢 Requisiti per le Vie di Fuga</h3>
+
+        <div class="warning-box">
+            <h4>⚠️ Prescrizioni Fondamentali</h4>
+            <p>Il <strong>D.M. 3 agosto 2015</strong> (Codice di Prevenzione Incendi) stabilisce requisiti minimi per i materiali nelle vie di esodo:</p>
+            <ul>
+                <li><strong>Pavimenti:</strong> Classe minima <strong>Cfl-s1</strong> (meglio <strong>Bfl-s1</strong>)</li>
+                <li><strong>Pareti e soffitti:</strong> Classe minima <strong>B-s2,d0</strong> (meglio <strong>B-s1,d0</strong>)</li>
+                <li><strong>Porte e serramenti:</strong> Classe minima <strong>D-s2,d0</strong></li>
+                <li><strong>Isolanti in intercapedini:</strong> Classe minima <strong>B-s2,d0</strong></li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold;">Attenzione: Normative specifiche possono richiedere prestazioni superiori!</p>
+        </div>
+
+        <div class="case-study">
+            <h4>📋 Scenario 2: Ristrutturazione Scuola</h4>
+            <div class="scenario">
+                <p><strong>Situazione:</strong> Una scuola primaria deve sostituire i rivestimenti del corridoio del piano terra (via di fuga principale).</p>
+                <p style="margin-top: 10px;"><strong>Errore comune:</strong></p>
+                <ul>
+                    <li>❌ Il direttore dei lavori propone un <strong>pavimento in PVC classe E</strong> perché economico</li>
+                    <li>❌ Un controsoffitto in <strong>pannelli di polistirolo espanso classe F</strong></li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Problema:</strong></p>
+                <ul>
+                    <li>⛔ Materiali ad <strong>altissima combustibilità</strong></li>
+                    <li>⛔ Produzione di <strong>fumo denso e tossico</strong></li>
+                    <li>⛔ Gocciolamento di materiale fuso che può ustionare gli studenti in fuga</li>
+                    <li>⛔ <strong>NON conformi</strong> al D.M. Scuole</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Soluzione corretta:</strong></p>
+                <ul>
+                    <li>✅ Pavimento in <strong>grès porcellanato A1fl</strong> o <strong>linoleum Bfl-s1</strong></li>
+                    <li>✅ Controsoffitto in <strong>pannelli in lana di roccia A2-s1,d0</strong></li>
+                    <li>✅ Rivestimento pareti in <strong>pittura ignifuga classe B-s1,d0</strong></li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Risultato:</strong> In caso di incendio, i materiali non contribuiscono alla combustione, producono poco fumo permettendo l'evacuazione in sicurezza, non generano gocce pericolose.</p>
+            </div>
+        </div>
+
+        <h2>🧱 Compartimentazione Antincendio</h2>
+
+        <div class="intro">
+            <p>La <strong>compartimentazione</strong> è la suddivisione di un edificio in <span class="highlight">spazi delimitati da elementi costruttivi con resistenza al fuoco</span> (pareti, solai, porte) allo scopo di <strong>confinare l'incendio</strong> nel compartimento di origine, impedendone la propagazione.</p>
+        </div>
+
+        <div class="key-message">
+            "Un compartimento ben progettato può salvare un intero edificio e decine di vite"
+        </div>
+
+        <h3>🎯 Obiettivi della Compartimentazione</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>🛡️ Protezione delle Persone</h4>
+                <ul>
+                    <li>Limitare propagazione fiamme e fumi</li>
+                    <li>Garantire tempo sufficiente per l'esodo</li>
+                    <li>Proteggere le vie di fuga</li>
+                    <li>Ridurre esposizione a gas tossici</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🏢 Protezione delle Strutture</h4>
+                <ul>
+                    <li>Evitare crollo strutturale</li>
+                    <li>Limitare danni a zone adiacenti</li>
+                    <li>Contenere danni economici</li>
+                    <li>Preservare edifici limitrofi</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🚒 Facilitare Soccorsi</h4>
+                <ul>
+                    <li>Agevolare intervento VVF</li>
+                    <li>Limitare l'area dell'incendio</li>
+                    <li>Ridurre tempo di spegnimento</li>
+                    <li>Proteggere operatori di soccorso</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>🚪 Porte Tagliafuoco (Fire Doors)</h3>
+
+        <div class="info-box">
+            <h4>💡 Caratteristiche Essenziali</h4>
+            <p>Una porta tagliafuoco deve possedere:</p>
+            <ul>
+                <li><strong>Classe di resistenza al fuoco:</strong> EI 30, EI 60, EI 90, EI 120, ecc.</li>
+                <li><strong>Auto-chiusura:</strong> Chiudiporta automatico o cerniere a molla</li>
+                <li><strong>Guarnizioni intumescenti:</strong> Si gonfiano con il calore sigillando i bordi</li>
+                <li><strong>Certificazione:</strong> Marcatura CE obbligatoria (UNI EN 16034:2014)</li>
+                <li><strong>Manutenzione:</strong> Controlli semestrali obbligatori</li>
+            </ul>
+        </div>
+
+        <div class="danger-box">
+            <h4>⛔ Errori Comuni e Gravi</h4>
+            <p><strong>Questi errori rendono la porta tagliafuoco INUTILE:</strong></p>
+            <ul>
+                <li>❌ <strong>Bloccare la porta aperta</strong> con zeppe, fermaporta, tappeti</li>
+                <li>❌ <strong>Forare l'anta</strong> per installare chiavistelli, catenacci, citofoni</li>
+                <li>❌ <strong>Rimuovere il chiudiporta</strong> perché "fa rumore" o "è scomodo"</li>
+                <li>❌ <strong>Danneggiare le guarnizioni</strong> intumescenti nei bordi</li>
+                <li>❌ <strong>Non fare manutenzione</strong> e lasciare la porta incastrata o rotta</li>
+            </ul>
+        </div>
+
+        <div class="case-study">
+            <h4>📋 Caso Reale: L'Incendio del Supermercato</h4>
+            <div class="scenario">
+                <p><strong>Situazione:</strong> Incendio notturno in un supermercato. Il magazzino (200 mq di materiale infiammabile) prende fuoco.</p>
+                <p style="margin-top: 10px;"><strong>Progetto originale:</strong></p>
+                <ul>
+                    <li>Magazzino compartimentato con <strong>parete EI 120</strong></li>
+                    <li>Due porte di accesso <strong>EI 120</strong> con chiudiporta automatico</li>
+                    <li>Separazione da area vendita e uffici</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Cosa è andato storto:</strong></p>
+                <ul>
+                    <li>⛔ Una porta tagliafuoco era stata <strong>bloccata aperta con un bancale</strong> per facilitare i carrelli</li>
+                    <li>⛔ Il chiudiporta dell'altra porta era <strong>rotto da 6 mesi</strong> (non era stata sostituita)</li>
+                    <li>⛔ Era stato <strong>praticato un foro nella parete</strong> per passare cavi elettrici (mai chiuso correttamente)</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Conseguenze:</strong></p>
+                <ul>
+                    <li>🔥 Incendio si è <strong>propagato all'intero edificio</strong> attraverso le aperture</li>
+                    <li>🔥 Danni per oltre <strong>2 milioni di euro</strong></li>
+                    <li>🔥 Edificio inagibile per 8 mesi</li>
+                    <li>🔥 Solo per fortuna non c'erano persone all'interno</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Se la compartimentazione fosse stata integra:</strong></p>
+                <ul>
+                    <li>✅ Incendio <strong>rimasto confinato al magazzino</strong></li>
+                    <li>✅ Danni limitati a <strong>50.000-100.000 euro</strong></li>
+                    <li>✅ Resto del supermercato salvo</li>
+                    <li>✅ Riparazione in poche settimane</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>🏭 Dimensioni dei Compartimenti</h3>
+
+        <div class="info-box">
+            <h4>💡 Criteri di Dimensionamento</h4>
+            <p>La superficie massima dei compartimenti dipende da:</p>
+            <ul>
+                <li><strong>Carico d'incendio specifico:</strong> MJ/m² di materiale combustibile presente</li>
+                <li><strong>Destinazione d'uso:</strong> Uffici, industrie, ospedali, scuole hanno limiti diversi</li>
+                <li><strong>Presenza di impianti automatici:</strong> Sprinkler, rivelazione incendi, evacuatori fumo</li>
+                <li><strong>Altezza edificio:</strong> Edifici alti richiedono compartimenti più piccoli</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Valori indicativi (senza sprinkler):</strong></p>
+            <ul>
+                <li>Uffici: fino a <strong>2.000-3.000 m²</strong></li>
+                <li>Commerciale: fino a <strong>2.500-5.000 m²</strong></li>
+                <li>Industriale: <strong>500-2.000 m²</strong> (dipende dal rischio)</li>
+                <li>Magazzini: <strong>1.000-2.500 m²</strong></li>
+            </ul>
+            <p style="margin-top: 15px;">Con impianti sprinkler le superfici possono <strong>raddoppiare</strong>!</p>
+        </div>
+
+        <h2>💨 Evacuatori di Fumo e Calore (EFC)</h2>
+
+        <div class="intro">
+            <p>Gli <strong>evacuatori di fumo e calore</strong> (o <strong>sistemi EFC</strong>) sono dispositivi di protezione attiva che, in caso di incendio, <span class="highlight">espellono fumo, gas caldi e calore</span> dall'ambiente, mantenendo uno strato di aria pulita nella parte bassa del locale.</p>
+        </div>
+
+        <div class="key-message">
+            "Il 70-80% delle vittime negli incendi muore per inalazione di fumo, NON per le fiamme"
+        </div>
+
+        <h3>🎯 Obiettivi dei Sistemi EFC</h3>
+
+        <div class="success-box">
+            <h4>✅ Vantaggi in Caso di Incendio</h4>
+            <ul>
+                <li><strong>🚶 Evacuazione sicura:</strong> Mantiene aria respirabile a livello persona (2-2,5 m da terra)</li>
+                <li><strong>👁️ Visibilità:</strong> Evita che il fumo oscuri le vie di fuga</li>
+                <li><strong>🚒 Facilitare soccorsi:</strong> I VVF possono operare con maggiore sicurezza</li>
+                <li><strong>🏗️ Proteggere strutture:</strong> Riduce temperature evitando collasso strutturale</li>
+                <li><strong>💰 Limitare danni:</strong> Fumo e calore causano danni maggiori delle fiamme</li>
+            </ul>
+        </div>
+
+        <h3>🌬️ Tipologie di Sistemi EFC</h3>
+
+        <div class="evacuatori-grid">
+            <div class="evacuatore-card" style="border-color: #28a745;">
+                <div class="evacuatore-icon">🌬️</div>
+                <h4>SENFC - Sistemi Naturali</h4>
+                <p><strong>Funzionamento:</strong> Evacuazione per <span class="highlight">convezione naturale</span> (differenza di temperatura e pressione).</p>
+                <p style="margin-top: 15px;"><strong>Componenti:</strong></p>
+                <ul>
+                    <li>ENFC (Evacuatori Naturali)</li>
+                    <li>Barriere al fumo</li>
+                    <li>Prese d'aria fresca al piede</li>
+                    <li>Centralina di comando</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Vantaggi:</strong></p>
+                <ul>
+                    <li>✅ Nessun consumo energetico</li>
+                    <li>✅ Manutenzione ridotta</li>
+                    <li>✅ Costi contenuti</li>
+                    <li>✅ Sempre funzionante</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Normativa:</strong> UNI 9494-1:2017</p>
+            </div>
+
+            <div class="evacuatore-card" style="border-color: #dc3545;">
+                <div class="evacuatore-icon">⚙️</div>
+                <h4>SEFFC - Sistemi Forzati</h4>
+                <p><strong>Funzionamento:</strong> Evacuazione mediante <span class="highlight">ventilatori motorizzati</span> che aspirano fumi e gas caldi.</p>
+                <p style="margin-top: 15px;"><strong>Componenti:</strong></p>
+                <ul>
+                    <li>Ventilatori certificati</li>
+                    <li>Condotti aria</li>
+                    <li>Serrande tagliafuoco</li>
+                    <li>Sistema di controllo</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Vantaggi:</strong></p>
+                <ul>
+                    <li>✅ Portata costante e controllabile</li>
+                    <li>✅ Efficace in ambienti complessi</li>
+                    <li>✅ Indipendente da condizioni meteo</li>
+                    <li>✅ Per edifici multipiano/interrati</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Normativa:</strong> UNI 9494-2:2017</p>
+            </div>
+        </div>
+
+        <h3>📐 Componenti di un SENFC</h3>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>🪟 Evacuatori Naturali (ENFC)</h4>
+                <p><strong>Da copertura:</strong></p>
+                <ul>
+                    <li>Installati sul tetto (piani o inclinati)</li>
+                    <li>Con paravento obbligatorio</li>
+                    <li>Apertura verso l'alto</li>
+                    <li>Più efficaci (effetto camino)</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Da parete:</strong></p>
+                <ul>
+                    <li>Su facciate verticali</li>
+                    <li>Numero doppio rispetto a copertura</li>
+                    <li>Apertura solo sottovento</li>
+                    <li>Per edifici senza copertura accessibile</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🧱 Barriere al Fumo</h4>
+                <p>Elementi verticali che <strong>delimitano serbatoi di fumo</strong> impedendo la propagazione laterale:</p>
+                <ul>
+                    <li><strong>Barriere fisse:</strong> Travi, pareti strutturali</li>
+                    <li><strong>Barriere mobili:</strong> Scendono automaticamente in caso d'incendio</li>
+                    <li><strong>Altezza minima:</strong> 0,5-1 metri dal soffitto</li>
+                    <li><strong>Resistenza:</strong> Classe D-s2,d0 minima</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>🌊 Prese d'Aria Fresca</h4>
+                <p>Aperture nella parte bassa dell'edificio per l'<strong>afflusso di aria esterna</strong>:</p>
+                <ul>
+                    <li><strong>Posizione:</strong> A livello pavimento (max 1 m)</li>
+                    <li><strong>Superficie:</strong> Pari o superiore agli evacuatori</li>
+                    <li><strong>Segnalazione:</strong> Cartelli "APERTURA ARIA AL SENFC"</li>
+                    <li><strong>Apertura:</strong> Contestuale agli evacuatori</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>⚙️ Come Funziona un SENFC</h3>
+
+        <div class="info-box">
+            <h4>💡 Principio di Funzionamento - Stratificazione Termica</h4>
+            <ol>
+                <li><strong>Innesco incendio:</strong> Si sviluppa fumo e calore</li>
+                <li><strong>Stratificazione:</strong> Fumi caldi (meno densi) salgono verso l'alto</li>
+                <li><strong>Serbatoio di fumo:</strong> I fumi si accumulano sotto il soffitto delimitati dalle barriere</li>
+                <li><strong>Attivazione sistema:</strong> Manuale o automatica (sensori fumo/calore)</li>
+                <li><strong>Apertura evacuatori:</strong> ENFC si aprono in copertura o parete</li>
+                <li><strong>Apertura prese aria:</strong> Contestualmente agli evacuatori</li>
+                <li><strong>Effetto camino:</strong> Differenza di pressione espelle i fumi verso l'esterno</li>
+                <li><strong>Aria pulita:</strong> Rimane strato libero da fumo di 2-2,5 metri da terra</li>
+            </ol>
+        </div>
+
+        <h3>📏 Dimensionamento Sistema</h3>
+
+        <div class="warning-box">
+            <h4>⚠️ Parametri di Progetto</h4>
+            <p>Il dimensionamento di un SENFC richiede calcoli ingegneristici considerando:</p>
+            <ul>
+                <li><strong>Superficie compartimento:</strong> Minimo 600 m²</li>
+                <li><strong>Altezza ambiente:</strong> Minimo 3 metri</li>
+                <li><strong>Altezza libera da fumo:</strong> Obiettivo da mantenere (es. 2,5 m)</li>
+                <li><strong>Potenza incendio:</strong> kW previsti (carico d'incendio)</li>
+                <li><strong>Superficie evacuatori:</strong> % della superficie pavimento (1-2% tipicamente)</li>
+                <li><strong>Numero serbatoi di fumo:</strong> Massimo 2.000 m² ciascuno</li>
+                <li><strong>Condizioni ambientali:</strong> Vento, neve, temperatura esterna</li>
+            </ul>
+        </div>
+
+        <h3>🔧 Manutenzione Obbligatoria</h3>
+
+        <div class="success-box">
+            <h4>✅ Tipologie di Controllo (UNI 9494-3:2014)</h4>
+            <p><strong>1. Controllo iniziale:</strong></p>
+            <ul>
+                <li>Alla prima installazione o dopo modifiche</li>
+                <li>Verifica documentale e funzionale completa</li>
+                <li>Prova di attivazione 100% componenti</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>2. Sorveglianza:</strong></p>
+            <ul>
+                <li>Frequenza: mensile o trimestrale</li>
+                <li>A cura del responsabile del sistema</li>
+                <li>Ispezione visiva componenti</li>
+                <li>Verifica assenza ostacoli/danni</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>3. Controllo periodico:</strong></p>
+            <ul>
+                <li>Frequenza: <strong>almeno semestrale</strong></li>
+                <li>A cura di personale qualificato</li>
+                <li>Prove funzionali parziali</li>
+                <li>Verifica guarnizioni, meccanismi, serrature</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>4. Manutenzione ordinaria:</strong></p>
+            <ul>
+                <li>Pulizia componenti</li>
+                <li>Lubrificazione meccanismi</li>
+                <li>Sostituzione parti usurate</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>5. Manutenzione straordinaria:</strong></p>
+            <ul>
+                <li>A seguito di guasti importanti</li>
+                <li>Sostituzione componenti danneggiati</li>
+                <li>Ripristino funzionalità</li>
+            </ul>
+        </div>
+
+        <div class="case-study">
+            <h4>📋 Scenario 3: Incendio in Capannone Industriale</h4>
+            <div class="scenario">
+                <p><strong>Situazione:</strong> Capannone industriale 2.000 m², altezza 8 metri, lavorazione materie plastiche. Ore 14:00, incendio parte da una macchina.</p>
+                <p style="margin-top: 10px;"><strong>Sistema installato:</strong></p>
+                <ul>
+                    <li>SENFC con 20 evacuatori naturali in copertura (30 m² totali)</li>
+                    <li>4 serbatoi di fumo da 500 m² ciascuno</li>
+                    <li>Prese d'aria automatiche 35 m²</li>
+                    <li>Rivelatori di fumo collegati a centrale</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Sequenza eventi:</strong></p>
+                <ul>
+                    <li><strong>T+0:</strong> Principio d'incendio, fiamme 1 metro</li>
+                    <li><strong>T+1 min:</strong> Rivelatori attivano SENFC, evacuatori si aprono</li>
+                    <li><strong>T+2 min:</strong> Stratificazione completa, aria pulita fino a 2,5 m</li>
+                    <li><strong>T+3 min:</strong> Tutto il personale (15 persone) evacuato in sicurezza</li>
+                    <li><strong>T+8 min:</strong> Arrivo VVF, visibilità ottima, intervento rapido</li>
+                    <li><strong>T+25 min:</strong> Incendio domato</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Risultato:</strong></p>
+                <ul>
+                    <li>✅ <strong>Zero vittime</strong> e zero feriti</li>
+                    <li>✅ Danni limitati a 50 m² attorno al focolaio</li>
+                    <li>✅ Struttura salva, non ha subìto deformazioni da calore</li>
+                    <li>✅ Ripresa produzione dopo 5 giorni</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Cosa sarebbe successo SENZA il SENFC:</strong></p>
+                <ul>
+                    <li>❌ Fumo denso in 3-4 minuti su tutto il capannone</li>
+                    <li>❌ Panico, scarsa visibilità, rischio intossicazione</li>
+                    <li>❌ Temperature oltre 400°C nella parte alta</li>
+                    <li>❌ Probabile crollo parziale della copertura</li>
+                    <li>❌ Danni oltre 500.000 euro</li>
+                    <li>❌ Fermo produzione di 3-6 mesi</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>❓ FAQ - Domande Frequenti</h2>
+
+        <div class="faq">
+            <h3>❓ Qual è la differenza tra resistenza al fuoco e reazione al fuoco?</h3>
+            <p><strong>In parole semplici:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Resistenza al fuoco (REI/EI):</strong> Per quanto tempo una struttura o un elemento costruttivo "tiene" sotto l'attacco del fuoco senza crollare, aprirsi o trasmettere calore eccessivo</li>
+                <li><strong>Reazione al fuoco (Euroclassi):</strong> Quanto un materiale "aiuta" l'incendio alimentandolo con la sua combustione</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Esempio pratico:</strong></p>
+            <ul>
+                <li>Una <strong>porta tagliafuoco EI 60</strong> resiste 60 minuti (resistenza) ma l'anta può essere in legno trattato classe B (reazione)</li>
+                <li>Un <strong>pannello in polistirolo classe F</strong> brucia facilmente (pessima reazione) anche se incollato a un muro REI 120 (ottima resistenza)</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Una porta tagliafuoco può mai essere REI?</h3>
+            <p><strong>NO, tecnicamente una porta tagliafuoco è sempre EI (senza la R).</strong></p>
+            <p style="margin-top: 10px;">La "R" indica la capacità portante, ovvero l'attitudine a sostenere carichi strutturali. Una porta non è mai un elemento portante – non sostiene solai, tetti o altre parti dell'edificio – quindi non può avere il requisito "R".</p>
+            <p style="margin-top: 15px;">Tuttavia, per consuetudine nel linguaggio comune si dice ancora "porta REI", ma dal punto di vista tecnico-normativo (dal D.M. 16 febbraio 2007 in poi) si deve dire correttamente <strong>porta EI</strong>.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Le Euroclassi sostituiscono completamente le vecchie classi italiane?</h3>
+            <p><strong>Sì, dal 28 ottobre 2023 sono obbligatorie solo le Euroclassi.</strong></p>
+            <p style="margin-top: 10px;">Il D.M. 14 ottobre 2022 ha stabilito che:</p>
+            <ul style="margin-top: 10px;">
+                <li>I prodotti classificati con le vecchie classi italiane (0, 1, 2, 3, 4, 5) installati <strong>entro il 27 ottobre 2023</strong> rimangono validi</li>
+                <li>Da <strong>28 ottobre 2023</strong> si possono installare <strong>SOLO prodotti classificati secondo le Euroclassi</strong></li>
+                <li>I certificati delle vecchie classi non possono più essere emessi</li>
+                <li>Le tabelle di corrispondenza del D.M. 15 marzo 2005 restano valide solo per interpretare le vecchie autorizzazioni</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Ogni quanto va fatto il controllo delle porte tagliafuoco?</h3>
+            <p><strong>Almeno ogni 6 mesi</strong> (controllo semestrale obbligatorio).</p>
+            <p style="margin-top: 10px;">Il D.M. 10 marzo 1998 stabilisce che:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Controllo semestrale:</strong> Verifica visiva da parte di personale interno formato (integità, chiusura corretta, guarnizioni, chiudiporta funzionante)</li>
+                <li><strong>Manutenzione ordinaria:</strong> Lubrificazione, pulizia, piccole regolazioni</li>
+                <li><strong>Interventi straordinari:</strong> Quando necessario (malfunzionamenti, danni, sostituzioni)</li>
+            </ul>
+            <p style="margin-top: 15px;">Ogni controllo deve essere documentato nel <strong>registro antincendio</strong> dell'attività.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ È obbligatorio installare evacuatori di fumo e calore?</h3>
+            <p><strong>Dipende dall'attività e dalle dimensioni.</strong></p>
+            <p style="margin-top: 10px;">Sono obbligatori quando previsti da:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Regole tecniche verticali:</strong> Alcune attività specifiche (centri commerciali, autorimesse, depositi) richiedono SEFC per legge</li>
+                <li><strong>Codice di Prevenzione Incendi (D.M. 3 agosto 2015):</strong> Ambienti con superficie ≥ 600 m² e altezza ≥ 3 m possono richiedere SEFC</li>
+                <li><strong>Progetto antincendio:</strong> Il professionista può indicarne la necessità in base alla valutazione del rischio</li>
+            </ul>
+            <p style="margin-top: 15px;">In generale:</p>
+            <ul>
+                <li>✅ <strong>Grandi ambienti aperti</strong> (capannoni, depositi, centri commerciali) → Quasi sempre richiesti</li>
+                <li>✅ <strong>Edifici alti o complessi</strong> → Consigliati o obbligatori</li>
+                <li>⚠️ <strong>Piccoli uffici o negozi</strong> → Raramente necessari</li>
+            </ul>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Come si fa a sapere la classe REI necessaria per la mia attività?</h3>
+            <p><strong>Serve una valutazione progettuale specifica.</strong></p>
+            <p style="margin-top: 10px;">La classe REI dipende da molteplici fattori e deve essere determinata da un <strong>professionista antincendio</strong> (ingegnere o architetto iscritto negli elenchi del Ministero dell'Interno).</p>
+            <p style="margin-top: 15px;"><strong>Fonti normative:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Codice di Prevenzione Incendi</strong> (D.M. 3 agosto 2015): Metodo di calcolo del carico d'incendio specifico</li>
+                <li><strong>Regole tecniche verticali:</strong> Decreti specifici per tipologia attività (scuole, ospedali, uffici, industrie, ecc.)</li>
+                <li><strong>D.M. 16 febbraio 2007:</strong> Determinazione della resistenza al fuoco</li>
+            </ul>
+            <p style="margin-top: 15px;">In sintesi: <span class="highlight">rivolgiti a un professionista qualificato</span> che valuterà la tua attività e dimensionerà correttamente le protezioni.</p>
+        </div>
+
+        <h2>📚 Normativa di Riferimento</h2>
+
+        <div class="success-box">
+            <h4>📖 Principali Riferimenti Normativi</h4>
+            <p><strong>Resistenza al fuoco:</strong></p>
+            <ul>
+                <li>D.M. 16 febbraio 2007 - Classificazione di resistenza al fuoco</li>
+                <li>D.M. 3 agosto 2015 - Codice di Prevenzione Incendi</li>
+                <li>UNI EN 1363-1 - Prove di resistenza al fuoco</li>
+                <li>UNI EN 13501-2 - Classificazione al fuoco dei prodotti da costruzione</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Reazione al fuoco:</strong></p>
+            <ul>
+                <li>D.M. 14 ottobre 2022 - Classificazione ed omologazione reazione al fuoco (Euroclassi)</li>
+                <li>D.M. 10 marzo 2005 - Requisiti di reazione al fuoco prodotti da costruzione</li>
+                <li>UNI EN 13501-1 - Classificazione al fuoco (Euroclassi)</li>
+                <li>Regolamento UE 305/2011 (CPR) - Prodotti da costruzione</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Porte tagliafuoco:</strong></p>
+            <ul>
+                <li>UNI EN 16034:2014 - Porte resistenti al fuoco e/o tenuta al fumo</li>
+                <li>D.M. 10 marzo 1998 - Criteri porte resistenti al fuoco</li>
+                <li>UNI 11473-3 - Manutenzione porte tagliafuoco</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Evacuatori fumo e calore:</strong></p>
+            <ul>
+                <li>UNI 9494-1:2017 - SENFC (Sistemi Evacuazione Naturale)</li>
+                <li>UNI 9494-2:2017 - SEFFC (Sistemi Evacuazione Forzata)</li>
+                <li>UNI 9494-3:2014 - Controllo e manutenzione SEFC</li>
+                <li>UNI EN 12101-2 - Specifiche evacuatori fumo naturali</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>EnneSG</strong> - Consulenza Specializzata e Formazione Professionale</p>
+            <p style="margin-top: 10px;">📧 info@ennesg.com | 🌐 www.ennesg.com</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                Documento formativo conforme al D.Lgs. 81/08 e normativa vigente in materia di prevenzione incendi
+            </p>
+        </div>
+    </div>
+</body>
+</html>

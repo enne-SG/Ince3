@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificazione dei Fuochi - EnneSG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%);
+            padding: 0;
+        }
+
+        .ennesg-header {
+            background: #1E4BA0;
+            padding: 20px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ennesg-logo-strip {
+            width: 5px;
+            height: 80px;
+            background: #FFA500;
+            border-radius: 3px;
+        }
+
+        .ennesg-brand {
+            flex: 1;
+        }
+
+        .ennesg-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            margin: 0;
+        }
+
+        .ennesg-title .sg {
+            color: #FFA500;
+        }
+
+        .ennesg-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .ennesg-tagline {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #1E4BA0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1E4BA0;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFA500;
+        }
+
+        h3 {
+            color: #1E4BA0;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #1E4BA0;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, rgba(30,75,160,0.1) 0%, rgba(255,165,0,0.1) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #FFA500;
+        }
+
+        .key-message {
+            background: linear-gradient(135deg, #FFA500 0%, #ff8c00 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(255,165,0,0.3);
+        }
+
+        .class-card {
+            background: white;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 8px solid #1E4BA0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+        }
+
+        .class-card.class-a { border-left-color: #28a745; }
+        .class-card.class-b { border-left-color: #dc3545; }
+        .class-card.class-c { border-left-color: #007bff; }
+        .class-card.class-d { border-left-color: #ffc107; }
+        .class-card.class-f { border-left-color: #6f42c1; }
+
+        .class-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .class-icon {
+            font-size: 4em;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .class-title {
+            flex: 1;
+        }
+
+        .class-title h3 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .class-subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .extinguisher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .extinguisher-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .extinguisher-item.effective {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .extinguisher-item.not-effective {
+            border-color: #dc3545;
+            background: #f8d7da;
+            opacity: 0.6;
+        }
+
+        .extinguisher-item .icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #1E4BA0 0%, #FFA500 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(30,75,160,0.05);
+        }
+
+        .check {
+            color: #28a745;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .cross {
+            color: #dc3545;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .info-box h4 {
+            color: #0c5460;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #FFA500;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box h4 {
+            color: #856404;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .danger-box {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .danger-box h4 {
+            color: #721c24;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .success-box h4 {
+            color: #155724;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .case-study {
+            background: #f8f9fa;
+            border: 2px solid #1E4BA0;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .case-study h4 {
+            color: #1E4BA0;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .case-study .scenario {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .extinguisher-selector {
+            background: linear-gradient(135deg, rgba(30,75,160,0.05) 0%, rgba(255,165,0,0.05) 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .selector-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .selector-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .selector-card .type {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .selector-card h4 {
+            color: #1E4BA0;
+            margin: 10px 0;
+        }
+
+        .selector-card .classes {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .selector-card .class-badge {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .badge-a { background: #28a745; }
+        .badge-b { background: #dc3545; }
+        .badge-c { background: #007bff; }
+        .badge-d { background: #ffc107; color: #333; }
+        .badge-f { background: #6f42c1; }
+
+        .faq {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 5px solid #28a745;
+        }
+
+        .faq h3 {
+            color: #28a745;
+            margin-top: 0;
+        }
+
+        .video-container {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(30,75,160,0.3);
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-info h4 {
+            color: #1E4BA0;
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .video-source {
+            display: inline-block;
+            background: #FFA500;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-top: 8px;
+        }
+
+        .footer-ennesg {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(30,75,160,0.05) 0%, rgba(255,165,0,0.05) 100%);
+            border-radius: 10px;
+            border-top: 3px solid #FFA500;
+        }
+
+        .footer-ennesg h3 {
+            color: #1E4BA0;
+            margin-bottom: 15px;
+        }
+
+        .footer-ennesg p {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .footer-ennesg a {
+            color: #1E4BA0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-ennesg a:hover {
+            color: #FFA500;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .highlight {
+            background: rgba(255,165,0,0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .ennesg-header {
+                padding: 15px 20px;
+            }
+
+            .ennesg-title {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .class-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .extinguisher-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ennesg-header">
+        <div class="ennesg-logo-strip"></div>
+        <div class="ennesg-brand">
+            <div class="ennesg-title">Enne<span class="sg">SG</span></div>
+            <div class="ennesg-subtitle">Sistemi di Gestione</div>
+            <div class="ennesg-tagline">Consulenza ISO • Sicurezza D.Lgs. 81/08 • Formazione</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>🔥 Classificazione dei Fuochi</h1>
+
+        <div class="intro">
+            <p>La <strong>classificazione dei fuochi</strong> è un sistema standardizzato a livello europeo (norma EN 2) che suddivide gli incendi in diverse classi in base al <strong>tipo di materiale combustibile</strong> coinvolto.</p>
+            <p style="margin-top: 15px;">Conoscere la corretta classificazione è fondamentale per:</p>
+            <ul>
+                <li>✅ Scegliere l'<strong>agente estinguente corretto</strong></li>
+                <li>✅ Evitare di peggiorare la situazione con mezzi inappropriati</li>
+                <li>✅ Garantire la sicurezza degli operatori</li>
+                <li>✅ Rispettare le normative antincendio</li>
+                <li>✅ Pianificare le dotazioni di sicurezza</li>
+            </ul>
+        </div>
+
+        <div class="key-message">
+            "Usare l'estintore sbagliato può essere più pericoloso che non usarne affatto!"
+        </div>
+
+        <h2>🎯 Le 5 Classi di Fuoco (Norma EN 2)</h2>
+
+        <div class="class-card class-a">
+            <div class="class-header">
+                <div class="class-icon">🪵</div>
+                <div class="class-title">
+                    <h3>CLASSE A - Fuochi da Materiali Solidi</h3>
+                    <div class="class-subtitle">Materiali solidi che formano braci</div>
+                </div>
+            </div>
+
+            <h4>Caratteristiche:</h4>
+            <p>I fuochi di classe A coinvolgono <strong>materiali solidi combustibili</strong> che durante la combustione formano <strong>braci incandescenti</strong>. Questi materiali contengono carbonio nella loro struttura.</p>
+
+            <h4>Materiali Tipici:</h4>
+            <ul>
+                <li><strong>Legno:</strong> mobili, travi, parquet, pellet</li>
+                <li><strong>Carta e cartone:</strong> documenti, imballaggi, libri</li>
+                <li><strong>Tessuti:</strong> tende, tappeti, vestiti, imbottiture</li>
+                <li><strong>Gomma e plastica:</strong> pneumatici, contenitori</li>
+                <li><strong>Materiali vegetali:</strong> paglia, fieno, foglie secche</li>
+                <li><strong>Carbone</strong></li>
+            </ul>
+
+            <h4>Agenti Estinguenti Efficaci:</h4>
+            <div class="extinguisher-grid">
+                <div class="extinguisher-item effective">
+                    <div class="icon">💧</div>
+                    <strong>Acqua</strong>
+                    <div style="font-size: 0.85em; color: #666;">Molto efficace</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">🫧</div>
+                    <strong>Schiuma</strong>
+                    <div style="font-size: 0.85em; color: #666;">Molto efficace</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">🧯</div>
+                    <strong>Polvere ABC</strong>
+                    <div style="font-size: 0.85em; color: #666;">Efficace</div>
+                </div>
+                <div class="extinguisher-item not-effective">
+                    <div class="icon">💨</div>
+                    <strong>CO₂</strong>
+                    <div style="font-size: 0.85em; color: #666;">Poco efficace</div>
+                </div>
+            </ul>
+
+            <div class="info-box">
+                <h4>💡 Perché l'acqua è così efficace?</h4>
+                <p>L'acqua raffredda efficacemente le braci, che possono mantenere temperature molto elevate anche dopo lo spegnimento delle fiamme visibili. Il CO₂ invece non raffredda abbastanza e le braci possono riaccendersi.</p>
+            </div>
+
+            <div class="case-study">
+                <h4>📋 Scenario Pratico: Incendio in Ufficio</h4>
+                <div class="scenario">
+                    <p><strong>Situazione:</strong> Un cestino pieno di carta prende fuoco vicino alla scrivania. Le fiamme si propagano alla tenda.</p>
+                    <p style="margin-top: 10px;"><strong>Classe:</strong> A (carta, tessuti)</p>
+                    <p><strong>Estintore corretto:</strong> Acqua, Schiuma o Polvere ABC</p>
+                    <p><strong>Azione:</strong> Dopo lo spegnimento, verificare che non ci siano braci residue che potrebbero riaccendere l'incendio.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="class-card class-b">
+            <div class="class-header">
+                <div class="class-icon">⛽</div>
+                <div class="class-title">
+                    <h3>CLASSE B - Fuochi da Liquidi Infiammabili</h3>
+                    <div class="class-subtitle">Liquidi o solidi che si liquefanno</div>
+                </div>
+            </div>
+
+            <h4>Caratteristiche:</h4>
+            <p>I fuochi di classe B coinvolgono <strong>liquidi infiammabili</strong> o <strong>solidi che si liquefanno</strong> con il calore. Non formano braci ma bruciano sulla superficie del liquido attraverso i vapori emessi.</p>
+
+            <h4>Materiali Tipici:</h4>
+            <ul>
+                <li><strong>Carburanti:</strong> benzina, diesel, cherosene</li>
+                <li><strong>Solventi:</strong> acetone, alcool, trielina, diluenti</li>
+                <li><strong>Oli:</strong> oli minerali, lubrificanti</li>
+                <li><strong>Vernici e lacche</strong></li>
+                <li><strong>Resine</strong></li>
+                <li><strong>Paraffina, cera</strong></li>
+                <li><strong>Catrami, bitumi</strong></li>
+            </ul>
+
+            <h4>Agenti Estinguenti Efficaci:</h4>
+            <div class="extinguisher-grid">
+                <div class="extinguisher-item effective">
+                    <div class="icon">🫧</div>
+                    <strong>Schiuma</strong>
+                    <div style="font-size: 0.85em; color: #666;">Molto efficace</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">🧯</div>
+                    <strong>Polvere ABC/BC</strong>
+                    <div style="font-size: 0.85em; color: #666;">Molto efficace</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">💨</div>
+                    <strong>CO₂</strong>
+                    <div style="font-size: 0.85em; color: #666;">Efficace</div>
+                </div>
+                <div class="extinguisher-item not-effective">
+                    <div class="icon">💧</div>
+                    <strong>Acqua a getto</strong>
+                    <div style="font-size: 0.85em; color: #666;">PERICOLOSO!</div>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <h4>⛔ PERICOLO - MAI usare acqua a getto!</h4>
+                <p><strong>Su liquidi infiammabili l'acqua:</strong></p>
+                <ul>
+                    <li>Galleggia sul liquido senza spegnere le fiamme</li>
+                    <li>Provoca schizzi di liquido infiammato</li>
+                    <li>Aumenta la superficie in fiamme</li>
+                    <li>Può causare ustioni gravi agli operatori</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Eccezione:</strong> Acqua nebulizzata (gocce finissime) può essere usata con precauzione.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>💡 Come funziona la schiuma?</h4>
+                <p>La schiuma crea una <strong>coperta</strong> sulla superficie del liquido che:</p>
+                <ul>
+                    <li>Separa il combustibile dall'ossigeno (soffocamento)</li>
+                    <li>Impedisce l'evaporazione di vapori infiammabili</li>
+                    <li>Raffredda il liquido</li>
+                    <li>Previene la riaccensione</li>
+                </ul>
+            </div>
+
+            <div class="case-study">
+                <h4>📋 Scenario Pratico: Versamento in Officina</h4>
+                <div class="scenario">
+                    <p><strong>Situazione:</strong> Durante un travaso, 20 litri di benzina si rovesciano sul pavimento e prendono fuoco.</p>
+                    <p style="margin-top: 10px;"><strong>Classe:</strong> B (liquido infiammabile)</p>
+                    <p><strong>Estintore corretto:</strong> Schiuma o Polvere ABC/BC</p>
+                    <p><strong>ERRORE FATALE:</strong> Usare acqua a getto causerebbe un'esplosione di liquido infiammato!</p>
+                    <p style="margin-top: 10px;"><strong>Azione corretta:</strong></p>
+                    <ol>
+                        <li>Evacuare immediatamente l'area</li>
+                        <li>Chiudere la fonte di benzina se sicuro</li>
+                        <li>Attaccare con schiuma dall'esterno verso il centro</li>
+                        <li>Coprire completamente la superficie con schiuma</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="class-card class-c">
+            <div class="class-header">
+                <div class="class-icon">🔥💨</div>
+                <div class="class-title">
+                    <h3>CLASSE C - Fuochi da Gas Infiammabili</h3>
+                    <div class="class-subtitle">Gas combustibili in stato gassoso</div>
+                </div>
+            </div>
+
+            <h4>Caratteristiche:</h4>
+            <p>I fuochi di classe C coinvolgono <strong>gas infiammabili</strong>. La caratteristica peculiare è che spegnere la fiamma <strong>senza chiudere la fonte di gas è estremamente pericoloso</strong> perché il gas continua a fuoriuscire creando miscele esplosive.</p>
+
+            <h4>Gas Tipici:</h4>
+            <ul>
+                <li><strong>Metano (gas naturale)</strong> - CH₄</li>
+                <li><strong>GPL</strong> (butano, propano) - da bombole o serbatoi</li>
+                <li><strong>Idrogeno</strong> - H₂</li>
+                <li><strong>Acetilene</strong> - saldatura</li>
+                <li><strong>Gas di città</strong></li>
+                <li><strong>Propilene, etilene</strong></li>
+            </ul>
+
+            <h4>Agenti Estinguenti Efficaci:</h4>
+            <div class="extinguisher-grid">
+                <div class="extinguisher-item effective">
+                    <div class="icon">🧯</div>
+                    <strong>Polvere ABC/BC</strong>
+                    <div style="font-size: 0.85em; color: #666;">Molto efficace</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">💨</div>
+                    <strong>CO₂</strong>
+                    <div style="font-size: 0.85em; color: #666;">Efficace</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">🔧</div>
+                    <strong>Chiusura valvola</strong>
+                    <div style="font-size: 0.85em; color: #666;">PRIORITARIO!</div>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <h4>⛔ ATTENZIONE - Regola Fondamentale</h4>
+                <p><strong>PRIMA chiudi la fonte di gas, POI spegni la fiamma!</strong></p>
+                <p style="margin-top: 10px;">Se spegni la fiamma ma il gas continua a fuoriuscire:</p>
+                <ul>
+                    <li>Si forma una nube di gas infiammabile invisibile</li>
+                    <li>Una scintilla può causare un'esplosione devastante</li>
+                    <li>Il gas può accumularsi in ambienti chiusi</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Eccezione:</strong> Se non riesci a chiudere la valvola in sicurezza, lascia bruciare il gas in modo controllato e chiama i Vigili del Fuoco!</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Bombole di GPL sotto fiamme</h4>
+                <p>Se una bombola di GPL è esposta a fiamme dirette:</p>
+                <ul>
+                    <li>Il metallo si surriscalda e perde resistenza</li>
+                    <li>La pressione interna aumenta</li>
+                    <li>Rischio <strong>BLEVE</strong> (esplosione catastrofica)</li>
+                    <li><strong>EVACUARE IMMEDIATAMENTE</strong> almeno 200 metri</li>
+                    <li>Non tentare di avvicinarsi - chiamare VVF</li>
+                </ul>
+            </div>
+
+            <div class="case-study">
+                <h4>📋 Scenario Pratico: Incendio Fornello da Cucina</h4>
+                <div class="scenario">
+                    <p><strong>Situazione:</strong> Durante la cottura, il tubo del gas si stacca dal fornello. Il gas GPL fuoriesce e prende fuoco.</p>
+                    <p style="margin-top: 10px;"><strong>Classe:</strong> C (gas infiammabile)</p>
+                    <p><strong>AZIONE CORRETTA:</strong></p>
+                    <ol>
+                        <li><strong>Chiudere la bombola del gas</strong> (se raggiungibile in sicurezza)</li>
+                        <li>La fiamma si spegnerà da sola quando il gas è esaurito</li>
+                        <li>Ventilare l'ambiente</li>
+                        <li>Non accendere luci o creare scintille</li>
+                    </ol>
+                    <p style="margin-top: 10px;"><strong>ERRORE GRAVE:</strong> Spegnere la fiamma con l'estintore senza chiudere il gas → accumulo di GPL invisibile → esplosione al riaccendersi di una luce o scintilla!</p>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4>📋 Caso Reale: Esplosione Ristorante (Milano, 2019)</h4>
+                <div class="scenario">
+                    <p><strong>Dinamica:</strong> Perdita di gas GPL nel locale cucina. Il gas si è accumulato e ha raggiunto una fonte di innesco.</p>
+                    <p style="margin-top: 10px;"><strong>Conseguenze:</strong> Esplosione che ha distrutto il locale, feriti gravi, danni agli edifici circostanti.</p>
+                    <p><strong>Lezione:</strong> Il gas più pesante dell'aria (come il GPL) si accumula a livello del pavimento. Servono rilevatori di gas e ventilazione adeguata.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="class-card class-d">
+            <div class="class-header">
+                <div class="class-icon">⚗️</div>
+                <div class="class-title">
+                    <h3>CLASSE D - Fuochi da Metalli Combustibili</h3>
+                    <div class="class-subtitle">Metalli che reagiscono violentemente con acqua</div>
+                </div>
+            </div>
+
+            <h4>Caratteristiche:</h4>
+            <p>I fuochi di classe D sono i più <strong>pericolosi e specialistici</strong>. Coinvolgono metalli che possono bruciare a temperature estremamente elevate (oltre 1000°C) e reagiscono <strong>violentemente con acqua</strong> e altri agenti estinguenti comuni.</p>
+
+            <h4>Metalli Combustibili:</h4>
+            <ul>
+                <li><strong>Magnesio</strong> - leghe, componenti aeronautici</li>
+                <li><strong>Alluminio in polvere</strong> - pirotecnica, industria</li>
+                <li><strong>Sodio e Potassio</strong> - laboratori chimici</li>
+                <li><strong>Titanio</strong> - trucioli e polveri</li>
+                <li><strong>Litio</strong> - batterie (rischio crescente!)</li>
+                <li><strong>Calcio, Bario</strong></li>
+                <li><strong>Zirconio</strong></li>
+            </ul>
+
+            <h4>Agenti Estinguenti Specifici:</h4>
+            <div class="extinguisher-grid">
+                <div class="extinguisher-item effective">
+                    <div class="icon">🧂</div>
+                    <strong>Polvere Classe D</strong>
+                    <div style="font-size: 0.85em; color: #666;">Specifica per metalli</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">🏖️</div>
+                    <strong>Sabbia secca</strong>
+                    <div style="font-size: 0.85em; color: #666;">Emergenza</div>
+                </div>
+                <div class="extinguisher-item not-effective">
+                    <div class="icon">💧</div>
+                    <strong>Acqua</strong>
+                    <div style="font-size: 0.85em; color: #666;">ESPLOSIONE!</div>
+                </div>
+                <div class="extinguisher-item not-effective">
+                    <div class="icon">💨</div>
+                    <strong>CO₂</strong>
+                    <div style="font-size: 0.85em; color: #666;">Inefficace</div>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <h4>⛔ PERICOLO ESTREMO - Reazione con l'acqua</h4>
+                <p><strong>Usare acqua su metalli combustibili può causare:</strong></p>
+                <ul>
+                    <li><strong>Esplosione violenta</strong> con proiezione di metallo fuso</li>
+                    <li><strong>Produzione di idrogeno</strong> che si incendia istantaneamente</li>
+                    <li><strong>Aumento esponenziale</strong> della temperatura e dell'intensità</li>
+                    <li><strong>Reazione a catena</strong> impossibile da controllare</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 1.1em; font-weight: bold;">
+                    Per i fuochi di classe D: EVACUARE e chiamare immediatamente i Vigili del Fuoco specializzati!
+                </p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Batterie al Litio - Rischio Emergente</h4>
+                <p>Le <strong>batterie al litio</strong> (smartphone, laptop, auto elettriche, e-bike) sono sempre più comuni ma estremamente pericolose in caso di incendio:</p>
+                <ul>
+                    <li><strong>Thermal runaway:</strong> reazione a catena inarrestabile</li>
+                    <li>Temperature oltre 1000°C</li>
+                    <li>Rilascio di gas tossici (fluoruro di idrogeno)</li>
+                    <li>Riaccensioni spontanee anche dopo ore</li>
+                    <li>Gli estintori tradizionali sono inefficaci</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Soluzione:</strong> Servono grandi quantità d'acqua (tonnellate) o vasche di immersione speciali. Per incendi di veicoli elettrici i VVF usano container d'acqua.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>💡 Perché le polveri di classe D funzionano?</h4>
+                <p>Le polveri speciali per metalli (grafite, cloruro di sodio, carbonato di sodio) agiscono:</p>
+                <ul>
+                    <li>Formando una crosta che soffoca il fuoco</li>
+                    <li>Assorbendo il calore</li>
+                    <li>Senza reagire chimicamente con il metallo</li>
+                </ul>
+            </div>
+
+            <div class="case-study">
+                <h4>📋 Scenario Pratico: Incendio in Officina Meccanica</h4>
+                <div class="scenario">
+                    <p><strong>Situazione:</strong> Durante la lavorazione, i trucioli di magnesio accumulati prendono fuoco. Le scintille sono bianco-brillanti e intensissime.</p>
+                    <p style="margin-top: 10px;"><strong>Classe:</strong> D (metallo combustibile)</p>
+                    <p><strong>ERRORE LETALE:</strong> Un operatore prende l'estintore ad acqua...</p>
+                    <p style="margin-top: 10px;"><strong>Risultato:</strong> Esplosione violenta, metallo fuso proiettato, ustioni gravissime</p>
+                    <p style="margin-top: 15px;"><strong>AZIONE CORRETTA:</strong></p>
+                    <ol>
+                        <li>Evacuare immediatamente</li>
+                        <li>Non usare MAI acqua o estintori normali</li>
+                        <li>Se disponibile, usare polvere classe D</li>
+                        <li>Coprire con sabbia secca in emergenza</li>
+                        <li>Chiamare VVF - specificare "incendio metalli"</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4>📋 Caso Reale: Incendio Tesla in Garage (Austria, 2019)</h4>
+                <div class="scenario">
+                    <p><strong>Situazione:</strong> Tesla Model S prende fuoco in un garage. Batterie al litio in thermal runaway.</p>
+                    <p style="margin-top: 10px;"><strong>Intervento VVF:</strong> Necessarie 7 ore e oltre 10.000 litri d'acqua per spegnere completamente l'incendio. Le batterie continuavano a riaccendersi.</p>
+                    <p><strong>Soluzione finale:</strong> Il veicolo è stato immerso in un container pieno d'acqua per 48 ore per garantire il raffreddamento completo e prevenire riaccensioni.</p>
+                    <p style="margin-top: 10px;"><strong>Lezione:</strong> Gli incendi di veicoli elettrici richiedono procedure completamente diverse rispetto agli incendi tradizionali.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="class-card class-f">
+            <div class="class-header">
+                <div class="class-icon">🍳</div>
+                <div class="class-title">
+                    <h3>CLASSE F - Fuochi da Oli e Grassi da Cucina</h3>
+                    <div class="class-subtitle">Oli vegetali e animali ad alta temperatura</div>
+                </div>
+            </div>
+
+            <h4>Caratteristiche:</h4>
+            <p>La classe F è stata introdotta specificamente per gli <strong>oli e grassi da cucina</strong> che, una volta surriscaldati (oltre 300-400°C), presentano rischi unici e richiedono tecniche di spegnimento specializzate.</p>
+
+            <h4>Materiali Tipici:</h4>
+            <ul>
+                <li><strong>Oli vegetali:</strong> olio d'oliva, girasole, mais, arachidi</li>
+                <li><strong>Grassi animali:</strong> strutto, lardo, burro fuso</li>
+                <li><strong>Oli per frittura</strong> (ristoranti, fast food)</li>
+                <li><strong>Grassi di cottura industriale</strong></li>
+            </ul>
+
+            <h4>Agenti Estinguenti Efficaci:</h4>
+            <div class="extinguisher-grid">
+                <div class="extinguisher-item effective">
+                    <div class="icon">🧯</div>
+                    <strong>Estintore Classe F</strong>
+                    <div style="font-size: 0.85em; color: #666;">Specifico</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">🫧</div>
+                    <strong>Coperta Antifiamma</strong>
+                    <div style="font-size: 0.85em; color: #666;">Molto efficace</div>
+                </div>
+                <div class="extinguisher-item effective">
+                    <div class="icon">🪣</div>
+                    <strong>Coperchio</strong>
+                    <div style="font-size: 0.85em; color: #666;">Pentole piccole</div>
+                </div>
+                <div class="extinguisher-item not-effective">
+                    <div class="icon">💧</div>
+                    <strong>Acqua</strong>
+                    <div style="font-size: 0.85em; color: #666;">ESPLOSIONE!</div>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <h4>⛔ MAI ACQUA SU OLIO BOLLENTE!</h4>
+                <p><strong>Cosa succede se metti acqua su olio in fiamme:</strong></p>
+                <ol>
+                    <li>L'acqua (100°C) entra a contatto con olio (300-400°C)</li>
+                    <li>L'acqua evapora <strong>istantaneamente</strong></li>
+                    <li>L'evaporazione esplosiva proietta olio infuocato ovunque</li>
+                    <li>La palla di fuoco può raggiungere il soffitto</li>
+                    <li>Ustioni gravissime per chi è nelle vicinanze</li>
+                </ol>
+                <p style="margin-top: 15px; font-weight: bold; font-size: 1.1em;">
+                    Questo è uno degli errori più comuni e pericolosi in cucina!
+                </p>
+            </div>
+
+            <div class="success-box">
+                <h4>✅ Come Spegnere Olio in Fiamme - Procedura Corretta</h4>
+                <p><strong>Passaggi da seguire:</strong></p>
+                <ol>
+                    <li><strong>Spegnere immediatamente</strong> la fonte di calore (gas/elettrica)</li>
+                    <li><strong>MAI spostare</strong> la pentola (rischio ustioni)</li>
+                    <li><strong>Coprire con coperchio</strong> o coperta antifiamma per soffocare</li>
+                    <li><strong>Lasciare coperto</strong> per almeno 30 minuti (rischio riaccensione)</li>
+                    <li><strong>Non togliere il coperchio</strong> finché non è completamente freddo</li>
+                </ol>
+                <p style="margin-top: 15px;"><strong>Alternativa:</strong> Estintore specifico classe F - spruzzare dall'alto creando una barriera tra olio e ossigeno.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>💡 Come funzionano gli estintori Classe F?</h4>
+                <p>Gli estintori classe F contengono soluzioni speciali (acetato di potassio) che:</p>
+                <ul>
+                    <li>Reagiscono con l'olio creando uno strato saponoso (saponificazione)</li>
+                    <li>Formano una pellicola che isola l'olio dall'ossigeno</li>
+                    <li>Raffreddano l'olio sotto il punto di autoaccensione</li>
+                    <li>Prevengono la riaccensione</li>
+                </ul>
+            </div>
+
+            <div class="case-study">
+                <h4>📋 Scenario Pratico: Frittura Dimenticata</h4>
+                <div class="scenario">
+                    <p><strong>Situazione:</strong> Una persona mette l'olio sul fuoco per friggere, poi si distrae guardando la TV. L'olio si surriscalda e prende fuoco.</p>
+                    <p style="margin-top: 10px;"><strong>Classe:</strong> F (oli da cucina)</p>
+                    <p><strong>ERRORE #1:</strong> Cercare di spegnere con acqua → ESPLOSIONE</p>
+                    <p><strong>ERRORE #2:</strong> Tentare di portare la pentola fuori → olio incendiato si rovescia, ustioni gravi</p>
+                    <p style="margin-top: 15px;"><strong>AZIONE CORRETTA:</strong></p>
+                    <ol>
+                        <li>Spegnere il fornello</li>
+                        <li>Mettere il coperchio sulla pentola</li>
+                        <li>Allontanarsi e aspettare</li>
+                        <li>Se non hai coperchio: coperta antifiamma</li>
+                        <li>Se le fiamme sono alte: evacuare e chiamare VVF</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4>📋 Caso Reale: Incendio Ristorante Fast Food (Roma, 2020)</h4>
+                <div class="scenario">
+                    <p><strong>Situazione:</strong> Friggitrice industriale in un fast food si surriscalda. L'olio (25 litri) prende fuoco.</p>
+                    <p style="margin-top: 10px;"><strong>Errore dell'operatore:</strong> Tenta di spegnere con estintore a polvere ABC standard.</p>
+                    <p><strong>Risultato:</strong> La polvere non riesce a raffreddare l'olio abbastanza. L'incendio si riaccende appena finita la scarica. Le fiamme si propagano alla cappa e al condotto di ventilazione.</p>
+                    <p style="margin-top: 10px;"><strong>Conseguenze:</strong> Evacuazione, intervento VVF, locale inagibile per settimane, danni per oltre 100.000€.</p>
+                    <p><strong>Cosa mancava:</strong> Estintore specifico classe F e sistema automatico di spegnimento sulla friggitrice.</p>
+                    <p style="margin-top: 10px;"><strong>Lezione:</strong> In cucine professionali è OBBLIGATORIO avere estintori classe F e sistemi automatici.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Prevenzione in Cucina</h4>
+                <p><strong>Come evitare incendi da olio:</strong></p>
+                <ul>
+                    <li>Mai lasciare olio incustodito sul fuoco</li>
+                    <li>Non riempire le pentole oltre 1/3 per fritture</li>
+                    <li>Usare termometri per controllare la temperatura</li>
+                    <li>Non surriscaldare l'olio (fumo = pericolo)</li>
+                    <li>Asciugare bene gli alimenti prima di friggerli</li>
+                    <li>Tenere sempre un coperchio a portata di mano</li>
+                    <li>Avere una coperta antifiamma in cucina</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🧯 Tabella Riepilogativa - Agenti Estinguenti per Classe</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Agente Estinguente</th>
+                    <th>Classe A<br><small>Solidi</small></th>
+                    <th>Classe B<br><small>Liquidi</small></th>
+                    <th>Classe C<br><small>Gas</small></th>
+                    <th>Classe D<br><small>Metalli</small></th>
+                    <th>Classe F<br><small>Oli cucina</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>💧 Acqua</strong></td>
+                    <td class="check">✓✓</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗✗</td>
+                    <td class="cross">✗✗</td>
+                </tr>
+                <tr>
+                    <td><strong>🫧 Schiuma</strong></td>
+                    <td class="check">✓✓</td>
+                    <td class="check">✓✓</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                </tr>
+                <tr>
+                    <td><strong>🧯 Polvere ABC</strong></td>
+                    <td class="check">✓</td>
+                    <td class="check">✓✓</td>
+                    <td class="check">✓✓</td>
+                    <td class="cross">✗</td>
+                    <td style="color: #ffc107;">△</td>
+                </tr>
+                <tr>
+                    <td><strong>💨 CO₂ (Anidride Carbonica)</strong></td>
+                    <td class="cross">✗</td>
+                    <td class="check">✓</td>
+                    <td class="check">✓</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                </tr>
+                <tr>
+                    <td><strong>🧂 Polvere Classe D</strong></td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="check">✓✓</td>
+                    <td class="cross">✗</td>
+                </tr>
+                <tr>
+                    <td><strong>🧴 Estintore Classe F</strong></td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="check">✓✓</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
+            <strong>Legenda:</strong> ✓✓ = Molto efficace | ✓ = Efficace | △ = Poco efficace | ✗ = Non efficace | ✗✗ = PERICOLOSO
+        </p>
+
+        <h2>🎯 Guida Pratica: Scegliere l'Estintore Giusto</h2>
+
+        <div class="extinguisher-selector">
+            <h3 style="text-align: center; color: #1E4BA0; margin-bottom: 20px;">Tipologie di Estintori Portatili</h3>
+            
+            <div class="selector-grid">
+                <div class="selector-card">
+                    <div class="type">🧯</div>
+                    <h4>Polvere ABC</h4>
+                    <p style="font-size: 0.9em; color: #666;">Il più versatile e comune</p>
+                    <div class="classes">
+                        <span class="class-badge badge-a">A</span>
+                        <span class="class-badge badge-b">B</span>
+                        <span class="class-badge badge-c">C</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85em;">✅ Economico<br>✅ Versatile<br>⚠️ Sporca molto<br>⚠️ Corrosivo per elettronica</p>
+                </div>
+
+                <div class="selector-card">
+                    <div class="type">💨</div>
+                    <h4>CO₂</h4>
+                    <p style="font-size: 0.9em; color: #666;">Ideale per elettrica</p>
+                    <div class="classes">
+                        <span class="class-badge badge-b">B</span>
+                        <span class="class-badge badge-c">C</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85em;">✅ Non lascia residui<br>✅ Non conduttivo<br>⚠️ Temperatura molto bassa<br>⚠️ Asfissiante</p>
+                </div>
+
+                <div class="selector-card">
+                    <div class="type">🫧</div>
+                    <h4>Schiuma</h4>
+                    <p style="font-size: 0.9em; color: #666;">Ottimo su liquidi</p>
+                    <div class="classes">
+                        <span class="class-badge badge-a">A</span>
+                        <span class="class-badge badge-b">B</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85em;">✅ Efficace su liquidi<br>✅ Raffredda bene<br>✅ Forma barriera<br>⚠️ Non su elettrica</p>
+                </div>
+
+                <div class="selector-card">
+                    <div class="type">💧</div>
+                    <h4>Acqua</h4>
+                    <p style="font-size: 0.9em; color: #666;">Solo per solidi</p>
+                    <div class="classes">
+                        <span class="class-badge badge-a">A</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85em;">✅ Molto efficace su classe A<br>✅ Economico<br>⚠️ Solo materiali solidi<br>⚠️ Non conduttivo (nebulizzato)</p>
+                </div>
+
+                <div class="selector-card">
+                    <div class="type">🍳</div>
+                    <h4>Classe F</h4>
+                    <p style="font-size: 0.9em; color: #666;">Cucine professionali</p>
+                    <div class="classes">
+                        <span class="class-badge badge-f">F</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85em;">✅ Specifico oli<br>✅ Saponificazione<br>✅ Previene riaccensione<br>⚠️ Solo per classe F</p>
+                </div>
+
+                <div class="selector-card">
+                    <div class="type">🧂</div>
+                    <h4>Classe D</h4>
+                    <p style="font-size: 0.9em; color: #666;">Metalli speciali</p>
+                    <div class="classes">
+                        <span class="class-badge badge-d">D</span>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85em;">✅ Unico per metalli<br>✅ Non reagisce<br>⚠️ Molto specifico<br>⚠️ Costoso</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ Consigli per la Scelta</h4>
+            <p><strong>Per uso domestico:</strong></p>
+            <ul>
+                <li><strong>Ingresso/soggiorno:</strong> Polvere ABC (6 kg) - copre la maggior parte dei rischi</li>
+                <li><strong>Cucina:</strong> Coperta antifiamma + Estintore classe F (se si frigge spesso)</li>
+                <li><strong>Garage:</strong> Polvere ABC o Schiuma (per benzina, oli)</li>
+                <li><strong>Studio/computer:</strong> CO₂ (non danneggia l'elettronica)</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Per ufficio/azienda:</strong></p>
+            <ul>
+                <li><strong>Uffici:</strong> Polvere ABC + CO₂ per server/CED</li>
+                <li><strong>Magazzini:</strong> Polvere ABC o Idranti</li>
+                <li><strong>Cucina/mensa:</strong> Classe F obbligatorio + Polvere ABC</li>
+                <li><strong>Officine:</strong> Polvere ABC + eventualmente Classe D se si lavora con metalli speciali</li>
+            </ul>
+        </div>
+
+        <h2>⚠️ Classe E - La Classe Eliminata</h2>
+
+        <div class="info-box">
+            <h4>💡 Cosa è successo alla Classe E?</h4>
+            <p>Nella <strong>vecchia classificazione</strong>, esisteva la <strong>Classe E</strong> per <strong>apparecchiature elettriche sotto tensione</strong> (computer, quadri elettrici, macchinari).</p>
+            <p style="margin-top: 10px;"><strong>Perché è stata eliminata?</strong></p>
+            <ul>
+                <li>Il fuoco su apparecchiature elettriche è sempre causato da materiali della classe A, B o C</li>
+                <li>Il problema non è il "tipo" di fuoco ma la presenza di tensione elettrica</li>
+                <li>La caratteristica importante è che l'estinguente sia <strong>non conduttivo</strong></li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Oggi:</strong> Si valuta la <strong>dielettricità</strong> (resistenza elettrica) dell'estinguente piuttosto che creare una classe separata.</p>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Incendi su Apparecchiature Elettriche - Cosa Fare</h4>
+            <p><strong>Procedura corretta:</strong></p>
+            <ol>
+                <li><strong>PRIMA:</strong> Togliere alimentazione elettrica (se possibile in sicurezza)</li>
+                <li><strong>POI:</strong> Usare estintore appropriato in base al materiale che brucia</li>
+            </ol>
+            <p style="margin-top: 15px;"><strong>Se NON puoi togliere la tensione:</strong></p>
+            <ul>
+                <li>✅ <strong>CO₂</strong> - non conduttivo, ideale per elettrica</li>
+                <li>✅ <strong>Polvere ABC</strong> - dielettrico fino a 1000V</li>
+                <li>⚠️ <strong>Acqua nebulizzata</strong> - possibile ma solo con lance speciali</li>
+                <li>⛔ <strong>Acqua a getto o Schiuma</strong> - RISCHIO FOLGORAZIONE!</li>
+            </ul>
+        </div>
+
+        <div class="case-study">
+            <h4>📋 Scenario: Incendio Quadro Elettrico</h4>
+            <div class="scenario">
+                <p><strong>Situazione:</strong> Nel locale tecnico di un ufficio, il quadro elettrico generale sviluppa un principio di incendio. Fumo e fiamme dal quadro.</p>
+                <p style="margin-top: 10px;"><strong>Classe:</strong> Ex-E (materiali classe A/B con tensione elettrica)</p>
+                <p><strong>AZIONE CORRETTA:</strong></p>
+                <ol>
+                    <li>NON avvicinarsi al quadro in fiamme</li>
+                    <li>Evacuare l'area</li>
+                    <li>Chiamare elettricista/VVF per togliere tensione in sicurezza</li>
+                    <li>Se hai estintore CO₂ e sei addetto formato: attaccare da distanza di sicurezza (5m)</li>
+                    <li>Dopo lo spegnimento, far verificare l'impianto prima di riattivare</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>ERRORE FATALE:</strong> Usare acqua su quadro sotto tensione = folgorazione</p>
+            </div>
+        </div>
+
+        <h2>❓ FAQ - Domande Frequenti</h2>
+
+        <div class="faq">
+            <h3>❓ Perché non posso usare acqua su olio in fiamme?</h3>
+            <p>L'olio in fiamme ha una temperatura di 300-400°C. Quando l'acqua (che bolle a 100°C) tocca l'olio bollente, <strong>evapora istantaneamente</strong> espandendosi di circa 1700 volte. Questa espansione esplosiva proietta l'olio infuocato in tutte le direzioni come una bomba, creando una palla di fuoco che può raggiungere il soffitto e causare ustioni gravissime. È uno degli errori più pericolosi in cucina.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Posso usare un estintore ABC su tutti i tipi di incendio?</h3>
+            <p>L'estintore a polvere ABC è molto versatile e copre le classi A, B e C, ma <strong>NON è adatto</strong> per:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Classe D (metalli):</strong> Inefficace e potenzialmente pericoloso</li>
+                <li><strong>Classe F (oli cucina):</strong> Poco efficace, l'olio può riaccendersi</li>
+                <li><strong>Apparecchiature elettroniche delicate:</strong> La polvere è corrosiva e rovina l'elettronica (meglio CO₂)</li>
+            </ul>
+            <p style="margin-top: 10px;">Inoltre, la polvere ABC sporca moltissimo e richiede pulizie approfondite dopo l'uso.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Cosa devo fare se una bombola di GPL è esposta a fiamme?</h3>
+            <p><strong>EVACUARE IMMEDIATAMENTE!</strong> Una bombola di GPL esposta a fiamme dirette può subire un <strong>BLEVE</strong> (Boiling Liquid Expanding Vapor Explosion):</p>
+            <ol style="margin-top: 10px;">
+                <li><strong>Allontanarsi almeno 200-300 metri</strong></li>
+                <li>Chiamare immediatamente i Vigili del Fuoco (115)</li>
+                <li>Allertare i vicini</li>
+                <li>NON avvicinarsi mai alla bombola</li>
+                <li>NON sostare in linea con le testate della bombola</li>
+            </ol>
+            <p style="margin-top: 10px;">Il BLEVE può avvenire senza preavviso, proiettando frammenti metallici a centinaia di metri e creando una palla di fuoco devastante.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Come faccio a sapere quale estintore ho in casa/ufficio?</h3>
+            <p>Ogni estintore ha un'<strong>etichetta</strong> che indica:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Tipo di agente estinguente:</strong> Polvere, CO₂, Schiuma, ecc.</li>
+                <li><strong>Classi di fuoco:</strong> Pittogrammi con le lettere A, B, C, D, F</li>
+                <li><strong>Capacità:</strong> kg o litri</li>
+                <li><strong>Istruzioni d'uso</strong></li>
+                <li><strong>Data di revisione/scadenza</strong></li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Pittogrammi:</strong> Cerca i simboli colorati con le lettere. Ad esempio, un estintore con i simboli A-B-C è un ABC.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Gli estintori scadono? Ogni quanto vanno revisionati?</h3>
+            <p><strong>Sì, gli estintori richiedono manutenzione regolare:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Controllo semestrale:</strong> Verifica visiva (integrità, pressione, cartellino)</li>
+                <li><strong>Revisione ogni 12 mesi:</strong> Controllo approfondito da parte di tecnico abilitato</li>
+                <li><strong>Collaudo ogni 3-5 anni:</strong> Controllo completo con eventuale ricarica (dipende dal tipo)</li>
+                <li><strong>Sostituzione:</strong> Dopo 12-18 anni dalla fabbricazione (dipende dal tipo)</li>
+            </ul>
+            <p style="margin-top: 10px;">Un estintore non revisionato può non funzionare nel momento del bisogno! Verifica sempre la targhetta con la data dell'ultima revisione.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Posso spegnere un incendio da solo o devo sempre chiamare i pompieri?</h3>
+            <p><strong>Dipende dalle dimensioni e dal tipo di incendio:</strong></p>
+            <p style="margin-top: 10px;"><strong>✅ Puoi intervenire se:</strong></p>
+            <ul>
+                <li>L'incendio è in fase iniziale (fiamme contenute)</li>
+                <li>Hai l'estintore adatto alla classe di fuoco</li>
+                <li>Sei formato all'uso dell'estintore</li>
+                <li>Hai una via di fuga sicura alle spalle</li>
+                <li>Non ci sono bombole o materiali pericolosi nelle vicinanze</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>⛔ Chiama subito i VVF (115) se:</strong></p>
+            <ul>
+                <li>Le fiamme sono già alte (oltre 1-2 metri)</li>
+                <li>L'incendio si propaga rapidamente</li>
+                <li>C'è molto fumo (limita visibilità e respirazione)</li>
+                <li>Coinvolge bombole, serbatoi di carburante, materiali pericolosi</li>
+                <li>Non hai l'estintore giusto</li>
+                <li>Non sei sicuro di saper intervenire</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold;">Regola d'oro: "In caso di dubbio, EVACUARE e chiamare i VVF!"</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Cosa sono le "stelle" sugli estintori? (rating ABC)</h3>
+            <p>Il <strong>rating</strong> è un numero che indica la <strong>capacità estinguente</strong> dell'estintore:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Classe A:</strong> Numero (es. 21A, 34A) = capacità su fuochi di materiali solidi</li>
+                <li><strong>Classe B:</strong> Numero (es. 89B, 144B) = litri di liquido infiammabile che può spegnere</li>
+                <li><strong>Classe C:</strong> Solo lettera (nessun rating numerico)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Esempio pratico:</strong></p>
+            <p>Un estintore <strong>34A 144B C</strong> significa:</p>
+            <ul>
+                <li>Capacità estinguente 34 su classe A (solidi)</li>
+                <li>Può spegnere fino a 144 litri di liquido infiammabile (classe B)</li>
+                <li>È adatto anche per gas (classe C)</li>
+            </ul>
+            <p style="margin-top: 10px;">Più alto è il numero, maggiore è la capacità estinguente dell'estintore.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ In un'auto elettrica in fiamme posso usare un estintore normale?</h3>
+            <p><strong>No, gli incendi di batterie al litio richiedono procedure speciali.</strong></p>
+            <p style="margin-top: 10px;">Le batterie al litio (auto elettriche, e-bike, monopattini) presentano rischi unici:</p>
+            <ul>
+                <li><strong>Thermal runaway:</strong> reazione a catena che continua anche dopo lo spegnimento apparente</li>
+                <li>Temperature oltre 1000°C</li>
+                <li>Possono riaccendersi spontaneamente anche dopo ore o giorni</li>
+                <li>Rilascio di gas tossici e corrosivi</li>
+                <li>Gli estintori portatili sono praticamente inefficaci</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Cosa fare:</strong></p>
+            <ol>
+                <li>Evacuare immediatamente (almeno 50 metri)</li>
+                <li>Chiamare i Vigili del Fuoco specificando "veicolo elettrico"</li>
+                <li>Non tentare di spegnere con estintori portatili</li>
+                <li>I VVF useranno enormi quantità d'acqua (migliaia di litri) o container di immersione</li>
+            </ol>
+        </div>
+
+        <h2>🎥 Risorse Video Educative</h2>
+        
+        <div class="video-container">
+            <p>Approfondisci la tua conoscenza sulle classi di fuoco e l'uso degli estintori con questi video educativi:</p>
+            
+            <div class="video-grid">
+                <div class="video-card" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/liquidi-infiammabili/misure-di-protezione-liquidi-infiammabili-video', '_blank')">
+                    <div style="background: linear-gradient(135deg, #dc3545 0%, #ffa500 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        ⛽🔥
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Classe B - Liquidi Infiammabili SUVA</h4>
+                        <p>Serie completa su liquidi infiammabili: comportamento, punto di infiammabilità, spegnimento corretto e errori da evitare.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/gase/misure-di-protezione-per-i-gas-video', '_blank')">
+                    <div style="background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        💨🔥
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Classe C - Gas Infiammabili SUVA</h4>
+                        <p>Come gestire in sicurezza GPL, metano e altri gas. Include informazioni su BLEVE e procedure corrette.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" onclick="window.open('https://www.youtube.com/results?search_query=estintore+uso+corretto', '_blank')">
+                    <div style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        🧯📚
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Come Usare un Estintore</h4>
+                        <p>Tutorial pratici sull'uso corretto degli estintori portatili: tecnica PASS, distanza di sicurezza, quando intervenire.</p>
+                        <span class="video-source">YouTube</span>
+                    </div>
+                </div>
+
+                <div class="video-card" onclick="window.open('https://www.youtube.com/results?search_query=oil+fire+water+explosion', '_blank')">
+                    <div style="background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        🍳💥
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Classe F - Perché MAI Acqua su Olio</h4>
+                        <p>Dimostrazione impressionante di cosa succede quando si versa acqua su olio in fiamme. Video educativo essenziale.</p>
+                        <span class="video-source">YouTube</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Suggerimento:</strong> Guarda questi video per capire visivamente la differenza tra le classi di fuoco e vedere in azione i vari tipi di estintori.
+            </div>
+        </div>
+
+        <h2>📚 Riepilogo e Punti Chiave</h2>
+
+        <div class="success-box">
+            <h4>✅ Concetti Fondamentali da Ricordare</h4>
+            <ul>
+                <li>Esistono <strong>5 classi di fuoco</strong>: A (solidi), B (liquidi), C (gas), D (metalli), F (oli cucina)</li>
+                <li>Ogni classe richiede un <strong>agente estinguente specifico</strong></li>
+                <li>Usare l'estintore sbagliato può essere <strong>più pericoloso</strong> che non intervenire</li>
+                <li><strong>MAI acqua</strong> su liquidi infiammabili (B), metalli (D) o oli da cucina (F)</li>
+                <li>Per i gas (C): prima <strong>chiudere la fonte</strong>, poi spegnere</li>
+                <li>L'estintore <strong>ABC è il più versatile</strong> ma non copre tutte le situazioni</li>
+                <li>In caso di dubbio: <strong>evacuare e chiamare i VVF</strong> (115)</li>
+                <li>Gli estintori vanno <strong>revisionati ogni anno</strong></li>
+            </ul>
+        </div>
+
+        <div class="danger-box">
+            <h4>⛔ Errori Fatali da NON Commettere</h4>
+            <ul>
+                <li><strong>Acqua su olio bollente</strong> → Esplosione con palla di fuoco</li>
+                <li><strong>Acqua su metalli</strong> (Mg, Al, Li) → Esplosione con produzione di idrogeno</li>
+                <li><strong>Spegnere fiamma gas senza chiudere valvola</strong> → Accumulo gas invisibile → esplosione</li>
+                <li><strong>Avvicinarsi a bombole in fiamme</strong> → Rischio BLEVE (esplosione devastante)</li>
+                <li><strong>Usare acqua/schiuma su quadri elettrici sotto tensione</strong> → Folgorazione</li>
+                <li><strong>Usare estintore scaduto/non revisionato</strong> → Può non funzionare</li>
+                <li><strong>Tentare spegnimento senza via di fuga sicura</strong> → Intrappolamento</li>
+            </ul>
+        </div>
+
+        <div class="key-message">
+            "La sicurezza viene prima di tutto:<br>meglio perdere un oggetto che rischiare la vita!"
+        </div>
+
+        <div class="footer-ennesg">
+            <h3>📞 Formazione Antincendio con EnneSG</h3>
+            <p><strong>EnneSG - Sistemi di Gestione</strong></p>
+            <p>Corsi di Formazione Antincendio • Addetti Antincendio • Uso Estintori</p>
+            <p>Valutazione del Rischio Incendio • Consulenza D.Lgs. 81/08</p>
+            <p style="margin-top: 20px;">
+                Vuoi approfondire le classi di fuoco e imparare l'uso pratico degli estintori?<br>
+                Organizziamo <strong>corsi con esercitazioni pratiche</strong> su tutti i tipi di estintori.
+            </p>
+            <p style="margin-top: 15px;">
+                <a href="https://enne-sg.github.io/EnneSG/" target="_blank">🌐 www.ennesg.it</a>
+            </p>
+            <p style="font-size: 0.9em; color: #999; margin-top: 20px;">
+                Documento educativo sulla Classificazione dei Fuochi<br>
+                © 2025 EnneSG - Tutti i diritti riservati
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

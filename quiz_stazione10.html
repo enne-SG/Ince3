@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Stazione 10: Gestione Emergenze</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%); padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid #FFA500; }
+        .header h1 { color: #1E4BA0; font-size: 2em; margin-bottom: 10px; }
+        .quiz-info { background: #e3f2fd; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 5px solid #2196f3; }
+        .domanda { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid #1E4BA0; }
+        .domanda h3 { color: #1E4BA0; margin-bottom: 15px; }
+        .risposta { background: white; padding: 15px 20px; margin: 10px 0; border-radius: 8px; border: 2px solid #dee2e6; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; }
+        .risposta:hover { border-color: #FFA500; background: #fff8f0; transform: translateX(5px); }
+        .risposta input { margin-right: 12px; width: 20px; height: 20px; cursor: pointer; }
+        .risposta label { cursor: pointer; flex: 1; }
+        .btn-submit { background: #FFA500; color: white; padding: 15px 40px; border: none; border-radius: 8px; font-size: 1.2em; font-weight: bold; cursor: pointer; width: 100%; margin-top: 30px; }
+        .btn-submit:hover { background: #ff8c00; }
+        .btn-back { background: #6c757d; color: white; padding: 12px 30px; text-decoration: none; display: inline-block; margin-top: 15px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Quiz Stazione 10</h1>
+            <p>Gestione Emergenze ed Evacuazione</p>
+        </div>
+        <div class="quiz-info">
+            <h3>ℹ️ Info Quiz</h3>
+            <p><strong>Domande:</strong> 7 | <strong>Badge:</strong> 🥇 90%+ | 🥈 70-89% | 🥉 50-69%</p>
+        </div>
+        <form id="quiz-form">
+            <div class="domanda">
+                <h3>Domanda 1/7</h3>
+                <p>In caso di allarme incendio, la prima cosa da fare è:</p>
+                <div class="risposta"><input type="radio" name="q1" value="a" id="q1a"><label for="q1a">Mantenere la calma e seguire le procedure di evacuazione</label></div>
+                <div class="risposta"><input type="radio" name="q1" value="b" id="q1b"><label for="q1b">Prendere gli effetti personali</label></div>
+                <div class="risposta"><input type="radio" name="q1" value="c" id="q1c"><label for="q1c">Usare l'ascensore per scendere velocemente</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 2/7</h3>
+                <p>Durante l'evacuazione è fondamentale:</p>
+                <div class="risposta"><input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Usare le scale di emergenza, mai l'ascensore</label></div>
+                <div class="risposta"><input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Tornare indietro se si è dimenticato qualcosa</label></div>
+                <div class="risposta"><input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Correre il più veloce possibile</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 3/7</h3>
+                <p>Il numero unico di emergenza in Italia è:</p>
+                <div class="risposta"><input type="radio" name="q3" value="a" id="q3a"><label for="q3a">112 (numero unico emergenze europeo)</label></div>
+                <div class="risposta"><input type="radio" name="q3" value="b" id="q3b"><label for="q3b">113</label></div>
+                <div class="risposta"><input type="radio" name="q3" value="c" id="q3c"><label for="q3c">911</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 4/7</h3>
+                <p>Al punto di raccolta bisogna:</p>
+                <div class="risposta"><input type="radio" name="q4" value="a" id="q4a"><label for="q4a">Effettuare l'appello per verificare che tutti siano usciti</label></div>
+                <div class="risposta"><input type="radio" name="q4" value="b" id="q4b"><label for="q4b">Rientrare subito nell'edificio</label></div>
+                <div class="risposta"><input type="radio" name="q4" value="c" id="q4c"><label for="q4c">Andarsene immediatamente</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 5/7</h3>
+                <p>Se durante l'evacuazione trovo fumo denso nelle scale devo:</p>
+                <div class="risposta"><input type="radio" name="q5" value="a" id="q5a"><label for="q5a">Camminare chinato/strisciare (l'aria pulita è in basso)</label></div>
+                <div class="risposta"><input type="radio" name="q5" value="b" id="q5b"><label for="q5b">Camminare in piedi normalmente</label></div>
+                <div class="risposta"><input type="radio" name="q5" value="c" id="q5c"><label for="q5c">Correre velocissimo</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 6/7</h3>
+                <p>Il Piano di Emergenza aziendale deve contenere:</p>
+                <div class="risposta"><input type="radio" name="q6" value="a" id="q6a"><label for="q6a">Procedure di evacuazione, numeri emergenza, planimetrie vie di fuga</label></div>
+                <div class="risposta"><input type="radio" name="q6" value="b" id="q6b"><label for="q6b">Solo i numeri di telefono</label></div>
+                <div class="risposta"><input type="radio" name="q6" value="c" id="q6c"><label for="q6c">Le foto dei dipendenti</label></div>
+            </div>
+            <div class="domanda">
+                <h3>Domanda 7/7</h3>
+                <p>Gli addetti antincendio hanno il compito di:</p>
+                <div class="risposta"><input type="radio" name="q7" value="a" id="q7a"><label for="q7a">Intervenire sul principio d'incendio e coordinare l'evacuazione</label></div>
+                <div class="risposta"><input type="radio" name="q7" value="b" id="q7b"><label for="q7b">Sostituire i Vigili del Fuoco</label></div>
+                <div class="risposta"><input type="radio" name="q7" value="c" id="q7c"><label for="q7c">Fare solo corsi di formazione</label></div>
+            </div>
+            <button type="submit" class="btn-submit">✅ Invia Risposte</button>
+        </form>
+        <a href="index.html" class="btn-back">← Torna al Corso</a>
+    </div>
+    <script src="gamification.js"></script>
+    <script>
+        const risposteCorrette = { q1: 'a', q2: 'a', q3: 'a', q4: 'a', q5: 'a', q6: 'a', q7: 'a' };
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let corrette = 0;
+            for (let q in risposteCorrette) {
+                const r = document.querySelector(`input[name="${q}"]:checked`);
+                if (r && r.value === risposteCorrette[q]) corrette++;
+            }
+            inviaQuiz(10, corrette, 7);
+        });
+    </script>
+</body>
+</html>

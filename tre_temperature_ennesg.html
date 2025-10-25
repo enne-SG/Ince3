@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Tre Temperature della Combustione - EnneSG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1E4BA0 0%, #2c5aa0 100%);
+            padding: 0;
+        }
+
+        .ennesg-header {
+            background: #1E4BA0;
+            padding: 20px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ennesg-logo-strip {
+            width: 5px;
+            height: 80px;
+            background: #FFA500;
+            border-radius: 3px;
+        }
+
+        .ennesg-brand {
+            flex: 1;
+        }
+
+        .ennesg-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            margin: 0;
+        }
+
+        .ennesg-title .sg {
+            color: #FFA500;
+        }
+
+        .ennesg-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .ennesg-tagline {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #1E4BA0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1E4BA0;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFA500;
+        }
+
+        h3 {
+            color: #1E4BA0;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, rgba(30,75,160,0.1) 0%, rgba(255,165,0,0.1) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #FFA500;
+        }
+
+        .temperature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 5px solid #1E4BA0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .temperature-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .temperature-card h3 {
+            margin-top: 0;
+            color: #1E4BA0;
+        }
+
+        .temperature-card.temp-1 { border-left-color: #ff6b6b; }
+        .temperature-card.temp-2 { border-left-color: #FFA500; }
+        .temperature-card.temp-3 { border-left-color: #dc143c; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #1E4BA0 0%, #FFA500 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(30,75,160,0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .material-type {
+            font-weight: bold;
+            color: #1E4BA0;
+            background: rgba(30,75,160,0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 5px solid #FFA500;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning strong {
+            color: #856404;
+        }
+
+        .faq {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 5px solid #28a745;
+        }
+
+        .faq h3 {
+            color: #28a745;
+            margin-top: 0;
+        }
+
+        .note {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        .temp-decomp { background: #ff6b6b; }
+        .temp-accend { background: #FFA500; }
+        .temp-combust { background: #dc143c; }
+
+        .video-container {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(30,75,160,0.3);
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-info h4 {
+            color: #1E4BA0;
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .video-source {
+            display: inline-block;
+            background: #FFA500;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-top: 8px;
+        }
+
+        .footer-ennesg {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(30,75,160,0.05) 0%, rgba(255,165,0,0.05) 100%);
+            border-radius: 10px;
+            border-top: 3px solid #FFA500;
+        }
+
+        .footer-ennesg h3 {
+            color: #1E4BA0;
+            margin-bottom: 15px;
+        }
+
+        .footer-ennesg p {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .footer-ennesg a {
+            color: #1E4BA0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-ennesg a:hover {
+            color: #FFA500;
+        }
+
+        @media (max-width: 768px) {
+            .ennesg-header {
+                padding: 15px 20px;
+            }
+
+            .ennesg-title {
+                font-size: 1.8em;
+            }
+
+            .ennesg-subtitle {
+                font-size: 0.9em;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ennesg-header">
+        <div class="ennesg-logo-strip"></div>
+        <div class="ennesg-brand">
+            <div class="ennesg-title">Enne<span class="sg">SG</span></div>
+            <div class="ennesg-subtitle">Sistemi di Gestione</div>
+            <div class="ennesg-tagline">Consulenza ISO • Sicurezza D.Lgs. 81/08 • Formazione</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>🔥 Le Tre Temperature della Combustione</h1>
+
+        <div class="intro">
+            <p><strong>La combustione</strong> è un processo chimico complesso che avviene in diverse fasi, ciascuna caratterizzata da una temperatura specifica. Comprendere queste tre temperature è fondamentale per la <strong>prevenzione incendi</strong>, la <strong>sicurezza</strong> e la corretta gestione dei materiali combustibili.</p>
+        </div>
+
+        <h2>🌡️ Le Tre Temperature Fondamentali</h2>
+
+        <div class="temperature-card temp-1">
+            <h3>1️⃣ Temperatura di Infiammabilità / Decomposizione</h3>
+            <p><strong>Per i LIQUIDI:</strong> È la temperatura minima alla quale il liquido emette vapori sufficienti che, in presenza di un innesco (fiamma o scintilla), si accendono momentaneamente ma non continuano a bruciare.</p>
+            <p><strong>Per i SOLIDI:</strong> È la temperatura di <em>decomposizione termica (pirolisi)</em> alla quale il materiale si decompone rilasciando gas e vapori combustibili.</p>
+            <p><strong>Per i GAS:</strong> Sono già in forma gassosa, quindi questa temperatura corrisponde alla loro temperatura di esistenza come gas.</p>
+        </div>
+
+        <div class="temperature-card temp-2">
+            <h3>2️⃣ Temperatura di Accensione (Autoaccensione/Autoignizione)</h3>
+            <p>È la temperatura alla quale la sostanza si accende <strong>spontaneamente</strong> senza bisogno di una fonte esterna di innesco, solo per effetto del riscaldamento. A questa temperatura, il materiale prende fuoco da solo.</p>
+        </div>
+
+        <div class="temperature-card temp-3">
+            <h3>3️⃣ Temperatura di Combustione</h3>
+            <p>È la temperatura che si raggiunge <strong>durante</strong> il processo di combustione attiva, cioè la temperatura effettiva della fiamma e dei gas combusti. Questa è generalmente la temperatura più alta delle tre e dipende dal tipo di combustibile e dalle condizioni di combustione.</p>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color temp-decomp"></div>
+                <span>Decomposizione/Infiammabilità</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color temp-accend"></div>
+                <span>Accensione</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color temp-combust"></div>
+                <span>Combustione</span>
+            </div>
+        </div>
+
+        <h2>📊 Esempi di Sostanze Combustibili</h2>
+
+        <h3>🪵 SOLIDI</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Materiale</th>
+                    <th>Decomposizione</th>
+                    <th>Accensione</th>
+                    <th>Combustione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="material-type">SOLIDO</span> Legno (Quercia)</td>
+                    <td>200-250°C</td>
+                    <td>300-350°C</td>
+                    <td>600-900°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">SOLIDO</span> Carbone</td>
+                    <td>350-400°C</td>
+                    <td>400-500°C</td>
+                    <td>1000-1500°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">SOLIDO</span> Polietilene (PE)</td>
+                    <td>350-400°C</td>
+                    <td>340-360°C</td>
+                    <td>800-900°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">SOLIDO</span> PVC</td>
+                    <td>200-250°C</td>
+                    <td>390-450°C</td>
+                    <td>700-900°C</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>💧 LIQUIDI</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Materiale</th>
+                    <th>Infiammabilità</th>
+                    <th>Accensione</th>
+                    <th>Combustione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="material-type">LIQUIDO</span> Benzina</td>
+                    <td>-20°C</td>
+                    <td>250-280°C</td>
+                    <td>1000-1200°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">LIQUIDO</span> Gasolio</td>
+                    <td>55-65°C</td>
+                    <td>220-250°C</td>
+                    <td>900-1100°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">LIQUIDO</span> Alcool Etilico</td>
+                    <td>13°C</td>
+                    <td>363°C</td>
+                    <td>900-1000°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">LIQUIDO</span> Acetone</td>
+                    <td>-18°C</td>
+                    <td>465-540°C</td>
+                    <td>1000-1100°C</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>💨 GAS</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Materiale</th>
+                    <th>Infiammabilità</th>
+                    <th>Accensione</th>
+                    <th>Combustione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="material-type">GAS</span> Metano (CH₄)</td>
+                    <td>-188°C</td>
+                    <td>537-595°C</td>
+                    <td>1950-2000°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">GAS</span> GPL (Propano)</td>
+                    <td>-104°C</td>
+                    <td>450-500°C</td>
+                    <td>1900-1950°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">GAS</span> Idrogeno</td>
+                    <td>-253°C</td>
+                    <td>500-571°C</td>
+                    <td>2000-2045°C</td>
+                </tr>
+                <tr>
+                    <td><span class="material-type">GAS</span> Acetilene</td>
+                    <td>-84°C</td>
+                    <td>305°C</td>
+                    <td>2500-3100°C</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🍳 Materiali Meno Ovvi - In Cucina!</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Materiale</th>
+                    <th>Tipo</th>
+                    <th>Decomp./Infiamm.</th>
+                    <th>Accensione</th>
+                    <th>Combustione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🌾 <strong>Farina</strong></td>
+                    <td><span class="material-type">POLVERE</span></td>
+                    <td>200-300°C</td>
+                    <td>380-440°C</td>
+                    <td>1000-1200°C</td>
+                </tr>
+                <tr>
+                    <td>🍬 <strong>Zucchero</strong></td>
+                    <td><span class="material-type">POLVERE</span></td>
+                    <td>160-190°C</td>
+                    <td>350-400°C</td>
+                    <td>900-1100°C</td>
+                </tr>
+                <tr>
+                    <td>🫒 <strong>Olio d'Oliva</strong></td>
+                    <td><span class="material-type">LIQUIDO</span></td>
+                    <td>225°C</td>
+                    <td>343°C</td>
+                    <td>800-1000°C</td>
+                </tr>
+                <tr>
+                    <td>🧈 <strong>Burro</strong></td>
+                    <td><span class="material-type">LIQUIDO</span></td>
+                    <td>150-170°C</td>
+                    <td>300-350°C</td>
+                    <td>800-900°C</td>
+                </tr>
+                <tr>
+                    <td>☕ <strong>Caffè in polvere</strong></td>
+                    <td><span class="material-type">POLVERE</span></td>
+                    <td>180-220°C</td>
+                    <td>400-500°C</td>
+                    <td>1000-1200°C</td>
+                </tr>
+                <tr>
+                    <td>🍞 <strong>Pane tostato</strong></td>
+                    <td><span class="material-type">SOLIDO</span></td>
+                    <td>150-200°C</td>
+                    <td>250-300°C</td>
+                    <td>600-800°C</td>
+                </tr>
+                <tr>
+                    <td>🧻 <strong>Carta assorbente</strong></td>
+                    <td><span class="material-type">SOLIDO</span></td>
+                    <td>180-220°C</td>
+                    <td>230-260°C</td>
+                    <td>600-800°C</td>
+                </tr>
+                <tr>
+                    <td>🌿 <strong>Spezie secche</strong></td>
+                    <td><span class="material-type">POLVERE</span></td>
+                    <td>190-250°C</td>
+                    <td>380-450°C</td>
+                    <td>900-1100°C</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warning">
+            <strong>⚠️ Attenzione in Cucina!</strong>
+            <p>Molti materiali comuni in cucina sono infiammabili:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Le <strong>polveri</strong> (farina, zucchero, caffè) possono creare atmosfere esplosive se disperse nell'aria</li>
+                <li>Gli <strong>oli</strong> surriscaldati raggiungono facilmente temperature di infiammabilità (mai usare acqua su olio in fiamme!)</li>
+                <li>La <strong>carta</strong> e i tessuti vicino ai fornelli sono estremamente pericolosi</li>
+                <li>Il <strong>burro</strong> e i grassi possono incendiarsi rapidamente se lasciati sul fuoco</li>
+            </ul>
+        </div>
+
+        <h2>❓ FAQ - Domande Frequenti</h2>
+
+        <div class="faq">
+            <h3>❓ Perché per i solidi si parla di "decomposizione" invece di "infiammabilità"?</h3>
+            <p>I solidi non evaporano come i liquidi. Per bruciare, devono prima <strong>decomporsi termicamente (pirolisi)</strong>, un processo in cui il calore rompe le lunghe catene molecolari rilasciando gas e vapori combustibili. Solo questi gas possono poi accendersi e bruciare.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Qual è la temperatura più pericolosa?</h3>
+            <p>Dal punto di vista della sicurezza, la <strong>temperatura di infiammabilità/decomposizione</strong> è la più critica perché indica quando una sostanza inizia a diventare pericolosa. Sostanze con temperature di infiammabilità molto basse (come la benzina a -20°C) sono particolarmente pericolose perché possono formare atmosfere esplosive anche a temperatura ambiente.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Perché la temperatura di combustione è così alta rispetto alle altre due?</h3>
+            <p>La temperatura di combustione è il risultato della <strong>reazione esotermica</strong> (che libera energia) tra il combustibile e l'ossigeno. L'energia chimica immagazzinata nelle molecole viene rilasciata sotto forma di calore, producendo temperature molto più elevate di quelle necessarie per iniziare il processo.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Come si comportano i materiali plastici?</h3>
+            <p>Le plastiche, essendo polimeri, funzionano esattamente come il legno e altri solidi organici: devono prima <strong>decomporsi termicamente</strong> (rompendo le lunghe catene polimeriche) per rilasciare gas combustibili, che poi si accendono e bruciano. Spesso producono fumi molto tossici durante la combustione.</p>
+        </div>
+
+        <div class="faq">
+            <h3>❓ Perché le polveri sono pericolose?</h3>
+            <p>Le polveri fini (< 0,5 mm) hanno un'enorme superficie esposta all'ossigeno. Quando sono disperse nell'aria in concentrazioni appropriate, possono formare <strong>miscele esplosive</strong>. Basta una scintilla per provocare un'esplosione devastante, come nei silos di farina o negli zuccherifici.</p>
+        </div>
+
+        <h2>🎥 Risorse Video Educative - SUVA</h2>
+        
+        <div class="video-container">
+            <p>La <strong>SUVA</strong> (Istituto svizzero di assicurazione contro gli infortuni) mette a disposizione eccellenti serie di video educativi in italiano sulla sicurezza, combustione ed esplosioni. Clicca sui collegamenti per accedere alle pagine con i video:</p>
+            
+            <div class="video-grid">
+                <div class="video-card" style="cursor: pointer;" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/liquidi-infiammabili/misure-di-protezione-liquidi-infiammabili-video', '_blank')">
+                    <div style="background: linear-gradient(135deg, #1E4BA0 0%, #FFA500 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        💧🔥
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Liquidi Infiammabili - Serie Video SUVA</h4>
+                        <p>Serie completa di video sui liquidi infiammabili: comportamento dei vapori, punto di infiammabilità, misure di ventilazione e protezione dalle esplosioni. Include esperimenti dimostrativi.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" style="cursor: pointer;" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/gase/misure-di-protezione-per-i-gas-video', '_blank')">
+                    <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        💨💥
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Gas Infiammabili - Serie Video SUVA</h4>
+                        <p>Come gestire in sicurezza bombole di gas, GPL e gas naturali. Include informazioni su atmosfere esplosive, effetto BLEVE, fonti di innesco e ventilazione corretta.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" style="cursor: pointer;" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/aerosol-e-polveri/misure-di-protezione-polveri-e-aerosol-video', '_blank')">
+                    <div style="background: linear-gradient(135deg, #ffa500 0%, #dc143c 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        🌫️💣
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Polveri e Aerosol Esplosivi - Serie Video SUVA</h4>
+                        <p>Le polveri di farina, zucchero, legno possono esplodere! Scopri come le particelle fini creano atmosfere esplosive e le misure di prevenzione necessarie.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" style="cursor: pointer;" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/fondamenti-della-protezione-contro-le-esplosioni', '_blank')">
+                    <div style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        🛡️🔬
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Fondamenti Protezione Esplosioni - SUVA</h4>
+                        <p>Approccio sistematico alla protezione contro esplosioni e incendi. Include principi base, misure preventive e documentazione sulla protezione.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" style="cursor: pointer;" onclick="window.open('https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili/liquidi-infiammabili/esempio-di-infortunio-revisione-di-cisterne', '_blank')">
+                    <div style="background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        ⚠️📋
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Esempio Infortunio: Esplosione in Cisterna</h4>
+                        <p>Caso reale di esplosione mortale durante lavori di manutenzione. Analisi dettagliata dell'incidente e delle misure che avrebbero potuto prevenirlo.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+
+                <div class="video-card" style="cursor: pointer;" onclick="window.open('https://www.suva.ch/it-ch/download/videos-i/video--utilizzo-sicuro-dell-elettricita', '_blank')">
+                    <div style="background: linear-gradient(135deg, #6610f2 0%, #007bff 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                        ⚡🔌
+                    </div>
+                    <div class="video-info">
+                        <h4>🔗 Elettricità Statica e Prevenzione Incendi</h4>
+                        <p>L'elettricità statica può essere una fonte di innesco invisibile. Video educativo su come proteggersi, specialmente con liquidi e gas infiammabili.</p>
+                        <span class="video-source">SUVA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>💡 Come utilizzare:</strong> Clicca su una delle card sopra per accedere direttamente alla pagina SUVA con i video. Ogni pagina contiene multipli video educativi con esperimenti pratici, spiegazioni degli esperti e misure di sicurezza.
+            </div>
+
+            <div class="note" style="background: #fff3cd; border-left-color: #FFA500;">
+                <strong>📚 Risorse Aggiuntive SUVA:</strong> Visita la pagina principale <a href="https://www.suva.ch/it-ch/prevenzione/per-pericoli/situazioni-radiazioni-e-materiali-pericolosi/esplosioni-di-sostanze-combustibili-e-facilmente-infiammabili" target="_blank" style="color: #856404; font-weight: bold;">Protezione contro le esplosioni e gli incendi</a> per accedere a decine di altri video, guide PDF, liste di controllo e materiali formativi scaricabili gratuitamente.
+            </div>
+        </div>
+
+        <h2>📚 Punti Chiave da Ricordare</h2>
+
+        <div class="note">
+            <ul style="margin-left: 20px;">
+                <li><strong>I SOLIDI</strong> devono decomporsi per rilasciare gas combustibili prima di bruciare</li>
+                <li><strong>I LIQUIDI</strong> evaporano e i vapori formano miscele infiammabili con l'aria</li>
+                <li><strong>I GAS</strong> sono già in forma gassosa e quindi particolarmente pericolosi</li>
+                <li>Le <strong>polveri fini</strong> possono esplodere come i gas e i liquidi infiammabili</li>
+                <li>La <strong>temperatura di infiammabilità</strong> indica quando un materiale diventa pericoloso</li>
+                <li>La <strong>temperatura di accensione</strong> indica quando prende fuoco spontaneamente</li>
+                <li>La <strong>temperatura di combustione</strong> è quella della fiamma attiva</li>
+            </ul>
+        </div>
+
+        <div class="footer-ennesg">
+            <h3>📞 Contatta EnneSG</h3>
+            <p><strong>EnneSG - Sistemi di Gestione</strong></p>
+            <p>Consulenza ISO • Sicurezza D.Lgs. 81/08 • Formazione Professionale</p>
+            <p style="margin-top: 20px;">
+                Per maggiori informazioni sui nostri servizi di <strong>formazione antincendio</strong>, 
+                <strong>valutazione dei rischi</strong> e <strong>consulenza per la sicurezza</strong>, 
+                visita il nostro sito: <a href="https://enne-sg.github.io/EnneSG/" target="_blank">www.ennesg.it</a>
+            </p>
+            <p style="font-size: 0.9em; color: #999; margin-top: 20px;">
+                Documento educativo sulle tre temperature della combustione<br>
+                © 2025 EnneSG - Tutti i diritti riservati
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
